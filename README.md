@@ -1,2 +1,10 @@
 # Bantu_Front
-Frontend Code Repository for Bantu Project
+
+Repository code front du projet Bantu.
+
+**Initialisé avec React et React-router.**
+
+Juste Cloner et lancer les commandes:
+
+- npm i
+- npm run dev
