@@ -2,7 +2,7 @@
 
 Repository code front du projet Bantu.
 
-**Initialisé avec React et React-router.**
+**Initialisé avec React, React-router et Axios.**
 
 Juste Cloner et lancer les commandes:
 
