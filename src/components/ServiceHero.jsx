@@ -1,7 +1,6 @@
 "use client";
 import React from 'react';
 import Button from './Button';
-import Header from './Header';
 import sectionHero from '../assets/images/service_Hero.jpg';
 
 const ServicesHero = () => {
