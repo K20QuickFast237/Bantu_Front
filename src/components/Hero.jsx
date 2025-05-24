@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import { motion } from 'framer-motion';
 import Button from './Button';
 
 const HeroSection = ({
@@ -15,37 +16,62 @@ const HeroSection = ({
   className = '',
 }) => {
   return (
-    <section
-      className={`relative flex flex-col items-center pt-32 pb-32 w-full text-base min-h-[681px] max-md:px-5 max-md:pb-24 max-md:max-w-full ${className}`}
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      className={`relative flex flex-col items-center pt-32 pb-32 w-full text-base min-h-[681px] max-md:px-5 max-md:pb-24 max-md:max-w-full max-md:pt-20 max-md:min-h-[500px] ${className}`}
     >
-      <div className="absolute inset-0 w-full h-full">
+      <motion.div 
+        initial={{ scale: 1.1 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.2 }}
+        className="absolute inset-0 w-full h-full"
+      >
         <img
           src={image}
           alt="Hero background"
           className="object-cover absolute inset-0 size-full"
         />
         <div className={`absolute inset-0 ${overlayColor} ${overlayOpacity}`}></div>
-      </div>
+      </motion.div>
 
-      <div className="flex flex-col items-start px-20 w-full z-10 max-md:px-5">
-        <h1 className={`mt-14 mr-24 text-7xl font-bold leading-snug ${titleColor} max-md:mt-10 max-md:mr-2.5 max-md:max-w-full max-md:text-4xl`}>
+      <div className="flex flex-col items-start px-20 w-full z-10 max-md:px-5 max-lg:px-10">
+        <motion.h1 
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className={`mt-14 mr-24 text-7xl font-bold leading-snug ${titleColor} max-md:mt-10 max-md:mr-2.5 max-md:max-w-full max-md:text-4xl max-lg:text-5xl max-lg:mr-12`}
+        >
           {title}
-        </h1>
-        <p className="mt-1 text-lg text-white w-[827px] max-md:max-w-full">
+        </motion.h1>
+        <motion.p 
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-1 text-lg text-white w-[827px] max-md:max-w-full max-lg:w-full"
+        >
           {description}
-        </p>
+        </motion.p>
         {buttonText && (
-          <Button
-            variant="filled"
-            color={buttonColor}
-            onClick={onButtonClick}
-            className="px-5 py-2.5 mt-12 font-semibold rounded-lg"
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="w-full max-md:flex max-md:justify-center"
           >
-            {buttonText}
-          </Button>
+            <Button
+              variant="filled"
+              color={buttonColor}
+              onClick={onButtonClick}
+              className="px-5 py-2.5 mt-12 font-semibold rounded-lg max-md:mt-8 max-md:w-full max-md:max-w-[300px]"
+            >
+              {buttonText}
+            </Button>
+          </motion.div>
         )}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

@@ -17,8 +17,8 @@ const colorStyles = {
     filled: 'bg-gray-600 text-white border-gray-600 hover:bg-gray-800',
   },
   white: {
-    base: 'text-white border-white',
-    hover: 'hover:text-gray-300 hover:border-gray-300',
+    base: 'border border-white text-white',
+    hover: 'hover:bg-white hover:text-gray-900 transition-colors duration-300',
     filled: 'bg-white text-blue-600 border-white hover:bg-gray-100',
   },
 };
@@ -33,7 +33,7 @@ const Button = ({
 }) => {
   const style = colorStyles[color] || colorStyles.blue;
 
-  const commonClasses = 'px-5 py-2 rounded-md font-medium transition-colors duration-300 border cursor-pointer';
+  const commonClasses = 'px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 text-sm sm:text-base rounded-md font-medium transition-colors duration-300 border cursor-pointer';
 
   const finalClasses =
     variant === 'filled'
