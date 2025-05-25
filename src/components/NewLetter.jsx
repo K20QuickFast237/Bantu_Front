@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 
-const NewsletterSection = () => {
+const  NewsletterSection = () => {
   return (
     <section className="self-center mt-36 max-w-full rounded-[30px] w-[1220px] max-md:pl-5 max-md:mt-10">
       <div className="flex gap-5 max-md:flex-col bg-gradient-to-br from-[#33C12B] to-green-600 h-[300px] rounded-l-[30px] rounded-tr-[30px]">
