@@ -19,7 +19,7 @@ function Blog() {
       <BlogListing searchValue={searchValue} />
       <CTAa title="Pret a collaborer avec l'afrique ?" color="white" callToAction=" Nous contacter" image={ctaa} />
       <Testimonials />
-       <ServicesFooter/>
+      <ServicesFooter/>
     </>
   );
 }
