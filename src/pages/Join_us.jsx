@@ -3,16 +3,20 @@ import Header from "../components/Header"
 import JoinV from "../components/JoinV"
 import JoinC from "../components/JoinC"
 import ServicesFooter from "../components/Footer";
+import PageLayout from "../components/PageLayout";
 
 function Join_us (){
     return (
         <>
-        <Header />
-        <Join_usHero />
-        <JoinV />
-        <JoinC />
+        <PageLayout>
 
-        <ServicesFooter/>
+            <Header />
+            <Join_usHero />
+            <JoinV />
+            <JoinC />
+            <ServicesFooter/>
+            
+        </PageLayout>
         </>
     )
 }

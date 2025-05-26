@@ -8,18 +8,23 @@ import CTAa from "../components/CtAa"
 import ctaa from "../assets/images/ctaa.png"
 
 import ServicesFooter from "../components/Footer";
+import PageLayout from "../components/PageLayout";
 
 function About(){
      return(
         <>
-        <Header />
-        <AboutHero />
-        <Mission />
-        <Valeurs />
-        <Partenaires />
-        <Teams />
-        <CTAa title="Rejoignez nous pour plus d'innovation" callToAction=" Rejoignez notre communaute" image={ctaa}/>
-        <ServicesFooter/>
+        <PageLayout>
+              
+            <Header />
+            <AboutHero />
+            <Mission />
+            <Valeurs />
+            <Partenaires />
+            <Teams />
+            <CTAa title="Rejoignez nous pour plus d'innovation" callToAction=" Rejoignez notre communaute" image={ctaa}/>
+            <ServicesFooter/>
+
+        </PageLayout>
         </>
      )
 }
