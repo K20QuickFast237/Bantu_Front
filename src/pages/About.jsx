@@ -6,8 +6,8 @@ import Partenaires from "../components/Partenaires"
 import Teams from "../components/Teams"
 import CTAa from "../components/CtAa"
 import ctaa from "../assets/images/ctaa.png"
-import  NewsletterSection from '../components/NewLetter'
-import Footerc from '../components/Footerc';
+
+import ServicesFooter from "../components/Footer";
 
 function About(){
      return(
@@ -19,10 +19,7 @@ function About(){
         <Partenaires />
         <Teams />
         <CTAa title="Rejoignez nous pour plus d'innovation" callToAction=" Rejoignez notre communaute" image={ctaa}/>
-        <div className='pl-20 pr-20 '>
-        < NewsletterSection />
-    </div>
-    <Footerc />
+        <ServicesFooter/>
         </>
      )
 }

@@ -107,7 +107,7 @@ const Partenaires = () => {
         <div className="flex items-center justify-between">
           {/* Titre */}
           <div className="flex-shrink-0 mr-12">
-            <h2 className="text-4xl font-bold text-green-600">
+            <h2 className="text-4xl  font-bold  text-green-600">
               Nos différents<br />
               partenaires
             </h2>

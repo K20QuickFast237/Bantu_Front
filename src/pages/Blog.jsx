@@ -6,8 +6,7 @@ import BlogListing from '../components/Allblog';
 import CTAa from "../components/Ctab";
 import ctaa from "../assets/images/ctaa.png";
 import Testimonials from '../components/Testimonials';
-import NewsletterSection from '../components/NewLetter';
-import Footerc from '../components/Footerc';
+import ServicesFooter from "../components/Footer";
 
 function Blog() {
   const [searchValue, setSearchValue] = useState('');
@@ -20,10 +19,7 @@ function Blog() {
       <BlogListing searchValue={searchValue} />
       <CTAa title="Pret a collaborer avec l'afrique ?" color="white" callToAction=" Nous contacter" image={ctaa} />
       <Testimonials />
-      <div className='pl-20 pr-20'>
-        <NewsletterSection />
-      </div>
-      <Footerc />
+       <ServicesFooter/>
     </>
   );
 }

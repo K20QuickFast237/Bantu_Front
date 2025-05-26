@@ -2,8 +2,7 @@ import Join_usHero from "../components/Join_usHero"
 import Header from "../components/Header"
 import JoinV from "../components/JoinV"
 import JoinC from "../components/JoinC"
-import  NewsletterSection from '../components/NewLetter'
-import Footerc from '../components/Footerc';
+import ServicesFooter from "../components/Footer";
 
 function Join_us (){
     return (
@@ -13,10 +12,7 @@ function Join_us (){
         <JoinV />
         <JoinC />
 
-        <div className='pl-20 pr-20 '>
-                < NewsletterSection />
-            </div>
-            <Footerc />
+        <ServicesFooter/>
         </>
     )
 }

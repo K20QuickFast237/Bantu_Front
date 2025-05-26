@@ -65,29 +65,31 @@ const Faq = () => {
   };
 
   return (
-    <div className="min-h-screen bg-indigo-50 py-12" >
+    <div className="min-h-screen bg-indigo-50 py-12 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="mb-12">
-          <h1 className="text-6xl font-bold text-black mb-6">FAQ</h1>
-          <p className="text-gray-500 text-lg leading-relaxed">
+        <div className="mb-12 text-center">
+          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-black mb-4">
+            FAQ
+          </h1>
+          <p className="text-gray-500 text-base md:text-lg leading-relaxed">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-4 mb-8">
+        <div className="flex flex-wrap justify-center gap-3 mb-10">
           {tabs.map((tab, index) => (
             <button
               key={index}
               onClick={() => {
                 setActiveTab(tab);
-                setExpandedQuestion(-1); // Reset expanded question when changing tabs
+                setExpandedQuestion(-1);
               }}
-              className={`px-8 py-3 rounded-lg font-medium transition-all ${
+              className={`px-5 py-2.5 rounded-full text-sm md:text-base font-medium transition-all ${
                 activeTab === tab
                   ? 'bg-blue-600 text-white'
-                  : 'bg-white text-gray-600 hover:bg-gray-50'
+                  : 'bg-white text-gray-600 hover:bg-gray-100'
               }`}
             >
               {tab}
@@ -101,9 +103,9 @@ const Faq = () => {
             <div key={index} className="bg-white rounded-lg shadow-sm">
               <button
                 onClick={() => setExpandedQuestion(expandedQuestion === index ? -1 : index)}
-                className="w-full p-6 text-left hover:bg-gray-50 transition-colors flex items-center justify-between"
+                className="w-full p-5 md:p-6 text-left hover:bg-gray-50 transition-colors flex items-center justify-between"
               >
-                <h3 className="text-gray-700 font-medium text-lg">
+                <h3 className="text-gray-700 font-medium text-base md:text-lg">
                   {item.question}
                 </h3>
                 <div className="ml-4 flex-shrink-0">
@@ -115,8 +117,8 @@ const Faq = () => {
                 </div>
               </button>
               {expandedQuestion === index && (
-                <div className="px-6 pb-6 border-l-4 border-blue-500 ml-6">
-                  <p className="text-gray-600 leading-relaxed">
+                <div className="px-5 md:px-6 pb-5 md:pb-6 border-l-4 border-blue-500 ml-4 md:ml-6">
+                  <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                     {item.answer}
                   </p>
                 </div>

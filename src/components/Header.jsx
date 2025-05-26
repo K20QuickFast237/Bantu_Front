@@ -144,7 +144,7 @@ const Header = () => {
               <Link to="/services" className="text-sm lg:text-base">Services</Link>
             </div>
             <div className='cursor-pointer hover:opacity-80 transition-opacity'>
-              <Link to="blog" className="text-sm lg:text-base">Blog / Actualités</Link>
+              <Link to="/blog" className="text-sm lg:text-base">Blog / Actualités</Link>
             </div>
             <div className='cursor-pointer hover:opacity-80 transition-opacity'>
               <Link to="/contact" className="text-sm lg:text-base">Contact</Link>

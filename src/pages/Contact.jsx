@@ -3,8 +3,7 @@ import ContactHero from '../components/ContactHero'
 import NosContacts from '../components/NosContacts'
 import Formulaire from '../components/Formulaire'
 import Faq from '../components/Faq'
-import  NewsletterSection from '../components/NewLetter'
-import Footerc from '../components/Footerc';
+import ServicesFooter from "../components/Footer";
 
 
 function Contact() {
@@ -27,10 +26,7 @@ function Contact() {
         title="Google Maps"
       />
     </div>
-    <div className='pl-20 pr-20 '>
-        < NewsletterSection />
-    </div>
-    <Footerc />
+    <ServicesFooter/>
         </>
     )
 }
