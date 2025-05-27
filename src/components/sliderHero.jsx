@@ -43,22 +43,24 @@ export default function HeroCarousel() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    let startTime = Date.now();
+    const totalDuration = 10000; // 10 secondes
+
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-      setProgress(0); // Reset progress when slide changes
-    }, 5000);
-    
-    // Progress animation
-    const progressInterval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) return 0;
-        return prev + (100 / 500);
-      });
-    }, 10);
+      const currentTime = Date.now();
+      const elapsed = currentTime - startTime;
+      
+      if (elapsed >= totalDuration) {
+        setCurrentSlide((prev) => (prev + 1) % slides.length);
+        setProgress(0);
+        startTime = currentTime;
+      } else {
+        setProgress((elapsed / totalDuration) * 100);
+      }
+    }, 16); // ~60fps
 
     return () => {
       clearInterval(interval);
-      clearInterval(progressInterval);
     };
   }, []);
 
