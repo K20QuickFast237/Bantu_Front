@@ -3,6 +3,7 @@ import Button from './Button';
 import slide1 from '../assets/images/slide1.jpeg';
 import slide2 from '../assets/images/slide2.jpg';
 import slide3 from '../assets/images/slide3.jpg';
+import { Link } from 'react-router';
 
 const slides = [
   {
@@ -133,17 +134,21 @@ export default function HeroCarousel() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-          <Button variant="filled" color="blue" className="w-full sm:w-auto">
-            Découvrir nos projets
-          </Button>
+          <Link to="/projets">
+            <Button variant="filled" color="blue" className="w-full sm:w-auto">
+              Découvrir nos projets
+            </Button>
+          </Link>
+          <Link to="/contact">
           <Button variant="bordered" color="white" className="w-full sm:w-auto">
-            Nous contacter
-          </Button>
+                Nous contacter
+            </Button>
+          </Link>
         </div>
       </div>
 
       {/* Bottom cards with active indicator */}
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-full max-w-6xl px-4 sm:px-6 md:px-8 z-40 hidden sm:block">
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-full px-20 z-40 hidden sm:block">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {slides.map((slide, index) => (
             <div
