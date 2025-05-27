@@ -24,6 +24,7 @@ const Services = () => {
           titleColor="text-green-500"
           description="TNK Synergies propose des solutions sur mesure pour répondre aux enjeux technologiques et sociaux de l'Afrique."
           buttonText="Nous contacter"
+          buttonLink="/contact"
           buttonColor="green"
         />
         <ServicesShowcase />

@@ -188,13 +188,15 @@ const Header = () => {
 
               {/* CTA Button mobile */}
               <div className="mt-4">
-                <Button 
-                  variant="bordered" 
-                  color="green" 
-                  className="w-full justify-center"
-                >
-                  Nous rejoindre
-                </Button>
+                <Link to="/join_us">
+                  <Button 
+                    variant="bordered" 
+                    color="green" 
+                    className="w-full justify-center"
+                  >
+                    Nous rejoindre
+                  </Button>
+                </Link>
               </div>
             </nav>
           </div>
@@ -222,9 +224,11 @@ const Header = () => {
                 </div>
               </div>
             </div>
-            <Button variant="bordered" color={scrolled ? "green" : "white"} className="text-sm lg:text-base">
-              Nous rejoindre
-            </Button>
+            <Link to="/join_us">
+              <Button variant="bordered" color={scrolled ? "green" : "white"} className="text-sm lg:text-base">
+                Nous rejoindre
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

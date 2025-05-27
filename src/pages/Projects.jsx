@@ -7,6 +7,7 @@ import HeroSection from '../components/Hero';
 import sectionHero from '../assets/images/projet_Hero.jpg';
 import ProjectsSection from '../components/projectSection';
 import PageLayout from '../components/PageLayout';
+import servicesCTA from '../assets/images/servicesCTA.jpg';
 
 const Projects = () => {
     return (
@@ -21,9 +22,10 @@ const Projects = () => {
               titleColor="text-blue-500"
               description="TNK Synergies développe des initiatives technologiques et communautaires pour répondre aux besoins des populations africaines. Voici nos projets phares."
               buttonText="Nous contacter"
+              buttonLink="/contact"
               buttonColor="blue"
           />
-          <main className='bg-gray-50'>
+          <section className='bg-gray-50'>
               <section className='flex flex-col justify-center mx-4 md:mx-10 lg:mx-20 px-4 md:px-10 lg:px-20 py-8 md:py-12 lg:h-[150px] bg-gradient-to-br from-blue-500 to-blue-900 rounded-b-3xl'>
                   <div className='flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4'>
                       <div className='flex flex-col gap-4 md:gap-6 items-center'>
@@ -40,9 +42,9 @@ const Projects = () => {
                       </div>
                   </div>
               </section>
-          </main>
+          </section>
           <ProjectsSection/>
-          <CTA title="Vous souhaitez collaborer avec nous sur de nouveaux projets ?" callToAction=" Contactez-nous" image="https://cdn.builder.io/api/v1/image/assets/TEMP/fd4d16ff4f8b8e9adb87a787b040fb855d13134b?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"/>
+          <CTA title="Vous souhaitez collaborer avec nous sur de nouveaux projets ?" callToAction=" Contactez-nous" image={servicesCTA}/>
           <ServicesFooter />
         </main>
       </PageLayout>
