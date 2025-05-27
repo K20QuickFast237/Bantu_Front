@@ -6,6 +6,7 @@ import ServicesShowcase from '../components/ServiceShowcase';
 import ApproachSection from '../components/Approach';
 import WhyChooseUs from '../components/WhyChooseUs';
 import ServicesFooter from '../components/Footer';
+
 import CTA from '../components/CTA';
 import sectionHero from '../assets/images/service_Hero.jpg';
 import PageLayout from '../components/PageLayout';
@@ -23,6 +24,7 @@ const Services = () => {
           titleColor="text-green-500"
           description="TNK Synergies propose des solutions sur mesure pour répondre aux enjeux technologiques et sociaux de l'Afrique."
           buttonText="Nous contacter"
+          buttonLink="/contact"
           buttonColor="green"
         />
         <ServicesShowcase />

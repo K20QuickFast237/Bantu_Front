@@ -4,17 +4,20 @@ import CTA from "../components/CTA";
 import ServicesFooter from "../components/Footer";
 import SerStatPro from "../components/SerStatPro";
 import PageLayout from "../components/PageLayout";
+import acceuilCTA from "../assets/images/acceuilCTA.jpg";
 
 
 
 const Acceuil = () => {
     return (
         <PageLayout>
-            <Header />
-            <HeroCarousel />
-            <SerStatPro/>
-            <CTA title="Vous souhaitez collaborer avec nous sur de nouveaux projets ?" callToAction=" Contactez-nous" image="https://cdn.builder.io/api/v1/image/assets/TEMP/fd4d16ff4f8b8e9adb87a787b040fb855d13134b?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"/>
-            <ServicesFooter/>
+            <main className="flex overflow-hidden flex-col bg-white">
+                <Header />
+                <HeroCarousel />
+                <SerStatPro/>
+                <CTA title="Vous souhaitez collaborer avec nous sur de nouveaux projets ?" callToAction=" Contactez-nous" image={acceuilCTA}/>
+                <ServicesFooter/>
+            </main>
         </PageLayout>
     )
 }

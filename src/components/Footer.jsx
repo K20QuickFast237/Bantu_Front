@@ -34,7 +34,7 @@ const NewsletterSection = () => {
             </form>
           </div>
         </div>
-        <div className="ml-5 w-[32%] max-md:hidden">
+        <div className="ml-6 w-[27.5%] max-md:hidden">
           <img
             src={NewLetter}
             alt="Newsletter illustration"

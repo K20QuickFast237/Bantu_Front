@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Button from './Button';
+import { Link } from 'react-router';
 
 const HeroSection = ({
   image,
@@ -11,6 +12,7 @@ const HeroSection = ({
   titleColor = 'text-green-500',
   description,
   buttonText,
+  buttonLink,
   buttonColor = 'green',
   onButtonClick,
   className = '',
@@ -60,6 +62,7 @@ const HeroSection = ({
             transition={{ duration: 0.8, delay: 0.6 }}
             className="w-full max-md:flex max-md:justify-center"
           >
+            <Link to={buttonLink}>
             <Button
               variant="filled"
               color={buttonColor}
@@ -68,6 +71,7 @@ const HeroSection = ({
             >
               {buttonText}
             </Button>
+            </Link>
           </motion.div>
         )}
       </div>

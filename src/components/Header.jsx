@@ -135,7 +135,7 @@ const Header = () => {
               <Link to="/" className="text-sm lg:text-base">Accueil</Link>
             </div>
             <div className='cursor-pointer hover:opacity-80 transition-opacity'>
-              <Link to="#" className="text-sm lg:text-base">À propos</Link>
+              <Link to="/about" className="text-sm lg:text-base">À propos</Link>
             </div>
             <div className='cursor-pointer hover:opacity-80 transition-opacity'>
               <Link to="/projets" className="text-sm lg:text-base">Nos Projets</Link>
@@ -144,7 +144,7 @@ const Header = () => {
               <Link to="/services" className="text-sm lg:text-base">Services</Link>
             </div>
             <div className='cursor-pointer hover:opacity-80 transition-opacity'>
-              <Link to="#" className="text-sm lg:text-base">Blog / Actualités</Link>
+              <Link to="/blog" className="text-sm lg:text-base">Blog / Actualités</Link>
             </div>
             <div className='cursor-pointer hover:opacity-80 transition-opacity'>
               <Link to="/contact" className="text-sm lg:text-base">Contact</Link>
@@ -188,13 +188,15 @@ const Header = () => {
 
               {/* CTA Button mobile */}
               <div className="mt-4">
-                <Button 
-                  variant="bordered" 
-                  color="green" 
-                  className="w-full justify-center"
-                >
-                  Nous rejoindre
-                </Button>
+                <Link to="/join_us">
+                  <Button 
+                    variant="bordered" 
+                    color="green" 
+                    className="w-full justify-center"
+                  >
+                    Nous rejoindre
+                  </Button>
+                </Link>
               </div>
             </nav>
           </div>
@@ -222,9 +224,11 @@ const Header = () => {
                 </div>
               </div>
             </div>
-            <Button variant="bordered" color={scrolled ? "green" : "white"} className="text-sm lg:text-base">
-              Nous rejoindre
-            </Button>
+            <Link to="/join_us">
+              <Button variant="bordered" color={scrolled ? "green" : "white"} className="text-sm lg:text-base">
+                Nous rejoindre
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

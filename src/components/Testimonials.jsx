@@ -1,0 +1,107 @@
+import { useEffect, useState } from "react";
+
+const Testimonials = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const testimonials = [
+    {
+      name: "Alexia princess",
+      role: "Agent à la banque SNK",
+      image:
+        "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=400&q=80",
+      content: `Depuis sa création en 2006, Smashing Magazine est une référence incontournable pour les développeurs et designers web. Le blog propose des articles approfondis sur des sujets variés...
+
+Depuis sa création en 2006, Smashing Magazine est une référence incontournable pour les développeurs.`,
+    },
+    {
+      name: "David M.",
+      role: "Développeur Web",
+      image:
+        "https://images.unsplash.com/photo-1603415526960-f8f0a1f95edf?auto=format&fit=crop&w=400&q=80",
+      content: `Un blog complet et très utile pour ma veille techno. J'apprécie surtout la profondeur des articles.
+
+Merci pour ce contenu de qualité.`,
+    },
+    {
+      name: "Sarah K.",
+      role: "UX Designer",
+      image:
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      content: `Des ressources indispensables pour améliorer l'expérience utilisateur. Chaque article est clair et bien rédigé.`,
+    },
+    {
+      name: "Thomas L.",
+      role: "Ingénieur Logiciel",
+      image:
+        "https://images.unsplash.com/photo-1620207418302-439b387441b0?auto=format&fit=crop&w=400&q=80",
+      content: `Le blog m'a aidé à progresser techniquement sur de nombreux sujets.
+
+Je le recommande à tous les développeurs.`,
+    },
+    {
+      name: "Julie P.",
+      role: "Chef de projet IT",
+      image:
+        "https://images.unsplash.com/photo-1614281264946-0af2c61890f2?auto=format&fit=crop&w=400&q=80",
+      content: `Une vraie mine d'or pour suivre les tendances web.
+
+Excellent travail éditorial !`,
+    },
+  ];
+
+  // Défilement automatique toutes les 5 secondes
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(interval); // Nettoyage
+  }, [testimonials.length]);
+
+  return (
+    <div className="bg-[#E9EEF6] py-16 px-4 flex flex-col items-center justify-center">
+      <h2 className="text-black font-semibold text-5xl mb-2">
+        Quelques retours de
+      </h2>
+      
+        <span className=" h-10 w-90 bg-blue-600 mt-8"></span>
+        <h3 className="text-green-500 mt-[-80px] font-bold text-6xl mb-6">
+        Nos clients </h3>
+
+      <div className="bg-white rounded-xl mt-10 p-6 w-full max-w-xl shadow-md relative flex flex-col md:flex-row items-start gap-4">
+        <div className="flex-1">
+          <div className="text-9xl font-bold mt-[-60px] text-blue-600 mb-2">“</div>
+          <p className="font-bold text-xl mt-[-60px]">{testimonials[currentIndex].name}</p>
+          <p className="text-xl text-gray-900 mb-4">
+            {testimonials[currentIndex].role}
+          </p>
+          <p className="whitespace-pre-line">
+            {testimonials[currentIndex].content}
+          </p>
+        </div>
+
+        <img
+          src={testimonials[currentIndex].image}
+          alt={testimonials[currentIndex].name}
+          className="w-50  h-50 object-cover  rounded-md"
+        />
+      </div>
+
+      <div className="flex gap-2 mt-6">
+        {testimonials.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              currentIndex === index ? "bg-[#0078D4]" : "bg-gray-300"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Testimonials;
