@@ -18,7 +18,7 @@ const slides = [
   },
   {
     id: 1,
-    title: "Solutions Durables", 
+    title: "Développement Durable", 
     color: "text-white",
     overlayColor: "",
     overlayOpacity: "opacity-40",
@@ -28,7 +28,7 @@ const slides = [
   },
   {
     id: 2,
-    title: "Solutions Communautaires",
+    title: "Projets Communautaires",
     color: "text-green-500",
     overlayColor: "bg-green-950",
     overlayOpacity: "opacity-40",
