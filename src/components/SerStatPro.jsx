@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ChevronDown, Code, Rocket, Users, ArrowRight } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import statsImage from '../assets/images/stats.jpg';
+import { Link } from 'react-router';
 
 const SerStatPro = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -94,25 +95,25 @@ const SerStatPro = () => {
       title: "BantuLink",
       description: "Courte description des projets suivants",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
-      gradient: "from-blue-600 to-blue-800"
+      gradient: "from-blue-500 to-blue-10"
     },
     {
       title: "BantuHire",
       description: "BantuHire est une plateforme de mise en relation entre recruteur et chercheur d'emploi + ressourçage + certification.",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
-      gradient: "from-blue-500 to-blue-700"
+      gradient: "from-blue-500 to-blue-10"
     },
     {
       title: "BantuMarket",
       description: "BantuMarket est une marketplace destinée aux clients et prestataires de service pour vendre/acheter des produits et services.",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
-      gradient: "from-blue-600 to-blue-800"
+      gradient: "from-blue-500 to-blue-10"
     },
     {
       title: "Mectn",
       description: "Mectn est une plateforme de mise en relation entre recruteur et chercheur d'emploi + ressourçage + certification.",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
-      gradient: "from-blue-500 to-blue-700"
+      gradient: "from-blue-500 to-blue-10"
     }
   ];
 
@@ -465,27 +466,29 @@ const SerStatPro = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             >
-            <motion.button 
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-medium inline-flex items-center"
-                whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 10px 25px rgba(37, 99, 235, 0.3)"
-                }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 200 }}
-            >
-                Voir tous les projets
-                <motion.div
-                animate={{ x: [0, 5, 0] }}
-                transition={{ 
-                    duration: 1,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                }}
-                >
-                <ArrowRight className="w-4 h-4 ml-2" />
-                </motion.div>
-            </motion.button>
+            <Link to="/projets">
+              <motion.button 
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-medium inline-flex items-center"
+                  whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "0 10px 25px rgba(37, 99, 235, 0.3)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 200 }}
+              >
+                  Voir tous les projets
+                  <motion.div
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ 
+                      duration: 1,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                  }}
+                  >
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                  </motion.div>
+              </motion.button>
+            </Link>
             </motion.div>
         </div>
       </div>
