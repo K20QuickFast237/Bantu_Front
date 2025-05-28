@@ -201,6 +201,7 @@ const Footer = () => {
       </nav>
 
       <motion.div 
+        onClick={() => window.open('https://wa.me/+237671526369', '_blank')}
         whileHover={{ scale: 1.1, backgroundColor: "#33C12B" }}
         whileTap={{ scale: 0.95 }}
         transition={{ 
