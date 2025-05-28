@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from '../assets/images/logo.svg'
-import { FaFacebookF, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
+import { FaFacebookF, FaLinkedinIn, FaTwitter, FaWhatsapp } from 'react-icons/fa';
 import { ArrowUp } from 'lucide-react';
 import Button from './Button';
 import NewLetter from '../assets/images/NewLetter.png'
@@ -34,7 +34,7 @@ const NewsletterSection = () => {
             </form>
           </div>
         </div>
-        <div className="ml-5 w-[32%] max-md:hidden">
+        <div className="ml-6 w-[27.5%] max-md:hidden">
           <img
             src={NewLetter}
             alt="Newsletter illustration"
@@ -70,8 +70,8 @@ const Footer = () => {
           </div>
           
           <nav className="ml-5 w-[50%] max-md:ml-0 max-md:w-full">
-            <div className="flex justify-between items-start max-md:flex-col max-md:gap-8">
-              <div className="w-[29%] max-md:w-full">
+            <div className="grid grid-cols-2 justify-between items-start max-md:grid-cols-2 max-md:justify-between">
+              <div className="w-[50%] max-md:w-full">
                 <div className="flex flex-col mt-1.5 text-sm text-white max-md:mt-10">
                   <h3 className="text-lg font-medium text-white max-md:mr-1.5">
                     Informations
@@ -87,7 +87,7 @@ const Footer = () => {
                   <motion.a 
                     whileHover={{ x: 5, color: "#33C12B" }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    href="#" 
+                    href="/blog" 
                     className="mt-2.5"
                   >
                     Blog et actualités
@@ -102,7 +102,7 @@ const Footer = () => {
                   </motion.a>
                 </div>
               </div>
-              <div className="w-[29%] max-md:w-full">
+              <div className="w-[50%] max-md:w-full">
                 <div className="flex flex-col mt-1.5 text-sm text-white max-md:mt-10">
                   <h3 className="text-lg font-medium text-white max-md:mr-1.5">
                     Liens Utiles
@@ -110,7 +110,7 @@ const Footer = () => {
                   <motion.a 
                     whileHover={{ x: 5, color: "#33C12B" }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    href="#" 
+                    href="/about" 
                     className="mt-3"
                   >
                     A propos
@@ -118,7 +118,7 @@ const Footer = () => {
                   <motion.a 
                     whileHover={{ x: 5, color: "#33C12B" }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    href="#" 
+                    href="/projets" 
                     className="mt-2.5"
                   >
                     Nos Projets
@@ -126,7 +126,7 @@ const Footer = () => {
                   <motion.a 
                     whileHover={{ x: 5, color: "#33C12B" }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    href="#" 
+                    href="/services" 
                     className="mt-2.5"
                   >
                     Services
@@ -134,7 +134,7 @@ const Footer = () => {
                   <motion.a 
                     whileHover={{ x: 5, color: "#33C12B" }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    href="#" 
+                    href="/contact" 
                     className="mt-2.5"
                   >
                     Contact
@@ -201,13 +201,17 @@ const Footer = () => {
       </nav>
 
       <motion.div 
-        whileHover={{ scale: 1.1, backgroundColor: "white" }}
+        whileHover={{ scale: 1.1, backgroundColor: "#33C12B" }}
         whileTap={{ scale: 0.95 }}
-        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-        onClick={scrollToTop}
-        className='fixed bottom-32 right-8 w-12 h-12 rounded-full bg-white shadow-lg flex flex-col justify-center items-center cursor-pointer z-50'
+        transition={{ 
+          type: "spring",
+          stiffness: 400,
+          damping: 10
+        }}
+        // onClick={scrollToTop}
+        className='fixed bottom-32 right-8 w-12 h-12 rounded-full bg-green-500 shadow-lg flex flex-col justify-center items-center cursor-pointer z-50'
       >
-        <ArrowUp className='text-blue-500' />
+        <FaWhatsapp className='text-white text-3xl' />
       </motion.div>
     </footer>
   );

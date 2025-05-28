@@ -4,11 +4,12 @@ import Mission from "../components/Mission"
 import Valeurs from "../components/Valeurs"
 import Partenaires from "../components/Partenaires"
 import Teams from "../components/Teams"
-import CTAa from "../components/CtAa"
-import ctaa from "../assets/images/ctaa.png"
+import CTA from "../components/CTA"
+import acceuilCTA from "../assets/images/acceuilCTA.jpg";
+import PageLayout from "../components/PageLayout";
 
 import ServicesFooter from "../components/Footer";
-import PageLayout from "../components/PageLayout";
+
 
 function About(){
      return(
@@ -21,7 +22,7 @@ function About(){
             <Valeurs />
             <Partenaires />
             <Teams />
-            <CTAa title="Rejoignez nous pour plus d'innovation" callToAction=" Rejoignez notre communaute" image={ctaa}/>
+            <CTA title="Rejoignez nous pour plus d'innovation" callToAction=" Rejoignez notre communaute" image={acceuilCTA}/>
             <ServicesFooter/>
 
         </PageLayout>

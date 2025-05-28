@@ -3,6 +3,7 @@ import Button from './Button';
 import slide1 from '../assets/images/slide1.jpeg';
 import slide2 from '../assets/images/slide2.jpg';
 import slide3 from '../assets/images/slide3.jpg';
+import { Link } from 'react-router';
 
 const slides = [
   {
@@ -17,7 +18,7 @@ const slides = [
   },
   {
     id: 1,
-    title: "Solutions Durables", 
+    title: "Développement Durable", 
     color: "text-white",
     overlayColor: "",
     overlayOpacity: "opacity-40",
@@ -27,7 +28,7 @@ const slides = [
   },
   {
     id: 2,
-    title: "Solutions Communautaires",
+    title: "Projets Communautaires",
     color: "text-green-500",
     overlayColor: "bg-green-950",
     overlayOpacity: "opacity-40",
@@ -42,22 +43,24 @@ export default function HeroCarousel() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    let startTime = Date.now();
+    const totalDuration = 10000; // 10 secondes
+
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-      setProgress(0); // Reset progress when slide changes
-    }, 5000);
-    
-    // Progress animation
-    const progressInterval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) return 0;
-        return prev + (100 / 500);
-      });
-    }, 10);
+      const currentTime = Date.now();
+      const elapsed = currentTime - startTime;
+      
+      if (elapsed >= totalDuration) {
+        setCurrentSlide((prev) => (prev + 1) % slides.length);
+        setProgress(0);
+        startTime = currentTime;
+      } else {
+        setProgress((elapsed / totalDuration) * 100);
+      }
+    }, 16); // ~60fps
 
     return () => {
       clearInterval(interval);
-      clearInterval(progressInterval);
     };
   }, []);
 
@@ -133,17 +136,21 @@ export default function HeroCarousel() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-          <Button variant="filled" color="blue" className="w-full sm:w-auto">
-            Découvrir nos projets
-          </Button>
+          <Link to="/projets">
+            <Button variant="filled" color="blue" className="w-full sm:w-auto">
+              Découvrir nos projets
+            </Button>
+          </Link>
+          <Link to="/contact">
           <Button variant="bordered" color="white" className="w-full sm:w-auto">
-            Nous contacter
-          </Button>
+                Nous contacter
+            </Button>
+          </Link>
         </div>
       </div>
 
       {/* Bottom cards with active indicator */}
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-full max-w-6xl px-4 sm:px-6 md:px-8 z-40 hidden sm:block">
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-full px-20 z-40 hidden sm:block">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {slides.map((slide, index) => (
             <div
