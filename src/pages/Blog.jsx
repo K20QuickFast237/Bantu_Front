@@ -6,24 +6,25 @@ import BlogListing from '../components/Allblog';
 import CTA from "../components/CTA";
 import acceuilCTA from "../assets/images/acceuilCTA.jpg";
 import Testimonials from '../components/Testimonials';
-import ServicesFooter from "../components/Footer";
 import PageLayout from "../components/PageLayout";
+import ServicesFooter from "../components/Footer";
+
 
 function Blog() {
   const [searchValue, setSearchValue] = useState('');
 
   return (
-    <PageLayout>
-      {/* <main className="flex overflow-hidden flex-col bg-white"> */}
+    <>
+     <PageLayout >
         <Header />
         <BlogHero searchValue={searchValue} setSearchValue={setSearchValue} />
         <PLR />
         <BlogListing searchValue={searchValue} />
-        <CTA title="Pret a collaborer avec l'afrique ?" callToAction=" Nous contacter" image={acceuilCTA} />
+        <CTA title="Pret a collaborer avec l'afrique ?" color="white" callToAction=" Nous contacter" image={acceuilCTA} />
         <Testimonials />
-        <ServicesFooter/>
-      {/* </main> */}
-    </PageLayout>
+        <ServicesFooter/>   
+     </PageLayout>
+    </>
   );
 }
 

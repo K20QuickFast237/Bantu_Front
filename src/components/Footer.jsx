@@ -87,7 +87,7 @@ const Footer = () => {
                   <motion.a 
                     whileHover={{ x: 5, color: "#33C12B" }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    href="#" 
+                    href="/blog" 
                     className="mt-2.5"
                   >
                     Blog et actualités
@@ -110,7 +110,7 @@ const Footer = () => {
                   <motion.a 
                     whileHover={{ x: 5, color: "#33C12B" }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    href="#" 
+                    href="/about" 
                     className="mt-3"
                   >
                     A propos
@@ -118,7 +118,7 @@ const Footer = () => {
                   <motion.a 
                     whileHover={{ x: 5, color: "#33C12B" }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    href="#" 
+                    href="/projets" 
                     className="mt-2.5"
                   >
                     Nos Projets
@@ -126,7 +126,7 @@ const Footer = () => {
                   <motion.a 
                     whileHover={{ x: 5, color: "#33C12B" }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    href="#" 
+                    href="/services" 
                     className="mt-2.5"
                   >
                     Services
@@ -134,7 +134,7 @@ const Footer = () => {
                   <motion.a 
                     whileHover={{ x: 5, color: "#33C12B" }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    href="#" 
+                    href="/contact" 
                     className="mt-2.5"
                   >
                     Contact

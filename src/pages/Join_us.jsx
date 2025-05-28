@@ -7,15 +7,17 @@ import PageLayout from "../components/PageLayout";
 
 function Join_us (){
     return (
+        <>
         <PageLayout>
-            <main className="flex overflow-hidden flex-col bg-white">
-                <Header />
-                <Join_usHero />
-                <JoinV />
-                <JoinC />
-                <ServicesFooter/>
-            </main>
+
+            <Header />
+            <Join_usHero />
+            <JoinV />
+            <JoinC />
+            <ServicesFooter/>
+            
         </PageLayout>
+        </>
     )
 }
 

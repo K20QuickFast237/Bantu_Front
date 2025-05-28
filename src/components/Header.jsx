@@ -220,7 +220,7 @@ const Header = () => {
                 <Link to="/" className="text-gray-800">Accueil</Link>
               </div>
               <div className='cursor-pointer py-2 hover:opacity-80 transition-opacity'>
-                <Link to="#" className="text-gray-800">À propos</Link>
+                <Link to="/about" className="text-gray-800">À propos</Link>
               </div>
               <div className='cursor-pointer py-2 hover:opacity-80 transition-opacity'>
                 <Link to="/projets" className="text-gray-800">Nos Projets</Link>
@@ -229,7 +229,7 @@ const Header = () => {
                 <Link to="/services" className="text-gray-800">Services</Link>
               </div>
               <div className='cursor-pointer py-2 hover:opacity-80 transition-opacity'>
-                <Link to="#" className="text-gray-800">Blog / Actualités</Link>
+                <Link to="/blog" className="text-gray-800">Blog / Actualités</Link>
               </div>
               <div className='cursor-pointer py-2 hover:opacity-80 transition-opacity'>
                 <Link to="/contact" className="text-gray-800">Contact</Link>
