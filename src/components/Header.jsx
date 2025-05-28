@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 import Logo from '../assets/images/logoNoir.svg';
 import Logo2 from '../assets/images/logo.svg';
 import { Search, Mail, Phone, MapPin, Menu, X } from 'lucide-react';
@@ -12,12 +12,20 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 50;
       if (isScrolled !== scrolled) {
         setScrolled(isScrolled);
+      }
+      // Fermer le menu lors du défilement
+      if (isMenuOpen) {
+        setIsMenuOpen(false);
       }
     };
 
@@ -26,7 +34,7 @@ const Header = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [scrolled]);
+  }, [scrolled, isMenuOpen]);
 
   // Fermer la recherche si on clique en dehors
   useEffect(() => {
@@ -45,7 +53,7 @@ const Header = () => {
   // fermer le menu si on clique en dehors
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (isMenuOpen && !event.target.closest('.menu-container')) {
+      if (isMenuOpen && !event.target.closest('.menu-container') && !event.target.closest('.mobile-search-container')) {
         setIsMenuOpen(false);
       }
     };
@@ -55,6 +63,54 @@ const Header = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isMenuOpen]);
+
+  // Fonction de recherche en temps réel
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    if (query.length > 2) {
+      // Recherche dans le contenu de la page
+      const searchableContent = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a');
+      const results = Array.from(searchableContent)
+        .filter(element => {
+          const text = element.textContent.toLowerCase();
+          return text.includes(query.toLowerCase());
+        })
+        .map(element => ({
+          text: element.textContent,
+          element: element,
+          type: element.tagName.toLowerCase()
+        }))
+        .slice(0, 5); // Limite à 5 résultats
+
+      setSearchResults(results);
+    } else {
+      setSearchResults([]);
+    }
+  };
+
+  // Fonction pour naviguer vers un résultat
+  const scrollToResult = (result) => {
+    result.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    result.element.classList.add('highlight-search');
+    setTimeout(() => {
+      result.element.classList.remove('highlight-search');
+    }, 2000);
+    setIsSearchOpen(false);
+  };
+
+  // Fermer la recherche mobile si on clique en dehors
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMobileSearchOpen && !event.target.closest('.mobile-search-container')) {
+        setIsMobileSearchOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMobileSearchOpen]);
 
   return (
     <header className={`fixed top-0 left-0 right-0 flex flex-col items-center w-full z-50 transition-all duration-300 ${
@@ -131,22 +187,34 @@ const Header = () => {
           <nav className={`hidden lg:flex flex-wrap gap-4 lg:gap-6 items-center self-stretch my-auto ${
             scrolled ? 'text-gray-800' : 'text-white'
           }`}>
-            <div className='cursor-pointer hover:opacity-80 transition-opacity'>
+            <div className={`cursor-pointer hover:opacity-80 transition-opacity px-3 py-1.5 rounded-md ${
+              location.pathname === '/' ? 'bg-blue-100 text-blue-600' : ''
+            }`}>
               <Link to="/" className="text-sm lg:text-base">Accueil</Link>
             </div>
-            <div className='cursor-pointer hover:opacity-80 transition-opacity'>
+            <div className={`cursor-pointer hover:opacity-80 transition-opacity px-3 py-1.5 rounded-md ${
+              location.pathname === '/about' ? 'bg-blue-100 text-blue-600' : ''
+            }`}>
               <Link to="/about" className="text-sm lg:text-base">À propos</Link>
             </div>
-            <div className='cursor-pointer hover:opacity-80 transition-opacity'>
+            <div className={`cursor-pointer hover:opacity-80 transition-opacity px-3 py-1.5 rounded-md ${
+              location.pathname === '/projets' ? 'bg-blue-100 text-blue-600' : ''
+            }`}>
               <Link to="/projets" className="text-sm lg:text-base">Nos Projets</Link>
             </div>
-            <div className='cursor-pointer hover:opacity-80 transition-opacity'>
+            <div className={`cursor-pointer hover:opacity-80 transition-opacity px-3 py-1.5 rounded-md ${
+              location.pathname === '/services' ? 'bg-blue-100 text-blue-600' : ''
+            }`}>
               <Link to="/services" className="text-sm lg:text-base">Services</Link>
             </div>
-            <div className='cursor-pointer hover:opacity-80 transition-opacity'>
+            <div className={`cursor-pointer hover:opacity-80 transition-opacity px-3 py-1.5 rounded-md ${
+              location.pathname === '/blog' ? 'bg-blue-100 text-blue-600' : ''
+            }`}>
               <Link to="/blog" className="text-sm lg:text-base">Blog / Actualités</Link>
             </div>
-            <div className='cursor-pointer hover:opacity-80 transition-opacity'>
+            <div className={`cursor-pointer hover:opacity-80 transition-opacity px-3 py-1.5 rounded-md ${
+              location.pathname === '/contact' ? 'bg-blue-100 text-blue-600' : ''
+            }`}>
               <Link to="/contact" className="text-sm lg:text-base">Contact</Link>
             </div>
           </nav>
@@ -157,13 +225,43 @@ const Header = () => {
           }`}>
             <nav className="flex flex-col p-5">
               {/* Barre de recherche mobile */}
-              <div className="relative mb-4">
+              <div className="relative mb-4 mobile-search-container">
                 <input
                   type="text"
                   placeholder="Rechercher..."
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value={searchQuery}
+                  onChange={(e) => handleSearch(e.target.value)}
+                  onFocus={() => setIsMobileSearchOpen(true)}
                 />
                 <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                
+                {/* Résultats de recherche mobile */}
+                {isMobileSearchOpen && searchQuery.length > 2 && (
+                  <div className="absolute left-0 right-0 mt-2 bg-white rounded-lg shadow-xl z-50 max-h-60 overflow-y-auto">
+                    {searchResults.length > 0 ? (
+                      searchResults.map((result, index) => (
+                        <div 
+                          key={index} 
+                          className="p-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2 border-b border-gray-100"
+                          onClick={() => {
+                            scrollToResult(result);
+                            setIsMobileSearchOpen(false);
+                          }}
+                        >
+                          <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                            {result.type}
+                          </span>
+                          <span className="truncate">{result.text}</span>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="p-2 text-gray-500 text-center">
+                        Aucun résultat trouvé
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
 
               {/* Liens de navigation */}
@@ -171,7 +269,7 @@ const Header = () => {
                 <Link to="/" className="text-gray-800">Accueil</Link>
               </div>
               <div className='cursor-pointer py-2 hover:opacity-80 transition-opacity'>
-                <Link to="#" className="text-gray-800">À propos</Link>
+                <Link to="/about" className="text-gray-800">À propos</Link>
               </div>
               <div className='cursor-pointer py-2 hover:opacity-80 transition-opacity'>
                 <Link to="/projets" className="text-gray-800">Nos Projets</Link>
@@ -180,7 +278,7 @@ const Header = () => {
                 <Link to="/services" className="text-gray-800">Services</Link>
               </div>
               <div className='cursor-pointer py-2 hover:opacity-80 transition-opacity'>
-                <Link to="#" className="text-gray-800">Blog / Actualités</Link>
+                <Link to="/blog" className="text-gray-800">Blog / Actualités</Link>
               </div>
               <div className='cursor-pointer py-2 hover:opacity-80 transition-opacity'>
                 <Link to="/contact" className="text-gray-800">Contact</Link>
@@ -215,12 +313,35 @@ const Header = () => {
                   <div className="relative">
                     <input
                       type="text"
-                      placeholder="Rechercher..."
+                      placeholder="Rechercher dans la page..."
                       className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      value={searchQuery}
+                      onChange={(e) => handleSearch(e.target.value)}
                       autoFocus
                     />
                     <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                   </div>
+                  {searchResults.length > 0 && (
+                    <div className="mt-2 max-h-60 overflow-y-auto">
+                      {searchResults.map((result, index) => (
+                        <div 
+                          key={index} 
+                          className="p-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2"
+                          onClick={() => scrollToResult(result)}
+                        >
+                          <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                            {result.type}
+                          </span>
+                          <span className="truncate">{result.text}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {searchQuery.length > 2 && searchResults.length === 0 && (
+                    <div className="mt-2 text-gray-500 text-center">
+                      Aucun résultat trouvé
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -235,5 +356,15 @@ const Header = () => {
     </header>
   );
 };
+
+// Ajout des styles pour la surbrillance
+const style = document.createElement('style');
+style.textContent = `
+  .highlight-search {
+    background-color: #ffeb3b;
+    transition: background-color 0.3s ease;
+  }
+`;
+document.head.appendChild(style);
 
 export default Header;

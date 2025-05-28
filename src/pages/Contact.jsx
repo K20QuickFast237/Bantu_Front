@@ -9,7 +9,8 @@ import PageLayout from '../components/PageLayout';
 
 const Contact = () => {
     return (
-      <PageLayout>
+      <>
+       <PageLayout>
         <main className="flex overflow-hidden flex-col bg-white">
           <Header/>
           <HeroSection
@@ -39,6 +40,7 @@ const Contact = () => {
           <ServicesFooter />
         </main>
       </PageLayout>
+      </>
     );
 };
 

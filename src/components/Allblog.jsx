@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const BlogListing = ({ searchValue = "" }) => {
+const BlogListing = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [localSearch, setLocalSearch] = useState('');
   const postsPerPage = 3;
 
   const allPosts = [
@@ -66,7 +67,6 @@ const BlogListing = ({ searchValue = "" }) => {
     { name: "Computers", color: "bg-gray-600" }
   ];
 
-  // Animation d'entrée
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoaded(true);
@@ -74,22 +74,22 @@ const BlogListing = ({ searchValue = "" }) => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Filtrer les posts en fonction de la catégorie et de la recherche
+  // Filtrer les posts selon catégorie et recherche locale
   const filteredPosts = selectedCategory === 'all'
     ? allPosts.filter(post =>
-        post.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-        post.description.toLowerCase().includes(searchValue.toLowerCase())
+        post.title.toLowerCase().includes(localSearch.toLowerCase()) ||
+        post.description.toLowerCase().includes(localSearch.toLowerCase())
       )
     : allPosts.filter(post =>
         post.category === selectedCategory &&
-        (post.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-         post.description.toLowerCase().includes(searchValue.toLowerCase()))
+        (post.title.toLowerCase().includes(localSearch.toLowerCase()) ||
+         post.description.toLowerCase().includes(localSearch.toLowerCase()))
       );
 
-  // Réinitialiser la page à 1 si les résultats filtrés changent
+  // Reset page si recherche ou catégorie changent
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchValue, selectedCategory]);
+  }, [localSearch, selectedCategory]);
 
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
   const startIndex = (currentPage - 1) * postsPerPage;
@@ -120,6 +120,7 @@ const BlogListing = ({ searchValue = "" }) => {
     <div className="bg-gray-200 h-auto py-4 md:py-15 ">
       <div className="max-w-6xl mx-4 sm:mx-8 md:mx-12 lg:mx-20 h-auto">
         <div className="flex flex-col lg:flex-row gap-4 md:gap-6 lg:gap-8">
+
           {/* Main Content */}
           <div className="flex-1 lg:order-1 order-2">
             <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-green-600 mb-4 md:mb-6 lg:mb-8 transform transition-all duration-1000 ${
@@ -127,13 +128,22 @@ const BlogListing = ({ searchValue = "" }) => {
             }`}>
               Tous les blogs
             </h1>
-            
+
+            {/* Barre de recherche */}
+            <input
+              type="text"
+              placeholder="Rechercher un blog..."
+              value={localSearch}
+              onChange={(e) => setLocalSearch(e.target.value)}
+              className="w-full mb-6 p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 transition"
+            />
+
             <div className="space-y-6">
               {filteredPosts.length === 0 ? (
                 <p className={`text-gray-600 text-lg sm:text-xl transform transition-all duration-1000 delay-200 ${
                   isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                 }`}>
-                  Aucun blog trouvé pour "{searchValue}"
+                  Aucun blog trouvé{localSearch ? ` pour "${localSearch}"` : ''}
                 </p>
               ) : (
                 currentPosts.map((post, index) => (
@@ -162,7 +172,7 @@ const BlogListing = ({ searchValue = "" }) => {
                 ))
               )}
             </div>
-            
+
             <hr className={`mt-5 border-gray-700 transform transition-all duration-1000 delay-700 ${
               isLoaded ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'
             }`} />
@@ -181,78 +191,29 @@ const BlogListing = ({ searchValue = "" }) => {
                 <div className={`flex items-center justify-center mt-4 space-x-2 transform transition-all duration-1000 delay-900 ${
                   isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                 }`}>
-                  <button 
-                    onClick={() => handlePrevNext('prev')}
-                    disabled={currentPage === 1}
-                    className={`px-3 sm:px-4 py-2 rounded text-sm transition-all duration-300 ${
-                      currentPage === 1 
-                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
-                        : 'bg-blue-600 text-white hover:bg-blue-700 hover:scale-105'
-                    }`}
-                  >
-                    Précédent
-                  </button>
-                  <button 
-                    onClick={() => handlePrevNext('next')}
-                    disabled={currentPage === totalPages}
-                    className={`px-3 sm:px-4 py-2 rounded text-sm transition-all duration-300 ${
-                      currentPage === totalPages 
-                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
-                        : 'bg-gray-600 text-white hover:bg-gray-700 hover:scale-105'
-                    }`}
-                  >
-                    Suivant
-                  </button>
-                </div>
-
-                <div className={`flex items-center justify-center mt-4 space-x-1 flex-wrap gap-2 transform transition-all duration-1000 delay-1000 ${
-                  isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-                }`}>
                   <button
-                    onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
-                    className={`p-2 rounded transition-all duration-300 ${
-                      currentPage === 1 
-                        ? 'text-gray-400 cursor-not-allowed' 
-                        : 'hover:bg-gray-200 hover:scale-110'
-                    }`}
+                    onClick={() => handlePrevNext('prev')}
+                    className={`px-2 py-1 rounded border border-gray-400 bg-white hover:bg-gray-100 disabled:opacity-40`}
                     disabled={currentPage === 1}
                   >
                     <ChevronLeft className="w-4 h-4" />
                   </button>
 
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  {[...Array(totalPages)].map((_, i) => (
                     <button
-                      key={page}
-                      onClick={() => handlePageChange(page)}
-                      className={`px-3 py-1 text-sm rounded transition-all duration-300 hover:scale-110 ${
-                        currentPage === page
-                          ? 'bg-gray-800 text-white'
-                          : 'hover:bg-gray-200 text-gray-700'
-                      }`}
+                      key={i}
+                      onClick={() => handlePageChange(i + 1)}
+                      className={`px-3 py-1 rounded border ${
+                        currentPage === i + 1 ? 'bg-blue-500 border-blue-500 text-white' : 'bg-white border-gray-400 text-gray-700'
+                      } hover:bg-blue-400 hover:text-white transition`}
                     >
-                      {page}
+                      {i + 1}
                     </button>
                   ))}
 
-                  {totalPages > 5 && (
-                    <>
-                      <span className="px-2">...</span>
-                      <button
-                        onClick={() => handlePageChange(totalPages)}
-                        className="px-3 py-1 text-sm rounded hover:bg-gray-200 text-gray-700 transition-all duration-300 hover:scale-110"
-                      >
-                        {totalPages}
-                      </button>
-                    </>
-                  )}
-
                   <button
-                    onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
-                    className={`p-2 rounded transition-all duration-300 ${
-                      currentPage === totalPages 
-                        ? 'text-gray-400 cursor-not-allowed' 
-                        : 'hover:bg-gray-200 hover:scale-110'
-                    }`}
+                    onClick={() => handlePrevNext('next')}
+                    className={`px-2 py-1 rounded border border-gray-400 bg-white hover:bg-gray-100 disabled:opacity-40`}
                     disabled={currentPage === totalPages}
                   >
                     <ChevronRight className="w-4 h-4" />
@@ -262,44 +223,28 @@ const BlogListing = ({ searchValue = "" }) => {
             )}
           </div>
 
-          {/* Sidebar */}
-          <div className="w-full lg:w-80 lg:order-2 order-1">
-            <h2 className={`text-3xl sm:text-4xl md:text-4xl lg:text-5xl mt-0 font-semibold text-gray-800 mb-4 md:mb-6 transform transition-all duration-1000 delay-100 ${
-              isLoaded ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'
-            }`}>
-              Catégories
-            </h2>
-            
-            <div className="space-y-3">
-              <button
+          {/* Sidebar Categories */}
+          <div className="lg:w-52 lg:order-2 order-1">
+            <h2 className="text-xl font-bold mb-6">Catégories</h2>
+            <ul className="space-y-3">
+              <li
+                className={`cursor-pointer px-3 py-1 rounded ${selectedCategory === 'all' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-700 hover:bg-gray-400'}`}
                 onClick={() => handleCategoryClick('all')}
-                className={`block w-full sm:w-50 text-left px-4 py-2 text-sm rounded transition-all duration-300 hover:scale-105 transform delay-200 ${
-                  selectedCategory === 'all'
-                    ? 'bg-blue-500 text-white text-lg sm:text-xl'
-                    : 'bg-gray-200 text-gray-700 text-lg sm:text-xl hover:bg-gray-300'
-                } ${isLoaded ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
               >
                 Tous
-              </button>
-              
-              {categories.map((category, index) => (
-                <button
-                  key={category.name}
-                  onClick={() => handleCategoryClick(category.name)}
-                  className={`block w-full sm:w-50 text-left px-4 py-2 text-sm rounded transition-all duration-300 hover:scale-105 transform ${
-                    selectedCategory === category.name
-                      ? 'bg-blue-500 text-white text-lg sm:text-xl'
-                      : `${category.color} text-white text-lg sm:text-xl hover:opacity-80`
-                  } ${isLoaded ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
-                  style={{
-                    transitionDelay: `${300 + (index * 50)}ms`
-                  }}
+              </li>
+              {categories.map((cat, i) => (
+                <li
+                  key={i}
+                  className={`cursor-pointer px-3 py-1 rounded ${selectedCategory === cat.name ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-700 hover:bg-gray-400'}`}
+                  onClick={() => handleCategoryClick(cat.name)}
                 >
-                  {category.name}
-                </button>
+                  {cat.name}
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
+
         </div>
       </div>
     </div>

@@ -10,20 +10,23 @@ import PageLayout from "../components/PageLayout";
 
 import ServicesFooter from "../components/Footer";
 
+
 function About(){
      return(
+        <>
         <PageLayout>
-         <main className="flex overflow-hidden flex-col bg-white">
-            <Header />
-            <AboutHero />
-            <Mission />
-            <Valeurs />
-            <Partenaires />
-            <Teams />
-            <CTA title="Rejoignez nous pour plus d'innovation" description="Rejoignez TNK Synergies pour construire des solutions utiles et locales." callToAction=" Rejoignez notre communaute" image={acceuilCTA}/>
-            <ServicesFooter/>
-         </main>
+            <main className="flex overflow-hidden flex-col bg-white">  
+                <Header />
+                <AboutHero />
+                <Mission />
+                <Valeurs />
+                <Partenaires />
+                <Teams />
+                <CTA title="Rejoignez nous pour plus d'innovation" callToAction=" Rejoignez notre communaute" image={acceuilCTA}/>
+                <ServicesFooter/>
+            </main>
         </PageLayout>
+        </>
      )
 }
 

@@ -56,15 +56,13 @@ const Teams = () => {
   const handlePreviousMember = () => {
     const currentIndex = teamMembers.findIndex(member => member.id === currentMember.id);
     const previousIndex = currentIndex > 0 ? currentIndex - 1 : teamMembers.length - 1;
-    const previousMember = teamMembers[previousIndex];
-    setCurrentMember(previousMember);
+    setCurrentMember(teamMembers[previousIndex]);
   };
 
   const handleNextMember = () => {
     const currentIndex = teamMembers.findIndex(member => member.id === currentMember.id);
     const nextIndex = currentIndex < teamMembers.length - 1 ? currentIndex + 1 : 0;
-    const nextMember = teamMembers[nextIndex];
-    setCurrentMember(nextMember);
+    setCurrentMember(teamMembers[nextIndex]);
   };
 
   const handleMemberSelect = (member) => {
@@ -73,7 +71,6 @@ const Teams = () => {
 
   const otherMembers = teamMembers.filter(member => member.id !== currentMember.id);
 
-  // Animation variants
   const textVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
@@ -97,11 +94,8 @@ const Teams = () => {
       </motion.p>
       <div className="h-auto bg-blue-500">
         <div className="container mx-auto px-4 sm:px-6 md:px-10 lg:px-20 py-8 max-md:py-4">
-          {/* Navigation arrows and main content */}
           <div className="mb-6 max-md:mb-2 pl-4 sm:pl-6 md:pl-10 lg:pl-20 pr-4 sm:pr-6 md:pr-10 lg:pr-20">
-            {/* Desktop/Tablet: Arrows and single member display */}
-            <div className="hidden md:flex items-center justify-between">
-              {/* Left arrow */}
+            <div className="hidden md:flex items-center  justify-between">
               <motion.button
                 onClick={handlePreviousMember}
                 className="w-10 h-10"
@@ -110,10 +104,11 @@ const Teams = () => {
                 variants={imageVariants}
                 transition={{ delay: 0.4 }}
               >
-                <ChevronLeft className="w-5 h-5 text-white" />
+                <div className='bg-blue-700 transition-discrete cursor-pointer hover:bg-blue-600 rounded-full pl-3 pt-3 pb-3'>
+                  <ChevronLeft className="w-5 h-5 text-white" />
+                </div>
               </motion.button>
 
-              {/* Main content area */}
               <motion.div
                 className="flex-1 mx-4 sm:mx-6 md:mx-8 flex items-center justify-between"
                 initial="hidden"
@@ -121,7 +116,6 @@ const Teams = () => {
                 variants={textVariants}
                 transition={{ delay: 0.6 }}
               >
-                {/* Text content */}
                 <div className="flex-1 max-w-lg">
                   <motion.h1
                     className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2"
@@ -151,8 +145,6 @@ const Teams = () => {
                     {currentMember.description}
                   </motion.p>
                 </div>
-
-                {/* Profile image */}
                 <motion.div
                   className="ml-4 sm:ml-6 md:ml-8"
                   initial="hidden"
@@ -168,7 +160,6 @@ const Teams = () => {
                 </motion.div>
               </motion.div>
 
-              {/* Right arrow */}
               <motion.button
                 onClick={handleNextMember}
                 className="w-10 h-10"
@@ -177,11 +168,14 @@ const Teams = () => {
                 variants={imageVariants}
                 transition={{ delay: 0.4 }}
               >
-                <ChevronRight className="w-5 h-5 text-white" />
+                <div className='bg-blue-700 transition-discrete cursor-pointer hover:bg-blue-600 rounded-full pl-3 pt-3 pb-3'>
+                  <ChevronRight className="w-5 h-5 text-white" />
+                </div>
+                
+
               </motion.button>
             </div>
 
-            {/* Mobile: Horizontal scrollable carousel */}
             <motion.div
               className="md:hidden flex overflow-x-auto snap-x snap-mandatory scroll-smooth space-x-4 py-2"
               initial="hidden"
@@ -213,7 +207,8 @@ const Teams = () => {
             </motion.div>
           </div>
         </div>
-        {/* Desktop/Tablet: Centered buttons for other members */}
+
+        {/*  Masquée sur mobile */}
         <motion.div
           className="hidden md:flex bg-green-600 justify-center py-7 space-x-4 sm:space-x-6 md:space-x-8 lg:space-x-30"
           initial="hidden"
@@ -225,7 +220,7 @@ const Teams = () => {
             <div key={member.id} className="flex flex-col items-center">
               <button
                 onClick={() => handleMemberSelect(member)}
-                className="w-20 h-20 sm:w-25 sm:h-25 rounded-full overflow-hidden hover:border-opacity-100 transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+                className="w-20 h-20 cursor-pointer sm:w-25 sm:h-25 rounded-full overflow-hidden hover:border-opacity-100 transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
               >
                 <img
                   src={member.avatar}
@@ -236,37 +231,6 @@ const Teams = () => {
               <div className="text-center mt-2 sm:mt-3">
                 <p className="font-semibold text-base sm:text-lg">{member.name}</p>
                 <p className="text-sm sm:text-sm opacity-90">{member.miniDescription}</p>
-              </div>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* Mobile: Horizontal scrollable carousel for other members */}
-        <motion.div
-          className="md:hidden flex overflow-x-auto snap-x snap-mandatory scroll-smooth bg-green-600 py-4 space-x-3 px-4"
-          initial="hidden"
-          animate="visible"
-          variants={imageVariants}
-          transition={{ delay: 1.6 }}
-        >
-          {otherMembers.map((member) => (
-            <div
-              key={member.id}
-              className="snap-center flex-shrink-0 w-32 flex flex-col items-center"
-            >
-              <button
-                onClick={() => handleMemberSelect(member)}
-                className="w-16 h-16 rounded-full overflow-hidden hover:border-opacity-100 transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
-              >
-                <img
-                  src={member.avatar}
-                  alt={member.name}
-                  className="w-full h-full object-cover"
-                />
-              </button>
-              <div className="text-center mt-2">
-                <p className="font-semibold text-sm text-white">{member.name}</p>
-                <p className="text-xs text-white opacity-90">{member.miniDescription}</p>
               </div>
             </div>
           ))}
