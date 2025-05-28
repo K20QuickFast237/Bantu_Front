@@ -15,16 +15,16 @@ function About(){
      return(
         <>
         <PageLayout>
-              
-            <Header />
-            <AboutHero />
-            <Mission />
-            <Valeurs />
-            <Partenaires />
-            <Teams />
-            <CTA title="Rejoignez nous pour plus d'innovation" callToAction=" Rejoignez notre communaute" image={acceuilCTA}/>
-            <ServicesFooter/>
-
+            <main className="flex overflow-hidden flex-col bg-white">  
+                <Header />
+                <AboutHero />
+                <Mission />
+                <Valeurs />
+                <Partenaires />
+                <Teams />
+                <CTA title="Rejoignez nous pour plus d'innovation" callToAction=" Rejoignez notre communaute" image={acceuilCTA}/>
+                <ServicesFooter/>
+            </main>
         </PageLayout>
         </>
      )

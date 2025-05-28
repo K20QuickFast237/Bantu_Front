@@ -14,6 +14,7 @@ const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -22,6 +23,10 @@ const Header = () => {
       if (isScrolled !== scrolled) {
         setScrolled(isScrolled);
       }
+      // Fermer le menu lors du défilement
+      if (isMenuOpen) {
+        setIsMenuOpen(false);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -29,7 +34,7 @@ const Header = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [scrolled]);
+  }, [scrolled, isMenuOpen]);
 
   // Fermer la recherche si on clique en dehors
   useEffect(() => {
@@ -48,7 +53,7 @@ const Header = () => {
   // fermer le menu si on clique en dehors
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (isMenuOpen && !event.target.closest('.menu-container')) {
+      if (isMenuOpen && !event.target.closest('.menu-container') && !event.target.closest('.mobile-search-container')) {
         setIsMenuOpen(false);
       }
     };
@@ -92,6 +97,20 @@ const Header = () => {
     }, 2000);
     setIsSearchOpen(false);
   };
+
+  // Fermer la recherche mobile si on clique en dehors
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMobileSearchOpen && !event.target.closest('.mobile-search-container')) {
+        setIsMobileSearchOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMobileSearchOpen]);
 
   return (
     <header className={`fixed top-0 left-0 right-0 flex flex-col items-center w-full z-50 transition-all duration-300 ${
@@ -206,13 +225,43 @@ const Header = () => {
           }`}>
             <nav className="flex flex-col p-5">
               {/* Barre de recherche mobile */}
-              <div className="relative mb-4">
+              <div className="relative mb-4 mobile-search-container">
                 <input
                   type="text"
                   placeholder="Rechercher..."
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value={searchQuery}
+                  onChange={(e) => handleSearch(e.target.value)}
+                  onFocus={() => setIsMobileSearchOpen(true)}
                 />
                 <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                
+                {/* Résultats de recherche mobile */}
+                {isMobileSearchOpen && searchQuery.length > 2 && (
+                  <div className="absolute left-0 right-0 mt-2 bg-white rounded-lg shadow-xl z-50 max-h-60 overflow-y-auto">
+                    {searchResults.length > 0 ? (
+                      searchResults.map((result, index) => (
+                        <div 
+                          key={index} 
+                          className="p-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2 border-b border-gray-100"
+                          onClick={() => {
+                            scrollToResult(result);
+                            setIsMobileSearchOpen(false);
+                          }}
+                        >
+                          <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                            {result.type}
+                          </span>
+                          <span className="truncate">{result.text}</span>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="p-2 text-gray-500 text-center">
+                        Aucun résultat trouvé
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
 
               {/* Liens de navigation */}

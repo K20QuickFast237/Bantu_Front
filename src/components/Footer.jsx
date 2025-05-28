@@ -209,10 +209,14 @@ const Footer = () => {
           stiffness: 400,
           damping: 10
         }}
-        // onClick={scrollToTop}
-        className='fixed bottom-32 right-8 w-12 h-12 rounded-full bg-green-500 shadow-lg flex flex-col justify-center items-center cursor-pointer z-50'
+        className='fixed bottom-32 right-8 flex items-center group z-40'
       >
-        <FaWhatsapp className='text-white text-3xl' />
+        <div className='bg-white text-green-500 px-4 py-2 rounded-lg cursor-pointer shadow-lg mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap'>
+          Discutez avec nous
+        </div>
+        <div className='w-12 h-12 rounded-full bg-green-500 shadow-lg flex flex-col justify-center items-center cursor-pointer'>
+          <FaWhatsapp className='text-white text-3xl' />
+        </div>
       </motion.div>
     </footer>
   );
