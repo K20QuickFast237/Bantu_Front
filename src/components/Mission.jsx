@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import Button from './Button';
 import about2 from '../assets/images/about2.png';
 import about3 from '../assets/images/about3.png';
+import { Link, useLocation } from 'react-router';
 import about4 from '../assets/images/about4.png';
 import about5 from '../assets/images/about5.png';
 
@@ -77,13 +78,16 @@ function Mission() {
           variants={textVariants}
           transition={{ delay: 0.8 }}
         >
-          <Button 
-            variant="filled" 
-            color="blue" 
-            className="font-semibold mt-6 lg:mt-10 rounded-lg w-full sm:w-auto"
-          >
-            Decouvrir nos projets
-          </Button>
+          <Link to="/projets">
+  <Button 
+    variant="filled" 
+    color="blue" 
+    className="font-semibold mt-6 lg:mt-10 rounded-lg w-full sm:w-auto"
+  >
+    Découvrir nos projets
+  </Button>
+</Link>
+          
         </motion.div>
       </motion.div>
 
