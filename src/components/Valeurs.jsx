@@ -99,7 +99,7 @@ function Valeurs() {
       </motion.p>
 
       <div className="bg-white py-8 md:py-16 px-4">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 cursor-pointer md:grid-cols-3 gap-6">
           {[{
             img: about4,
             alt: "Innovation",

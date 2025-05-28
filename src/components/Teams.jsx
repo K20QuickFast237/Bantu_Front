@@ -95,7 +95,7 @@ const Teams = () => {
       <div className="h-auto bg-blue-500">
         <div className="container mx-auto px-4 sm:px-6 md:px-10 lg:px-20 py-8 max-md:py-4">
           <div className="mb-6 max-md:mb-2 pl-4 sm:pl-6 md:pl-10 lg:pl-20 pr-4 sm:pr-6 md:pr-10 lg:pr-20">
-            <div className="hidden md:flex items-center justify-between">
+            <div className="hidden md:flex items-center  justify-between">
               <motion.button
                 onClick={handlePreviousMember}
                 className="w-10 h-10"
@@ -104,7 +104,9 @@ const Teams = () => {
                 variants={imageVariants}
                 transition={{ delay: 0.4 }}
               >
-                <ChevronLeft className="w-5 h-5 text-white" />
+                <div className='bg-blue-700 transition-discrete cursor-pointer hover:bg-blue-600 rounded-full pl-3 pt-3 pb-3'>
+                  <ChevronLeft className="w-5 h-5 text-white" />
+                </div>
               </motion.button>
 
               <motion.div
@@ -166,7 +168,11 @@ const Teams = () => {
                 variants={imageVariants}
                 transition={{ delay: 0.4 }}
               >
-                <ChevronRight className="w-5 h-5 text-white" />
+                <div className='bg-blue-700 transition-discrete cursor-pointer hover:bg-blue-600 rounded-full pl-3 pt-3 pb-3'>
+                  <ChevronRight className="w-5 h-5 text-white" />
+                </div>
+                
+
               </motion.button>
             </div>
 
@@ -202,7 +208,7 @@ const Teams = () => {
           </div>
         </div>
 
-        {/* ✅ Masquée sur mobile */}
+        {/*  Masquée sur mobile */}
         <motion.div
           className="hidden md:flex bg-green-600 justify-center py-7 space-x-4 sm:space-x-6 md:space-x-8 lg:space-x-30"
           initial="hidden"
@@ -214,7 +220,7 @@ const Teams = () => {
             <div key={member.id} className="flex flex-col items-center">
               <button
                 onClick={() => handleMemberSelect(member)}
-                className="w-20 h-20 sm:w-25 sm:h-25 rounded-full overflow-hidden hover:border-opacity-100 transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+                className="w-20 h-20 cursor-pointer sm:w-25 sm:h-25 rounded-full overflow-hidden hover:border-opacity-100 transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
               >
                 <img
                   src={member.avatar}
