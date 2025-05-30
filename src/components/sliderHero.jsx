@@ -1,39 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import Button from './Button';
-import slide1 from '../assets/images/slide1.jpeg';
-import slide2 from '../assets/images/slide2.jpg';
-import slide3 from '../assets/images/slide3.jpg';
+import slide1 from '../assets/images/slide1.jpg';
+import slide2 from '../assets/images/slide21.jpeg';
+import slide3 from '../assets/images/slide3.jpeg';
 import { Link } from 'react-router';
 
 const slides = [
   {
     id: 0,
-    title: "Solutions Technologiques",
+    title: "Stimuler l’Afrique par l’Innovation Intelligente",
     color: "text-blue-500",
     overlayColor: "bg-blue-950",
     overlayOpacity: "opacity-40",
-    subtitle: "Solution technologique",
-    description: "TNK Synergies conçoit des solutions numériques adaptées aux besoins des communautés africaines pour favoriser l'innovation locale.",
+    subtitle: "Vision & Impact",
+    description: "Nous impulsons une nouvelle ère de croissance grâce à des solutions technologiques pensées pour le continent africain.",
     backgroundImage: `url(${slide1})`
   },
   {
     id: 1,
-    title: "Développement Durable", 
+    title: "BantuLink : Emploi, Commerce & Connexions en Un Seul Lieu", 
     color: "text-white",
     overlayColor: "",
     overlayOpacity: "opacity-40",
-    subtitle: "Développement durable",
-    description: "TNK Synergies développe des solutions écologiques et durables pour répondre aux défis environnementaux de l'Afrique.",
+    subtitle: "La Solution — BantuLink",
+    description: "Avec BantuLink, TNK Synergies connecte talents, entreprises et communautés dans un écosystème numérique inclusif et durable.",
     backgroundImage: `url(${slide2})`
   },
   {
     id: 2,
-    title: "Projets Communautaires",
+    title: "Des Services et Opportunités pour Tous",
     color: "text-green-500",
     overlayColor: "bg-green-950",
     overlayOpacity: "opacity-40",
-    subtitle: "Projet communautaire", 
-    description: "TNK Synergies accompagne les communautés locales dans leurs projets de développement et d'innovation sociale.",
+    subtitle: "Opportunités & Inclusion", 
+    description: "Notre mission : rendre l’innovation accessible à chacun en créant des opportunités économiques, sociales et professionnelles pour tous les Africains.",
     backgroundImage: `url(${slide3})`
   }
 ];
@@ -109,7 +109,7 @@ export default function HeroCarousel() {
             >
               {slides.map((slide) => (
                 <div key={slide.id} className="min-w-full">
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 lg:mb-8">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl max-w-[80%] font-bold mb-4 md:mb-6 lg:mb-8">
                     {slide.title.split('   ').map((word, index) => (
                       <span key={index} className={`${slide.color}`}>{word}</span>
                     ))}
@@ -126,7 +126,7 @@ export default function HeroCarousel() {
             >
               {slides.map((slide) => (
                 <div key={slide.id} className="min-w-full">
-                  <p className="text-white text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed">
+                  <p className="text-white text-base sm:text-lg md:text-xl max-w-3xl leading-relaxed">
                     {slide.description}
                   </p>
                 </div>
