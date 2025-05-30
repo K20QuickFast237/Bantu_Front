@@ -62,8 +62,10 @@ function Mission() {
           variants={textVariants}
           transition={{ delay: 0.4 }}
         >
-          L’initiative vise à innover pour créer un impact concret à travers le développement de solutions technologiques (web et mobiles) répondant aux besoins quotidiens des individus, entreprises et communautés. Elle repose sur une approche multisectorielle, couvrant des domaines tels que la santé, l’éducation, l’agriculture, 
-          l’énergie, l’emploi, etc., avec des projets utiles, évolutifs et mesurables.
+         Développer et fournir des solutions numériques de pointe qui
+ améliorent la vie, autonomisent les communautés et créent une valeur socio
+économique durable à travers l'Afrique via des plateformes inclusives, des
+ partenariats et l'innovation.
         </motion.p>
 
         <motion.p
@@ -71,7 +73,9 @@ function Mission() {
           variants={textVariants}
           transition={{ delay: 0.6 }}
         >
-          Autonomiser les communautés africaines grâce à des projets innovants, des technologies de pointe et des initiatives inclusives 
+          Devenir le principal hub d'innovation numérique en Afrique, intégrant
+ sans effort emploi, commerce, services professionnels et développement
+ communautaire dans un écosystème transformationnel unique.
         </motion.p>
 
         <motion.div
