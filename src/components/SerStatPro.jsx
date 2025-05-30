@@ -98,32 +98,28 @@ const SerStatPro = () => {
 
   const projects = [
     {
-      title: t('project.bantulink'),
-      description: t('project.bantulink.desc'),
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
-      gradient: "from-blue-500 to-blue-10",
-      alt: t('project.bantulink.alt')
+      title: "BantuLink",
+      description: "Plateforme professionnelle connectant talents, entreprises et opportunités à travers l'Afrique.",
+      image: pro1,
+      gradient: "from-blue-500 to-blue-10"
     },
     {
-      title: t('project.bantuhire'),
-      description: t('project.bantuhire.desc'),
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
-      gradient: "from-blue-500 to-blue-10",
-      alt: t('project.bantuhire.alt')
+      title: "BantuHire",
+      description: "BantuHire est une plateforme de mise en relation entre recruteur et chercheur d'emploi + ressourçage + certification.",
+      image: pro2,
+      gradient: "from-blue-500 to-blue-10"
     },
     {
-      title: t('project.bantumarket'),
-      description: t('project.bantumarket.desc'),
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
-      gradient: "from-blue-500 to-blue-10",
-      alt: t('project.bantumarket.alt')
+      title: "BantuMarket",
+      description: "BantuMarket est une marketplace destinée aux clients et prestataires de service pour vendre/acheter des produits et services.",
+      image: pro3,
+      gradient: "from-blue-500 to-blue-10"
     },
     {
-      title: t('project.mectn'),
-      description: t('project.mectn.desc'),
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
-      gradient: "from-blue-500 to-blue-10",
-      alt: t('project.mectn.alt')
+      title: "Mech",
+      description: "Solution de transport intelligent optimisant la logistique urbaine et l'expérience utilisateur.",
+      image: pro4,
+      gradient: "from-blue-500 to-blue-10"
     }
   ];
 
@@ -220,22 +216,22 @@ const SerStatPro = () => {
           transition={{ duration: 0.6 }}
         >
           <motion.h2 
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6"
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.5 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6"
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.5 }}
           >
-            {t('services.title')}
+              Nos Services
           </motion.h2>
           <motion.p 
-            className="text-green-500 max-w-xl mx-auto leading-relaxed text-sm md:text-base px-4"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+              className="text-green-500 max-w-xl mx-auto leading-relaxed text-sm md:text-base px-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.6 }}
           >
-            {t('services.description')}
+            Des solutions numériques sur mesure pour booster l’innovation, la connectivité et l’inclusion en Afrique.
           </motion.p>
         </motion.div>
 
@@ -345,6 +341,155 @@ const SerStatPro = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Projects Section */}
+        <div className="mx-4 md:mx-8 lg:mx-20">
+            <motion.div 
+            className="text-center mb-8 md:mb-12"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            >
+            <motion.h2 
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6"
+                initial={{ opacity: 0, x: -100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+            >
+                Explorer nos projets en vedette
+            </motion.h2>
+            <motion.p 
+                className="text-blue-500 max-w-xl mx-auto text-sm md:text-base px-4"
+                initial={{ opacity: 0, x: 100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+            >
+                Des initiatives à fort impact qui transforment les défis locaux en opportunités durables grâce à la technologie.
+            </motion.p>
+            </motion.div>
+
+            <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 mb-8 md:mb-12"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            >
+            {projects.map((project, index) => (
+                <motion.div 
+                key={index} 
+                className="group cursor-pointer"
+                variants={projectVariants}
+                whileHover={{ 
+                    scale: 1.05,
+                    y: -10,
+                    rotateY: 5,
+                    transition: { duration: 0.3 }
+                }}
+                whileTap={{ scale: 0.98 }}
+                >
+                <motion.div 
+                    className="relative overflow-hidden rounded-lg shadow-lg"
+                    whileHover={{
+                    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+                    transition: { duration: 0.3 }
+                    }}
+                >
+                    <motion.div className="aspect-video overflow-hidden">
+                    <motion.img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                        whileHover={{ 
+                        scale: 1.2,
+                        transition: { duration: 0.5 }
+                        }}
+                    />
+                    </motion.div>
+                    <motion.div 
+                    className={`absolute inset-0 bg-gradient-to-t ${project.gradient} opacity-80`}
+                    whileHover={{ opacity: 0.6 }}
+                    />
+                    <motion.div 
+                    className="absolute bottom-0 left-0 right-0 p-6 text-white"
+                    initial={{ y: 20, opacity: 0.8 }}
+                    whileHover={{ y: 0, opacity: 1 }}
+                    >
+                    <motion.h3 
+                        className="text-xl font-semibold mb-3"
+                        whileHover={{ x: 10 }}
+                    >
+                        {project.title}
+                    </motion.h3>
+                    <motion.p 
+                        className="text-sm text-gray-100 leading-relaxed opacity-90"
+                        whileHover={{ opacity: 1 }}
+                    >
+                        {project.description}
+                    </motion.p>
+                    </motion.div>
+                    <motion.div 
+                    className="absolute top-4 right-4"
+                    initial={{ opacity: 0, rotate: -90 }}
+                    whileHover={{ 
+                        opacity: 1, 
+                        rotate: 0,
+                        transition: { duration: 0.3 }
+                    }}
+                    >
+                    <motion.div
+                        animate={{ 
+                        x: [0, 5, 0],
+                        transition: { 
+                            duration: 1.5,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }
+                        }}
+                    >
+                        <ArrowRight className="w-5 h-5 text-white" />
+                    </motion.div>
+                    </motion.div>
+                </motion.div>
+                </motion.div>
+            ))}
+            </motion.div>
+
+            <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            >
+            <Link to="/projets">
+              <motion.button 
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-medium inline-flex items-center"
+                  whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "0 10px 25px rgba(37, 99, 235, 0.3)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 200 }}
+              >
+                  Voir tous les projets
+                  <motion.div
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ 
+                      duration: 1,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                  }}
+                  >
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                  </motion.div>
+              </motion.button>
+            </Link>
+            </motion.div>
         </div>
       </div>
 

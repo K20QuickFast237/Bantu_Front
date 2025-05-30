@@ -24,6 +24,7 @@ const NewsletterSection = () => {
             <h2 className="text-4xl font-semibold text-white leading-tight max-md:text-2xl max-md:max-w-full">
               {t('footer.newsletter.title')}
             </h2>
+            <p className="text-xl mt-2 text-white">Abonnez-vous pour les dernières nouvelles, mises à jour et opportunités.</p>
             <form className="flex justify-between py-2 pr-3 pl-9 mt-12 w-full bg-white rounded-2xl max-md:flex-col max-md:gap-4 max-md:pl-5 max-md:mt-10 max-md:max-w-full">
               <input
                 type="email"
@@ -31,7 +32,7 @@ const NewsletterSection = () => {
                 className="my-auto text-lg text-gray-600 bg-transparent outline-none w-[80%] max-md:w-full"
               />
               <Button variant="filled" color="green" type="submit" className="max-md:w-full">
-                {t('footer.newsletter.submit')}
+                S'abonner
               </Button>
             </form>
           </div>

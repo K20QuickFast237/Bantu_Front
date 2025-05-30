@@ -274,34 +274,36 @@ const Header = () => {
                 )}
               </div>
 
-              <div className='cursor-pointer py-2 hover:opacity-80 transition-opacity'>
-                <Link to="/" className="text-gray-800">{t('home')}</Link>
+              {/* Liens de navigation */}
+              <div className={`cursor-pointer py-2 px-3 rounded-md transition-all ${
+                location.pathname === '/' ? 'bg-blue-100 text-blue-600' : 'text-gray-800 hover:bg-gray-100'
+              }`}>
+                <Link to="/">Accueil</Link>
               </div>
-              <div className='cursor-pointer py-2 hover:opacity-80 transition-opacity'>
-                <Link to="/about" className="text-gray-800">{t('about')}</Link>
+              <div className={`cursor-pointer py-2 px-3 rounded-md transition-all ${
+                location.pathname === '/about' ? 'bg-blue-100 text-blue-600' : 'text-gray-800 hover:bg-gray-100'
+              }`}>
+                <Link to="/about">À propos</Link>
               </div>
-              <div className='cursor-pointer py-2 hover:opacity-80 transition-opacity'>
-                <Link to="/projets" className="text-gray-800">{t('projects')}</Link>
+              <div className={`cursor-pointer py-2 px-3 rounded-md transition-all ${
+                location.pathname === '/projets' ? 'bg-blue-100 text-blue-600' : 'text-gray-800 hover:bg-gray-100'
+              }`}>
+                <Link to="/projets">Nos Projets</Link>
               </div>
-              <div className='cursor-pointer py-2 hover:opacity-80 transition-opacity'>
-                <Link to="/services" className="text-gray-800">{t('services')}</Link>
+              <div className={`cursor-pointer py-2 px-3 rounded-md transition-all ${
+                location.pathname === '/services' ? 'bg-blue-100 text-blue-600' : 'text-gray-800 hover:bg-gray-100'
+              }`}>
+                <Link to="/services">Services</Link>
               </div>
-              <div className='cursor-pointer py-2 hover:opacity-80 transition-opacity'>
-                <Link to="/blog" className="text-gray-800">{t('blog')}</Link>
+              <div className={`cursor-pointer py-2 px-3 rounded-md transition-all ${
+                location.pathname === '/blog' ? 'bg-blue-100 text-blue-600' : 'text-gray-800 hover:bg-gray-100'
+              }`}>
+                <Link to="/blog">Blog / Actualités</Link>
               </div>
-              <div className='cursor-pointer py-2 hover:opacity-80 transition-opacity'>
-                <Link to="/contact" className="text-gray-800">{t('contact')}</Link>
-              </div>
-              <div className="py-2">
-                <select
-                  value={i18n.language}
-                  onChange={(e) => changeLanguage(e.target.value)}
-                  className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  aria-label="Sélecteur de langue"
-                >
-                  <option value="fr">Français</option>
-                  <option value="en">English</option>
-                </select>
+              <div className={`cursor-pointer py-2 px-3 rounded-md transition-all ${
+                location.pathname === '/contact' ? 'bg-blue-100 text-blue-600' : 'text-gray-800 hover:bg-gray-100'
+              }`}>
+                <Link to="/contact">Contact</Link>
               </div>
 
               <div className="mt-4">
