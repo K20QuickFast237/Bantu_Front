@@ -19,7 +19,7 @@ const NewsletterSection = () => {
         <div className="w-[69%] max-md:w-full">
           <div className="flex flex-col px-20 py-16 w-full max-md:px-5 max-md:py-10 max-md:mt-10 max-md:max-w-full">
             <h2 className="text-4xl font-semibold text-white leading-tight max-md:text-2xl max-md:max-w-full">
-              Recevez les dernières nouvelles et offres spéciales pour vous
+               Restez Connecté avec TNK Synergies
             </h2>
 
             <form className="flex justify-between py-2 pr-3 pl-9 mt-12 w-full bg-white rounded-2xl max-md:flex-col max-md:gap-4 max-md:pl-5 max-md:mt-10 max-md:max-w-full">
