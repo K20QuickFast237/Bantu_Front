@@ -10,45 +10,38 @@ const Teams = () => {
   const teamMembers = [
     {
       id: 1,
-      name: "Amina Saidou",
-      position: "Vice président de l'association",
-      description: "Le VP de projet en développement web élabore la feuille de route technologique de l'entreprise, en alignant les projets web avec les objectifs commerciaux globaux. Il définit les priorités, les budgets et les indicateurs de performance clés (KPI)",
+      name: "T.N. Kisob ",
+      position: " Fondateur & PDG",
+      description: " Leader visionnaire, architecte de la stratégie et défenseur du développement communautaire",
       avatar: personne1,
-      miniDescription: "Élabore la stratégie tech",
+      miniDescription: "Architecte de la strategie",
       isMainPresenter: true
     },
     {
       id: 2,
-      name: "M. Herman Donkeng",
-      position: "Directeur des travaux",
-      description: "Responsable de la supervision et de la coordination de tous les projets de développement en cours. Il assure la qualité des livrables et le respect des délais.",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+      name: "Ayimele Tsopfack Rea",
+      position: "Co-fondatrice & COO",
+      description: "Supervise les opérations, le développement commercial et l’engagement des partenaires",
+      avatar: "    ",
       miniDescription: "Supervise les projets"
     },
     {
       id: 3,
-      name: "Mme Beatrice Esso",
-      position: "Experte en développement fullstack",
-      description: "Spécialisée dans le développement d'applications web complètes, de la conception frontend à l'architecture backend. Elle maîtrise les technologies modernes.",
-      avatar: personne2,
+      name: "Sublime Prod ",
+      position: " Équipe d'Ingénieurs Tech",
+      description: " Pilote la création et la maintenance de notre SuperApp et infrastructure numérique.",
+      avatar: " ",
       miniDescription: "Développement fullstack"
     },
     {
       id: 4,
-      name: "M. Eyalla Peyina",
-      position: "Gestionnaire des taches",
-      description: "Coordonne les équipes de développement et optimise les processus de travail. Il veille à la bonne répartition des tâches et au suivi des projets.",
+      name: "Patience Gheghe Kisob",
+      position: "Responsable Marketing",
+      description: " Dirige le branding, la sensibilisation et les communications digitales",
       avatar: personne3,
-      miniDescription: "Coordonne les équipes"
+      miniDescription: "Communication digitale"
     },
-    {
-      id: 5,
-      name: "M. Lazar Nanfack",
-      position: "Scrum master",
-      description: "Facilite l'adoption des méthodologies agiles au sein des équipes. Il anime les cérémonies Scrum et supprime les obstacles au développement.",
-      avatar: personne4,
-      miniDescription: "Facilite les méthodes agiles"
-    }
+    
   ];
 
   const [currentMember, setCurrentMember] = useState(teamMembers[0]);
