@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import devT from '../assets/images/devTech.svg';
 import aut from '../assets/images/aut.svg';

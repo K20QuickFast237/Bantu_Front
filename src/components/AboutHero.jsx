@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import Button from './Button';
+import { useTranslation } from 'react-i18next';
 import sectionHero from '../assets/images/about.jpg';
 
 const AboutHero = () => {

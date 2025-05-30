@@ -9,36 +9,33 @@ import { useTranslation } from 'react-i18next';
 const slides = [
   {
     id: 0,
-    title: "hero.solutions",
+    title: "Stimuler l’Afrique par l’Innovation Intelligente",
     color: "text-blue-500",
     overlayColor: "bg-blue-950",
     overlayOpacity: "opacity-40",
-    subtitle: "hero.solutions",
-    description: "hero.description.solutions",
-    backgroundImage: `url(${slide1})`,
-    alt: "hero.slide1.alt"
+    subtitle: "Vision & Impact",
+    description: "Nous impulsons une nouvelle ère de croissance grâce à des solutions technologiques pensées pour le continent africain.",
+    backgroundImage: `url(${slide1})`
   },
   {
     id: 1,
-    title: "hero.sustainable",
+    title: "BantuLink : Emploi, Commerce & Connexions en Un Seul Lieu", 
     color: "text-white",
     overlayColor: "",
     overlayOpacity: "opacity-40",
-    subtitle: "hero.sustainable",
-    description: "hero.description.sustainable",
-    backgroundImage: `url(${slide2})`,
-    alt: "hero.slide2.alt"
+    subtitle: "La Solution — BantuLink",
+    description: "Avec BantuLink, TNK Synergies connecte talents, entreprises et communautés dans un écosystème numérique inclusif et durable.",
+    backgroundImage: `url(${slide2})`
   },
   {
     id: 2,
-    title: "hero.community",
+    title: "Des Services et Opportunités pour Tous",
     color: "text-green-500",
     overlayColor: "bg-green-950",
     overlayOpacity: "opacity-40",
-    subtitle: "hero.community",
-    description: "hero.description.community",
-    backgroundImage: `url(${slide3})`,
-    alt: "hero.slide3.alt"
+    subtitle: "Opportunités & Inclusion", 
+    description: "Notre mission : rendre l’innovation accessible à chacun en créant des opportunités économiques, sociales et professionnelles pour tous les Africains.",
+    backgroundImage: `url(${slide3})`
   }
 ];
 
@@ -113,8 +110,8 @@ export default function HeroCarousel() {
             >
               {slides.map((slide) => (
                 <div key={slide.id} className="min-w-full">
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 lg:mb-8">
-                    {t(slide.title).split('   ').map((word, index) => (
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl max-w-[80%] font-bold mb-4 md:mb-6 lg:mb-8">
+                    {slide.title.split('   ').map((word, index) => (
                       <span key={index} className={`${slide.color}`}>{word}</span>
                     ))}
                   </h1>
@@ -130,8 +127,8 @@ export default function HeroCarousel() {
             >
               {slides.map((slide) => (
                 <div key={slide.id} className="min-w-full">
-                  <p className="text-white text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed">
-                    {t(slide.description)}
+                  <p className="text-white text-base sm:text-lg md:text-xl max-w-3xl leading-relaxed">
+                    {slide.description}
                   </p>
                 </div>
               ))}
