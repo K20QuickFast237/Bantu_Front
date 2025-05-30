@@ -1,5 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import devT from '../assets/images/devTech.svg';
+import aut from '../assets/images/aut.svg';
+import incu from '../assets/images/incub.svg';
+import cons from '../assets/images/cons.svg';
+import { ArrowRight } from 'lucide-react';
 
 const ServiceCard = ({
   icon,
@@ -14,7 +19,7 @@ const ServiceCard = ({
     <motion.article 
       whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 300 }}
-      className={`flex flex-col items-start px-10 pt-10 pb-4 w-full text-base font-semibold rounded-3xl ${
+      className={`flex flex-col items-start px-10 pt-10 pb-4 w-full h-[320px] text-base font-semibold rounded-3xl ${
         isgradient ? 'text-white bg-gradient-to-br from-sky-600 to-blue-100' : 'bg-white'
       } ${className}`}
     >
@@ -25,12 +30,12 @@ const ServiceCard = ({
         alt={`${title} icon`}
         className="object-contain w-20 aspect-square"
       />
-      <h3 className={`mt-2.5 text-2xl ${
+      <h3 className={`mt-2.5 text-2xl line-clamp-2 ${
         isgradient ? 'text-white' : 'text-neutral-800'
       }`}>
         {title}
       </h3>
-      <p className={`font-normal mt-2.5 ${
+      <p className={`font-normal mt-2.5 line-clamp-3 flex-grow ${
         isgradient ? 'text-white' : 'text-gray-500'
       }`}>
         {description}
@@ -42,12 +47,10 @@ const ServiceCard = ({
         }`}
       >
         <span className="grow">En savoir plus</span>
-        <img
-          src={isgradient ? "https://cdn.builder.io/api/v1/image/assets/TEMP/6c4add3c62eec96966a6e88cb099a7dc7ae4ad0f?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab" : "https://cdn.builder.io/api/v1/image/assets/TEMP/2721cc9bce8f85e4129db62b89833e6aafd3d731?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"}
-          alt="Arrow icon"
-          className={`object-contain shrink-0 my-auto aspect-[1/1] w-[15px] ${
+        <ArrowRight 
+          className={`object-contain shrink-0 my-auto aspect-[1/1] w-[25px] ${
             isgradient ? 'fill-white' : 'fill-sky-600'
-          }`}
+          }`} 
         />
       </motion.div>
     </motion.article>
@@ -107,7 +110,7 @@ const ServicesShowcase = () => {
         >
           <motion.div variants={itemVariants}>
             <ServiceCard
-              icon="https://cdn.builder.io/api/v1/image/assets/TEMP/5e983adaf13233615cbc2737e0ea06a719d17a72?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"
+              icon={devT}
               title="Développement Tech"
               description="Solutions numériques adaptées aux besoins locaux."
               variant="gradient"
@@ -115,16 +118,16 @@ const ServicesShowcase = () => {
           </motion.div>
           <motion.div variants={itemVariants}>
             <ServiceCard
-              icon="https://cdn.builder.io/api/v1/image/assets/TEMP/0f1bcb7106489ec19f016c9c371758a571a316dd?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"
+              icon={incu}
               title="Incubation"
               description="Accompagnement des startups et projets innovants."
             />
           </motion.div>
           <motion.div variants={itemVariants}>
             <ServiceCard
-              icon="https://cdn.builder.io/api/v1/image/assets/TEMP/0f453f1386e1cf6fd38ebed2a6e0db57c5859895?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"
-              title="Conseil"
-              description="Expertise stratégique pour réussir vos initiatives."
+              icon={cons}
+              title="Conseil & Assistance "
+              description="Développement commercial, transformation digitale et stratégie de recrutement."
             />
           </motion.div>
         </motion.div>
@@ -135,23 +138,36 @@ const ServicesShowcase = () => {
         >
           <motion.div variants={itemVariants}>
             <ServiceCard
-              icon="https://cdn.builder.io/api/v1/image/assets/TEMP/02ea8388d48d173c2b980bbeba5e4222761422db?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"
+              icon={aut}
               title="Autonomisation"
               description="Nous créons des initiatives pour renforcer les capacités locales."
             />
           </motion.div>
           <motion.div variants={itemVariants}>
             <ServiceCard
-              icon="https://cdn.builder.io/api/v1/image/assets/TEMP/02ea8388d48d173c2b980bbeba5e4222761422db?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"
-              title="Autonomisation"
-              description="Nous créons des initiatives pour renforcer les capacités locales."
+              icon=""
+              title="BantuHire"
+              description="Mise en relation des demandeurs d'emploi avec les employeurs et création de réseaux professionnels structurés."
             />
           </motion.div>
           <motion.div variants={itemVariants}>
             <ServiceCard
-              icon="https://cdn.builder.io/api/v1/image/assets/TEMP/02ea8388d48d173c2b980bbeba5e4222761422db?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"
-              title="Autonomisation"
-              description="Nous créons des initiatives pour renforcer les capacités locales."
+              icon=""
+              title="BantuMarket"
+              description="Plateforme e-commerce permettant les transactions B2B, B2C, C2C et C2B."
+            />
+          </motion.div>
+        </motion.div>
+
+        <motion.div 
+          variants={containerVariants}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-4 sm:mt-6"
+        >
+          <motion.div variants={itemVariants}>
+            <ServiceCard
+              icon=""
+              title="BantuLink SuperApp"
+              description="Écosystème numérique central intégrant plusieurs services multisectoriels."
             />
           </motion.div>
         </motion.div>

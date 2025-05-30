@@ -3,6 +3,10 @@ import { motion } from 'framer-motion';
 import { ChevronDown, Code, Rocket, Users, ArrowRight } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import statsImage from '../assets/images/stats.jpg';
+import pro1 from '../assets/images/aproject1.jpg';
+import pro2 from '../assets/images/aproject2.jpeg';
+import pro3 from '../assets/images/aproject3.jpeg';
+import pro4 from '../assets/images/aproject4.jpeg';
 import { Link } from 'react-router';
 
 const SerStatPro = () => {
@@ -93,26 +97,26 @@ const SerStatPro = () => {
   const projects = [
     {
       title: "BantuLink",
-      description: "Courte description des projets suivants",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
+      description: "Plateforme professionnelle connectant talents, entreprises et opportunités à travers l'Afrique.",
+      image: pro1,
       gradient: "from-blue-500 to-blue-10"
     },
     {
       title: "BantuHire",
       description: "BantuHire est une plateforme de mise en relation entre recruteur et chercheur d'emploi + ressourçage + certification.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
+      image: pro2,
       gradient: "from-blue-500 to-blue-10"
     },
     {
       title: "BantuMarket",
       description: "BantuMarket est une marketplace destinée aux clients et prestataires de service pour vendre/acheter des produits et services.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
+      image: pro3,
       gradient: "from-blue-500 to-blue-10"
     },
     {
-      title: "Mectn",
-      description: "Mectn est une plateforme de mise en relation entre recruteur et chercheur d'emploi + ressourçage + certification.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
+      title: "Mech",
+      description: "Solution de transport intelligent optimisant la logistique urbaine et l'expérience utilisateur.",
+      image: pro4,
       gradient: "from-blue-500 to-blue-10"
     }
   ];
@@ -227,9 +231,7 @@ const SerStatPro = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.4, duration: 0.6 }}
             >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut 
-                enim ad minim veniam, quis nostrud exercitation.
+              Des solutions numériques sur mesure pour booster l’innovation, la connectivité et l’inclusion en Afrique.
             </motion.p>
             </motion.div>
 
@@ -367,8 +369,7 @@ const SerStatPro = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.4, duration: 0.6 }}
             >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
-                do eiusmod tempor incididunt ut labore.
+                Des initiatives à fort impact qui transforment les défis locaux en opportunités durables grâce à la technologie.
             </motion.p>
             </motion.div>
 

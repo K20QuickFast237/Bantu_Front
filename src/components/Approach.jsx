@@ -107,21 +107,21 @@ const ApproachSection = () => {
                 <ApproachStep
                   number="01"
                   title="Diagnostic des besoins."
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+                  description="Nous analysons en profondeur vos enjeux, vos objectifs et votre environnement pour identifier les leviers d’innovation les plus pertinents pour votre activité."
                 />
               </motion.div>
               <motion.div variants={itemVariants}>
                 <ApproachStep
                   number="02"
                   title="Co-construction des solutions."
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+                  description="En collaboration avec vos équipes, nous concevons des solutions sur mesure, durables et adaptées à vos réalités locales, en tirant parti de notre expertise technologique et de notre approche participative."
                 />
               </motion.div>
               <motion.div variants={itemVariants}>
                 <ApproachStep
                   number="03"
                   title="Suivi et accompagnement."
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+                  description="Nous assurons un accompagnement continu, avec un suivi rigoureux de l’impact, des ajustements stratégiques et une montée en compétences de vos équipes."
                 />
               </motion.div>
             </motion.div>

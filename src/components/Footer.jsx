@@ -20,7 +20,7 @@ const NewsletterSection = () => {
             <h2 className="text-4xl font-semibold text-white leading-tight max-md:text-2xl max-md:max-w-full">
                Restez Connecté avec TNK Synergies
             </h2>
-
+            <p className="text-xl mt-2 text-white">Abonnez-vous pour les dernières nouvelles, mises à jour et opportunités.</p>
             <form className="flex justify-between py-2 pr-3 pl-9 mt-12 w-full bg-white rounded-2xl max-md:flex-col max-md:gap-4 max-md:pl-5 max-md:mt-10 max-md:max-w-full">
               <input
                 type="email"
@@ -28,7 +28,7 @@ const NewsletterSection = () => {
                 className="my-auto text-lg text-gray-600 bg-transparent outline-none w-[80%] max-md:w-full"
               />
               <Button variant="filled" color="green" type="submit" className="max-md:w-full">
-                Souscrire
+                S'abonner
               </Button>
             </form>
           </div>
@@ -42,6 +42,21 @@ const NewsletterSection = () => {
         </div>
       </motion.div>
     </section>
+    // <section className="bg-gray-100 py-8 px-4 rounded-xl">
+    //   <h2 className="text-2xl font-bold mb-2 text-center">Restez Connecté avec TNK Synergies</h2>
+    //   <p className="text-center mb-4 text-gray-600">Abonnez-vous pour les dernières nouvelles, mises à jour et opportunités.</p>
+    //   <form className="flex flex-col sm:flex-row justify-center gap-2 max-w-md mx-auto">
+    //     <input
+    //       type="email"
+    //       placeholder="Votre adresse e-mail"
+    //       className="px-4 py-2 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-blue-200"
+    //       required
+    //     />
+    //     <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+    //       S'abonner
+    //     </button>
+    //   </form>
+    // </section>
   );
 };
 

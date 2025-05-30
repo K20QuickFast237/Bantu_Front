@@ -272,23 +272,35 @@ const Header = () => {
               </div>
 
               {/* Liens de navigation */}
-              <div className='cursor-pointer py-2 hover:opacity-80 transition-opacity'>
-                <Link to="/" className="text-gray-800">Accueil</Link>
+              <div className={`cursor-pointer py-2 px-3 rounded-md transition-all ${
+                location.pathname === '/' ? 'bg-blue-100 text-blue-600' : 'text-gray-800 hover:bg-gray-100'
+              }`}>
+                <Link to="/">Accueil</Link>
               </div>
-              <div className='cursor-pointer py-2 hover:opacity-80 transition-opacity'>
-                <Link to="/about" className="text-gray-800">À propos</Link>
+              <div className={`cursor-pointer py-2 px-3 rounded-md transition-all ${
+                location.pathname === '/about' ? 'bg-blue-100 text-blue-600' : 'text-gray-800 hover:bg-gray-100'
+              }`}>
+                <Link to="/about">À propos</Link>
               </div>
-              <div className='cursor-pointer py-2 hover:opacity-80 transition-opacity'>
-                <Link to="/projets" className="text-gray-800">Nos Projets</Link>
+              <div className={`cursor-pointer py-2 px-3 rounded-md transition-all ${
+                location.pathname === '/projets' ? 'bg-blue-100 text-blue-600' : 'text-gray-800 hover:bg-gray-100'
+              }`}>
+                <Link to="/projets">Nos Projets</Link>
               </div>
-              <div className='cursor-pointer py-2 hover:opacity-80 transition-opacity'>
-                <Link to="/services" className="text-gray-800">Services</Link>
+              <div className={`cursor-pointer py-2 px-3 rounded-md transition-all ${
+                location.pathname === '/services' ? 'bg-blue-100 text-blue-600' : 'text-gray-800 hover:bg-gray-100'
+              }`}>
+                <Link to="/services">Services</Link>
               </div>
-              <div className='cursor-pointer py-2 hover:opacity-80 transition-opacity'>
-                <Link to="/blog" className="text-gray-800">Blog / Actualités</Link>
+              <div className={`cursor-pointer py-2 px-3 rounded-md transition-all ${
+                location.pathname === '/blog' ? 'bg-blue-100 text-blue-600' : 'text-gray-800 hover:bg-gray-100'
+              }`}>
+                <Link to="/blog">Blog / Actualités</Link>
               </div>
-              <div className='cursor-pointer py-2 hover:opacity-80 transition-opacity'>
-                <Link to="/contact" className="text-gray-800">Contact</Link>
+              <div className={`cursor-pointer py-2 px-3 rounded-md transition-all ${
+                location.pathname === '/contact' ? 'bg-blue-100 text-blue-600' : 'text-gray-800 hover:bg-gray-100'
+              }`}>
+                <Link to="/contact">Contact</Link>
               </div>
 
               {/* CTA Button mobile */}
