@@ -1,7 +1,6 @@
 import React from 'react';
 import Logo from '../assets/images/logo.svg'
-import { FaFacebookF, FaLinkedinIn, FaTwitter, FaWhatsapp } from 'react-icons/fa';
-import { ArrowUp } from 'lucide-react';
+import { FaFacebookF, FaLinkedinIn, FaTwitter, FaWhatsapp, FaInstagram } from 'react-icons/fa';
 import Button from './Button';
 import NewLetter from '../assets/images/NewLetter.png'
 import { motion } from 'framer-motion';
@@ -19,7 +18,7 @@ const NewsletterSection = () => {
         <div className="w-[69%] max-md:w-full">
           <div className="flex flex-col px-20 py-16 w-full max-md:px-5 max-md:py-10 max-md:mt-10 max-md:max-w-full">
             <h2 className="text-4xl font-semibold text-white leading-tight max-md:text-2xl max-md:max-w-full">
-              Recevez les dernières nouvelles et offres spéciales pour vous
+               Restez Connecté avec TNK Synergies
             </h2>
 
             <form className="flex justify-between py-2 pr-3 pl-9 mt-12 w-full bg-white rounded-2xl max-md:flex-col max-md:gap-4 max-md:pl-5 max-md:mt-10 max-md:max-w-full">
@@ -184,6 +183,13 @@ const Footer = () => {
             <FaFacebookF />
           </motion.div>
           <motion.div 
+                  whileHover={{ scale: 1.1, backgroundColor: "white", color: "#3974EA" }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  className='w-7 h-7 lg:w-8 lg:h-8 rounded-full border-1 border-white flex flex-col justify-center items-center cursor-pointer'
+                >
+                  <FaInstagram className="text-sm lg:text-base" />
+                </motion.div>
+          <motion.div 
             whileHover={{ scale: 1.1, backgroundColor: "white", color: "#3974EA" }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
             className='w-8 h-8 rounded-full border-1 border-white flex flex-col justify-center items-center cursor-pointer'
@@ -201,7 +207,7 @@ const Footer = () => {
       </nav>
 
       <motion.div 
-        onClick={() => window.open('https://wa.me/+237671526369', '_blank')}
+        onClick={() => window.open('https://wa.me/+237686135038', '_blank')}
         whileHover={{ scale: 1.1, backgroundColor: "#33C12B" }}
         whileTap={{ scale: 0.95 }}
         transition={{ 

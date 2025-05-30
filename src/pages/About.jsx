@@ -22,7 +22,8 @@ function About(){
                 <Valeurs />
                 <Partenaires />
                 <Teams />
-                <CTA title="Rejoignez nous pour plus d'innovation" callToAction=" Rejoignez notre communaute" image={acceuilCTA}/>
+                <CTA title="Rejoignez nous pour plus d'innovation" callToAction=" Abonnez-vous pour les dernières nouvelles,
+ mises à jour et opportunités" image={acceuilCTA}/>
                 <ServicesFooter/>
             </main>
         </PageLayout>
