@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Button from './Button';
-import slide1 from '../assets/images/slide1.jpeg';
-import slide2 from '../assets/images/slide2.jpg';
-import slide3 from '../assets/images/slide3.jpg';
+import slide1 from '../assets/images/slide1.jpg';
+import slide2 from '../assets/images/slide21.jpeg';
+import slide3 from '../assets/images/slide3.jpeg';
 import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
 

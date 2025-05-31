@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router'; // Corrigé de 'react-router'
 import Logo from '../assets/images/logoNoir.svg';
 import Logo2 from '../assets/images/logo.svg';
 import { Search, Mail, Phone, MapPin, Menu, X } from 'lucide-react';
-import { FaFacebookF, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
+import { FaFacebookF, FaLinkedinIn, FaTwitter, FaInstagram } from 'react-icons/fa';
 import Button from './Button';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -133,6 +133,13 @@ const Header = () => {
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   className='w-7 h-7 lg:w-8 lg:h-8 rounded-full border-1 border-white flex flex-col justify-center items-center cursor-pointer'
                 >
+                  <FaInstagram className="text-sm lg:text-base" />
+                </motion.div>
+                <motion.div 
+                  whileHover={{ scale: 1.1, backgroundColor: "white", color: "#3974EA" }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  className='w-7 h-7 lg:w-8 lg:h-8 rounded-full border-1 border-white flex flex-col justify-center items-center cursor-pointer'
+                >
                   <FaLinkedinIn className="text-sm lg:text-base" />
                 </motion.div>
                 <motion.div 
@@ -146,15 +153,15 @@ const Header = () => {
               <div className='flex gap-4 lg:gap-6 items-center'>
                 <a href="tel:+321234456386" className="flex gap-2 lg:gap-3.5 items-center">
                   <Phone className="w-4 lg:w-5 aspect-[1/1]" />
-                  <span className="text-sm lg:text-base">+32 1234-456386</span>
+                  <span className="text-sm lg:text-base">+237 6831-79451</span>
                 </a>
                 <a href="tel:+321234456386" className="flex gap-2 lg:gap-3.5 items-center">
                   <Mail className="w-4 lg:w-5 aspect-[1/1]" />
-                  <span className="text-sm lg:text-base">+32 1234-456386</span>
+                  <span className="text-sm lg:text-base">info@tnksynergies.com</span>
                 </a>
                 <a href="tel:+321234456386" className="flex gap-2 lg:gap-3.5 items-center">
                   <MapPin className="w-4 lg:w-5 aspect-[1/1]" />
-                  <span className="text-sm lg:text-base">+32 1234-456386</span>
+                  <span className="text-sm lg:text-base">Location, Streep</span>
                 </a>
               </div>
             </div>

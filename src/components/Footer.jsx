@@ -1,7 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Logo from '../assets/images/logo.svg';
-import { FaFacebookF, FaLinkedinIn, FaTwitter, FaWhatsapp } from 'react-icons/fa';
+import { FaFacebookF, FaLinkedinIn, FaTwitter, FaWhatsapp} from 'react-icons/fa';
+import { FaInstagram } from 'react-icons/fa';
+
 import Button from './Button';
 import NewLetter from '../assets/images/NewLetter.png';
 import { motion } from 'framer-motion';
@@ -43,6 +45,21 @@ const NewsletterSection = () => {
         </div>
       </motion.div>
     </section>
+    // <section className="bg-gray-100 py-8 px-4 rounded-xl">
+    //   <h2 className="text-2xl font-bold mb-2 text-center">Restez Connecté avec TNK Synergies</h2>
+    //   <p className="text-center mb-4 text-gray-600">Abonnez-vous pour les dernières nouvelles, mises à jour et opportunités.</p>
+    //   <form className="flex flex-col sm:flex-row justify-center gap-2 max-w-md mx-auto">
+    //     <input
+    //       type="email"
+    //       placeholder="Votre adresse e-mail"
+    //       className="px-4 py-2 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-blue-200"
+    //       required
+    //     />
+    //     <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+    //       S'abonner
+    //     </button>
+    //   </form>
+    // </section>
   );
 };
 
@@ -187,6 +204,13 @@ const Footer = () => {
             <FaFacebookF />
           </motion.div>
           <motion.div 
+                  whileHover={{ scale: 1.1, backgroundColor: "white", color: "#3974EA" }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  className='w-7 h-7 lg:w-8 lg:h-8 rounded-full border-1 border-white flex flex-col justify-center items-center cursor-pointer'
+                >
+                  <FaInstagram className="text-sm lg:text-base" />
+                </motion.div>
+          <motion.div 
             whileHover={{ scale: 1.1, backgroundColor: "white", color: "#3974EA" }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
             className='w-8 h-8 rounded-full border-1 border-white flex flex-col justify-center items-center cursor-pointer'
@@ -204,7 +228,7 @@ const Footer = () => {
       </nav>
 
       <motion.div 
-        onClick={() => window.open('https://wa.me/+237671526369', '_blank')}
+        onClick={() => window.open('https://wa.me/+237686135038', '_blank')}
         whileHover={{ scale: 1.1, backgroundColor: "#33C12B" }}
         whileTap={{ scale: 0.95 }}
         transition={{ 

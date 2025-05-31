@@ -9,7 +9,7 @@ const BenefitCard = ({ icon, title, description, className = '', variant = 'defa
     <motion.article 
       whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 300 }}
-      className={`flex flex-col grow items-start px-4 sm:px-6 md:px-8 py-4 sm:py-5 rounded-2xl sm:rounded-3xl ${
+      className={`flex flex-col grow items-start px-4 sm:px-6 md:px-8 py-4 h-[250px] sm:py-5 rounded-2xl sm:rounded-3xl ${
         isgradient ? 'text-white bg-gradient-to-br from-green-600 to-green-100' : 'bg-white'
       } ${className}`}
     >
@@ -20,12 +20,12 @@ const BenefitCard = ({ icon, title, description, className = '', variant = 'defa
         alt={`${title} icon`}
         className="object-contain w-16 sm:w-20 aspect-square"
       />
-      <h3 className={`mt-1.5 text-xl sm:text-2xl font-semibold ${
+      <h3 className={`mt-1.5 text-xl sm:text-2xl font-semibold line-clamp-2   ${
         isgradient ? 'text-white' : 'text-neutral-800'
       }`}>
         {title}
       </h3>
-      <p className={`mt-2 sm:mt-3 text-sm sm:text-base ${
+      <p className={`mt-2 sm:mt-3 text-sm sm:text-base line-clamp-3 ${
         isgradient ? 'text-white' : 'text-gray-500'
       }`}>
         {description}

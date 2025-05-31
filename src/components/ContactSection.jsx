@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, ChevronDown, ChevronUp } from 'lucide-react';
+import { Phone, Mail, MapPin, ChevronDown } from 'lucide-react';
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter, FaShareAlt } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import contact1 from '../assets/images/contact1.jpg';
 import Button from './Button';
@@ -10,7 +11,7 @@ const ContactSection = () => {
   const [formData, setFormData] = useState({
     noms: '',
     email: '',
-    sujet: '',
+    typeD: '',
     message: ''
   });
 
@@ -51,6 +52,8 @@ const ContactSection = () => {
       answer: t('faqData.others.answer1', 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')
     }
   ];
+
+  const typeDemande = ["Partenariat", "Carriere", "Support", "Autre"];
 
   const handleInputChange = (e) => {
     setFormData({
@@ -108,7 +111,7 @@ const ContactSection = () => {
     >
       {/* Contact Cards Section */}
       <div className="mx-4 sm:mx-8 md:mx-12 lg:mx-20 py-8 md:py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-16">
           {/* Phone Card */}
           <motion.div 
             variants={cardVariants}
@@ -158,6 +161,36 @@ const ContactSection = () => {
             </motion.div>
             <p className="text-gray-500 text-sm mb-3">{t('contact.visit_office')}</p>
             <p className="text-blue-600 font-semibold text-lg">{t('contact.location')}</p>
+          </motion.div>
+
+          {/* Social Media Card */}
+          <motion.div 
+            variants={cardVariants}
+            whileHover={{ scale: 1.05 }}
+            className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300"
+          >
+            <motion.div 
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.5 }}
+              className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-6"
+            >
+              <FaShareAlt className="w-6 h-6 text-green-600" />
+            </motion.div>
+            <p className="text-gray-500 text-sm mb-3">Suivez-nous</p>
+            <div className="flex space-x-4">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
+                <FaFacebookF className="w-5 h-5" />
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-800">
+                <FaInstagram className="w-5 h-5" />
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-blue-900">
+                <FaLinkedinIn className="w-5 h-5" />
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-600">
+                <FaTwitter className="w-5 h-5" />
+              </a>
+            </div>
           </motion.div>
         </div>
 
@@ -223,15 +256,19 @@ const ContactSection = () => {
                 </motion.div>
 
                 <motion.div variants={cardVariants}>
-                  <input
-                    type="text"
-                    name="sujet"
-                    placeholder={t('contact.form.subject')}
-                    value={formData.sujet}
+                  <select
+                    className='w-full px-3 sm:px-4 py-3 sm:py-4 text-gray-700 rounded-xl bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all'
+                    name="typeD"
+                    value={formData.typeD}
                     onChange={handleInputChange}
-                    className="w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl  bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
-                    required
-                  />
+                  >
+                    <option value="" disabled>Sélectionnez un type de demande</option>
+                    {typeDemande.map((type, index) => (
+                      <option key={index} value={type}>
+                        {type}
+                      </option>
+                    ))}
+                  </select>
                 </motion.div>
 
                 <motion.div variants={cardVariants}>

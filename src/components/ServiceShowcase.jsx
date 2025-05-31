@@ -16,7 +16,7 @@ const ServiceCard = ({
     <motion.article 
       whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 300 }}
-      className={`flex flex-col items-start px-10 pt-10 pb-4 w-full text-base font-semibold rounded-3xl ${
+      className={`flex flex-col items-start px-10 pt-10 pb-4 w-full h-[320px] text-base font-semibold rounded-3xl ${
         isgradient ? 'text-white bg-gradient-to-br from-sky-600 to-blue-100' : 'bg-white'
       } ${className}`}
     >
@@ -27,12 +27,12 @@ const ServiceCard = ({
         alt={`${title} icon`}
         className="object-contain w-20 aspect-square"
       />
-      <h3 className={`mt-2.5 text-2xl ${
+      <h3 className={`mt-2.5 text-2xl line-clamp-2 ${
         isgradient ? 'text-white' : 'text-neutral-800'
       }`}>
         {title}
       </h3>
-      <p className={`font-normal mt-2.5 ${
+      <p className={`font-normal mt-2.5 line-clamp-3 flex-grow ${
         isgradient ? 'text-white' : 'text-gray-500'
       }`}>
         {description}
@@ -49,7 +49,7 @@ const ServiceCard = ({
           alt="Arrow icon"
           className={`object-contain shrink-0 my-auto aspect-[1/1] w-[15px] ${
             isgradient ? 'fill-white' : 'fill-sky-600'
-          }`}
+          }`} 
         />
       </motion.div>
     </motion.article>

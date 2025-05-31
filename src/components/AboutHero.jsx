@@ -15,7 +15,7 @@ const AboutHero = () => {
           alt={t('about.hero.alt')}
           className="object-cover absolute inset-0 size-full"
         />
-        <div className="absolute inset-0 bg-gray-800 opacity-40"></div>
+        <div className="absolute inset-0 bg-black opacity-70"></div>
       </div>
       
       <div className="flex flex-col items-start w-full px-5 md:px-20 z-10">
