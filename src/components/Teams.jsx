@@ -5,43 +5,45 @@ import personne1 from "../assets/images/personne1.png";
 import personne2 from "../assets/images/personne2.png";
 import personne3 from "../assets/images/personne3.png";
 import personne4 from "../assets/images/personne4.png";
+import { useTranslation } from 'react-i18next';
 
 const Teams = () => {
+  const { t } = useTranslation();
+
   const teamMembers = [
     {
       id: 1,
-      name: "T.N. Kisob ",
-      position: " Fondateur & PDG",
-      description: " Leader visionnaire, architecte de la stratégie et défenseur du développement communautaire",
+      name: t('team.founder.name', { defaultValue: 'T.N. Kisob' }),
+      position: t('team.founder'),
+      description: t('team.founder.desc'),
       avatar: personne1,
-      miniDescription: "Architecte de la strategie",
+      miniDescription: t('team.founder.mini'),
       isMainPresenter: true
     },
     {
       id: 2,
-      name: "Ayimele Tsopfack Rea",
-      position: "Co-fondatrice & COO",
-      description: "Supervise les opérations, le développement commercial et l’engagement des partenaires",
+      name: t('team.coo.name', { defaultValue: 'Ayimele Tsopfack Rea' }),
+      position: t('team.coo'),
+      description: t('team.coo.desc'),
       avatar: "    ",
-      miniDescription: "Supervise les projets"
+      miniDescription: t('team.coo.mini')
     },
     {
       id: 3,
-      name: "Sublime Prod ",
-      position: " Équipe d'Ingénieurs Tech",
-      description: " Pilote la création et la maintenance de notre SuperApp et infrastructure numérique.",
+      name: t('team.tech.name', { defaultValue: 'Sublime Prod' }),
+      position: t('team.tech'),
+      description: t('team.tech.desc'),
       avatar: " ",
-      miniDescription: "Développement fullstack"
+      miniDescription: t('team.tech.mini')
     },
     {
       id: 4,
-      name: "Patience Gheghe Kisob",
-      position: "Responsable Marketing",
-      description: " Dirige le branding, la sensibilisation et les communications digitales",
+      name: t('team.marketing.name', { defaultValue: 'Patience Gheghe Kisob' }),
+      position: t('team.marketing'),
+      description: t('team.marketing.desc'),
       avatar: personne3,
-      miniDescription: "Communication digitale"
+      miniDescription: t('team.marketing.mini')
     },
-    
   ];
 
   const [currentMember, setCurrentMember] = useState(teamMembers[0]);
@@ -83,7 +85,7 @@ const Teams = () => {
         variants={textVariants}
         transition={{ delay: 0.2 }}
       >
-        Rencontrez l'équipe
+        {t('teams.title')}
       </motion.p>
       <div className="h-auto bg-blue-500">
         <div className="container mx-auto px-4 sm:px-6 md:px-10 lg:px-20 py-8 max-md:py-4">
@@ -164,8 +166,6 @@ const Teams = () => {
                 <div className='bg-blue-700 transition-discrete cursor-pointer hover:bg-blue-600 rounded-full pl-3 pt-3 pb-3'>
                   <ChevronRight className="w-5 h-5 text-white" />
                 </div>
-                
-
               </motion.button>
             </div>
 
@@ -201,7 +201,7 @@ const Teams = () => {
           </div>
         </div>
 
-        {/*  Masquée sur mobile */}
+        {/* Masquée sur mobile */}
         <motion.div
           className="hidden md:flex bg-green-600 justify-center py-7 space-x-4 sm:space-x-6 md:space-x-8 lg:space-x-30"
           initial="hidden"

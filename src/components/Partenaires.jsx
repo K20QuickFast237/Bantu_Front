@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { Facebook } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
 const Partenaires = () => {
+  const { t } = useTranslation();
   const scrollRef = useRef(null);
 
   const partners = [
@@ -102,8 +104,7 @@ const Partenaires = () => {
           {/* Titre */}
           <div className="flex-shrink-0">
             <h2 className="text-2xl md:text-4xl font-bold text-green-600 leading-snug">
-              Nos différents<br />
-              partenaires
+              {t('partenaires.title')}
             </h2>
           </div>
 

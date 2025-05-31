@@ -1,51 +1,45 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from 'react-i18next';
 
 const Testimonials = () => {
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const testimonials = [
     {
-      name: "Alexia princess",
-      role: "Agent à la banque SNK",
+      name: t('testimonials.testimonial1.name'),
+      role: t('testimonials.testimonial1.role'),
       image:
         "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=400&q=80",
-      content: `Depuis sa création en 2006, Smashing Magazine est une référence incontournable pour les développeurs et designers web. Le blog propose des articles approfondis sur des sujets variés...
-
-Depuis sa création en 2006, Smashing Magazine est une référence incontournable pour les développeurs.`,
+      content: t('testimonials.testimonial1.content'),
     },
     {
-      name: "David M.",
-      role: "Développeur Web",
+      name: t('testimonials.testimonial2.name'),
+      role: t('testimonials.testimonial2.role'),
       image:
         "https://images.unsplash.com/photo-1603415526960-f8f0a1f95edf?auto=format&fit=crop&w=400&q=80",
-      content: `Un blog complet et très utile pour ma veille techno. J'apprécie surtout la profondeur des articles.
-
-Merci pour ce contenu de qualité.`,
+      content: t('testimonials.testimonial2.content'),
     },
     {
-      name: "Sarah K.",
-      role: "UX Designer",
+      name: t('testimonials.testimonial3.name'),
+      role: t('testimonials.testimonial3.role'),
       image:
         "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
-      content: `Des ressources indispensables pour améliorer l'expérience utilisateur. Chaque article est clair et bien rédigé.`,
+      content: t('testimonials.testimonial3.content'),
     },
     {
-      name: "Thomas L.",
-      role: "Ingénieur Logiciel",
+      name: t('testimonials.testimonial4.name'),
+      role: t('testimonials.testimonial4.role'),
       image:
         "https://images.unsplash.com/photo-1620207418302-439b387441b0?auto=format&fit=crop&w=400&q=80",
-      content: `Le blog m'a aidé à progresser techniquement sur de nombreux sujets.
-
-Je le recommande à tous les développeurs.`,
+      content: t('testimonials.testimonial4.content'),
     },
     {
-      name: "Julie P.",
-      role: "Chef de projet IT",
+      name: t('testimonials.testimonial5.name'),
+      role: t('testimonials.testimonial5.role'),
       image:
         "https://images.unsplash.com/photo-1614281264946-0af2c61890f2?auto=format&fit=crop&w=400&q=80",
-      content: `Une vraie mine d'or pour suivre les tendances web.
-
-Excellent travail éditorial !`,
+      content: t('testimonials.testimonial5.content'),
     },
   ];
 
@@ -63,12 +57,13 @@ Excellent travail éditorial !`,
   return (
     <div className="bg-[#E9EEF6] py-16 px-4 flex flex-col items-center justify-center">
       <h2 className="text-black font-semibold text-5xl mb-2">
-        Quelques retours de
+        {t('testimonials.title')}
       </h2>
       
         <span className=" h-10 w-90 bg-blue-600 mt-8"></span>
         <h3 className="text-green-500 mt-[-80px] font-bold text-6xl mb-6">
-        Nos clients </h3>
+        {t('testimonials.clients')}
+      </h3>
 
       <div className="bg-white rounded-xl mt-10 p-6 w-full max-w-xl shadow-md relative flex flex-col md:flex-row items-start gap-4">
         <div className="flex-1">
@@ -85,7 +80,7 @@ Excellent travail éditorial !`,
         <img
           src={testimonials[currentIndex].image}
           alt={testimonials[currentIndex].name}
-          className="w-50  h-50 object-cover  rounded-md"
+          className="w-50 h-50 object-cover rounded-md"
         />
       </div>
 

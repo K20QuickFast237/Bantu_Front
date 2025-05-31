@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const BlogListing = () => {
+  const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -11,60 +13,60 @@ const BlogListing = () => {
   const allPosts = [
     {
       id: 1,
-      title: "Smashing Magazine - Juin 12-20",
-      author: "Miranda Belviane",
-      date: "16/01/2024",
-      description: "Depuis sa création en 2006, Smashing Magazine est une référence incontournable pour les développeurs et designers web. Il offre une mine d'or d'articles approfondis sur des sujets variés...",
+      title: t('blog.listing.post1.title'),
+      author: t('blog.listing.post1.author'),
+      date: t('blog.listing.post1.date'),
+      description: t('blog.listing.post1.desc'),
       category: "tech class"
     },
     {
       id: 2,
-      title: "Smashing Magazine - Juin 12-20",
-      author: "Miranda Belviane",
-      date: "16/01/2024",
-      description: "Depuis sa création en 2006, Smashing Magazine est une référence incontournable pour les développeurs et designers web. Il offre une mine d'or d'articles approfondis sur des sujets variés...",
+      title: t('blog.listing.post2.title'),
+      author: t('blog.listing.post2.author'),
+      date: t('blog.listing.post2.date'),
+      description: t('blog.listing.post2.desc'),
       category: "Blockchain"
     },
     {
       id: 3,
-      title: "Smashing Magazine - Juin 12-20",
-      author: "Miranda Belviane",
-      date: "16/01/2024",
-      description: "Depuis sa création en 2006, Smashing Magazine est une référence incontournable pour les développeurs et designers web. Il offre une mine d'or d'articles approfondis sur des sujets variés...",
+      title: t('blog.listing.post3.title'),
+      author: t('blog.listing.post3.author'),
+      date: t('blog.listing.post3.date'),
+      description: t('blog.listing.post3.desc'),
       category: "Startup School"
     },
     {
       id: 4,
-      title: "Advanced React Patterns",
-      author: "John Doe",
-      date: "15/01/2024",
-      description: "Explorez les patterns avancés de React pour créer des applications plus robustes et maintenables...",
+      title: t('blog.listing.post4.title'),
+      author: t('blog.listing.post4.author'),
+      date: t('blog.listing.post4.date'),
+      description: t('blog.listing.post4.desc'),
       category: "tech class"
     },
     {
       id: 5,
-      title: "Blockchain Fundamentals",
-      author: "Jane Smith",
-      date: "14/01/2024",
-      description: "Une introduction complète aux concepts fondamentaux de la blockchain et ses applications...",
+      title: t('blog.listing.post5.title'),
+      author: t('blog.listing.post5.author'),
+      date: t('blog.listing.post5.date'),
+      description: t('blog.listing.post5.desc'),
       category: "Blockchain"
     },
     {
       id: 6,
-      title: "Design Systems Guide",
-      author: "Alice Johnson",
-      date: "13/01/2024",
-      description: "Comment créer et maintenir des systèmes de design efficaces pour vos équipes...",
+      title: t('blog.listing.post6.title'),
+      author: t('blog.listing.post6.author'),
+      date: t('blog.listing.post6.date'),
+      description: t('blog.listing.post6.desc'),
       category: "Learning in VR"
     }
   ];
 
   const categories = [
-    { name: "tech class", color: "bg-blue-500" },
-    { name: "Blockchain", color: "bg-gray-600" },
-    { name: "Startup School", color: "bg-gray-600" },
-    { name: "Learning in VR", color: "bg-gray-600" },
-    { name: "Computers", color: "bg-gray-600" }
+    { name: t('blog.category.tech_class'), color: "bg-blue-500" },
+    { name: t('blog.category.blockchain'), color: "bg-gray-600" },
+    { name: t('blog.category.startup_school'), color: "bg-gray-600" },
+    { name: t('blog.category.learning_vr'), color: "bg-gray-600" },
+    { name: t('blog.category.computers'), color: "bg-gray-600" }
   ];
 
   useEffect(() => {
@@ -126,13 +128,13 @@ const BlogListing = () => {
             <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-green-600 mb-4 md:mb-6 lg:mb-8 transform transition-all duration-1000 ${
               isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
             }`}>
-              Tous les blogs
+              {t('blog.all_blogs')}
             </h1>
 
             {/* Barre de recherche */}
             <input
               type="text"
-              placeholder="Rechercher un blog..."
+              placeholder={t('search.placeholder')}
               value={localSearch}
               onChange={(e) => setLocalSearch(e.target.value)}
               className="w-full mb-6 p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 transition"
@@ -143,7 +145,7 @@ const BlogListing = () => {
                 <p className={`text-gray-600 text-lg sm:text-xl transform transition-all duration-1000 delay-200 ${
                   isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                 }`}>
-                  Aucun blog trouvé{localSearch ? ` pour "${localSearch}"` : ''}
+                  {t('search.no_results')}{localSearch ? ` ${t('blog.search_for')} "${localSearch}"` : ''}
                 </p>
               ) : (
                 currentPosts.map((post, index) => (
@@ -159,12 +161,12 @@ const BlogListing = () => {
                   >
                     <h2 className="text-xl sm:text-2xl font-extrabold text-gray-800 mb-2">{post.title}</h2>
                     <div className="flex items-center mb-3">
-                      Par <span className='text-blue-700 ml-1 mr-1'>{post.author}</span> {post.date}
+                      {t('blog.by')} <span className='text-blue-700 ml-1 mr-1'>{post.author}</span> {post.date}
                     </div>
                     <p className="text-lg sm:text-xl leading-relaxed mb-4">{post.description}</p>
                     <div className="flex items-center justify-between">
                       <button className="text-blue-600 text-lg sm:text-xl font-medium hover:underline flex items-center">
-                        Lire plus 
+                        {t('blog.read_more')}
                         <i className="fas fa-arrow-circle-right ml-2 sm:ml-4 text-lg sm:text-xl text-blue-700"></i>
                       </button>
                     </div>
@@ -184,7 +186,7 @@ const BlogListing = () => {
                   isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                 }`}>
                   <span className="text-sm text-gray-600 text-center">
-                    Vue {startIndex + 1} à {Math.min(startIndex + postsPerPage, filteredPosts.length)} de {filteredPosts.length} posts
+                    {t('blog.pagination.view')} {startIndex + 1} {t('blog.pagination.to')} {Math.min(startIndex + postsPerPage, filteredPosts.length)} {t('blog.pagination.of')} {filteredPosts.length} {t('blog.pagination.posts')}
                   </span>
                 </div>
 
@@ -225,13 +227,13 @@ const BlogListing = () => {
 
           {/* Sidebar Categories */}
           <div className="lg:w-52 lg:order-2 order-1">
-            <h2 className="text-xl font-bold mb-6">Catégories</h2>
+            <h2 className="text-xl font-bold mb-6">{t('blog.categories')}</h2>
             <ul className="space-y-3">
               <li
                 className={`cursor-pointer px-3 py-1 rounded ${selectedCategory === 'all' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-700 hover:bg-gray-400'}`}
                 onClick={() => handleCategoryClick('all')}
               >
-                Tous
+                {t('blog.all')}
               </li>
               {categories.map((cat, i) => (
                 <li

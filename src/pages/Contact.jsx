@@ -6,8 +6,11 @@ import HeroSection from '../components/Hero';
 import sectionHero from '../assets/images/contact_Hero.jpg';
 import ContactSection from '../components/ContactSection';
 import PageLayout from '../components/PageLayout';
+import { useTranslation } from 'react-i18next'; // Importer useTranslation
 
 const Contact = () => {
+    const { t } = useTranslation(); // Initialiser le hook
+
     return (
       <>
        <PageLayout>
@@ -17,10 +20,10 @@ const Contact = () => {
               image={sectionHero}
               overlayColor="bg-blue-950"
               overlayOpacity="opacity-40"
-              title="Contactez nous pour commencer votre voyage"
+              title={t('contact.hero')} // Traduction du titre
               titleColor="text-blue-500"
-              description="Que vous ayez une question sur notre fonctionnalité, les tarifs des services ou toute autre chose, notre équipe est prête à répondre à toutes vos questions"
-              buttonText="Nous Rejoindre"
+              description={t('contact.hero.desc')} // Traduction de la description
+              buttonText={t('contact.join')} // Traduction du bouton
               buttonLink="/join_us"
               buttonColor="blue"
           />

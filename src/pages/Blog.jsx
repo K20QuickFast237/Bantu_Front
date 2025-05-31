@@ -8,22 +8,28 @@ import acceuilCTA from "../assets/images/acceuilCTA.jpg";
 import Testimonials from '../components/Testimonials';
 import PageLayout from "../components/PageLayout";
 import ServicesFooter from "../components/Footer";
-
+import { useTranslation } from 'react-i18next';
 
 function Blog() {
+  const { t } = useTranslation();
   const [searchValue, setSearchValue] = useState('');
 
   return (
     <>
-     <PageLayout >
+      <PageLayout>
         <Header />
         <BlogHero searchValue={searchValue} setSearchValue={setSearchValue} />
         <PLR />
         <BlogListing searchValue={searchValue} />
-        <CTA title="Pret a collaborer avec l'afrique ?" color="white" callToAction=" Nous contacter" image={acceuilCTA} />
+        <CTA 
+          title={t('cta.collaborate_africa')} 
+          color="white" 
+          callToAction={t('cta.contact')} 
+          image={acceuilCTA} 
+        />
         <Testimonials />
-        <ServicesFooter/>   
-     </PageLayout>
+        <ServicesFooter />   
+      </PageLayout>
     </>
   );
 }

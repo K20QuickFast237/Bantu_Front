@@ -4,21 +4,23 @@ import sectionHero from '../assets/images/blog1.png';
 import blogb from '../assets/images/service_Hero.jpg';
 import about5 from '../assets/images/about5.png';
 import blog23 from '../assets/images/blog23.png';
+import { useTranslation } from 'react-i18next';
 
 const BlogHero = ({ searchValue, setSearchValue }) => {
+  const { t } = useTranslation();
+
   const slides = [
     {
       image: blogb,
-      text: `Tnk technolie a aise près de 500 millions d'entreprises dans la réalisation de leur projet futur.
-      Alors le but est de se mettre sur le numérique pour un rendement beaucoup plus élevé sur le marché.`,
+      text: t('blog.hero.slide1'),
     },
     {
       image: about5,
-      text: `Nos services numériques vous aident à transformer vos idées en projets concrets avec impact réel.`,
+      text: t('blog.hero.slide2'),
     },
     {
       image: blog23,
-      text: `Rejoignez notre communauté d'innovateurs et bénéficiez de notre expertise en solutions technologiques.`,
+      text: t('blog.hero.slide3'),
     },
   ];
 
@@ -38,7 +40,7 @@ const BlogHero = ({ searchValue, setSearchValue }) => {
       <div className="absolute inset-0 -z-10 h-full w-full">
         <img
           src={sectionHero}
-          alt="Header background"
+          alt={t('blog.hero.bg_alt')}
           className="object-cover w-full h-full"
         />
       </div>
@@ -52,13 +54,13 @@ const BlogHero = ({ searchValue, setSearchValue }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <p className="text-green-500 text-xl font-bold underline">Tous les blogs</p>
+            <p className="text-green-500 text-xl font-bold underline">{t('blog.all_blogs')}</p>
             <p className="text-white text-lg mt-7">{slides[currentSlide].text}</p>
             <p className="text-white text-lg mt-8">
-              Nous vous souhaitons la bienvenue sur tnk technologies.
+              {t('blog.hero.welcome')}
             </p>
             <button className="text-blue-600 mt-6 font-bold text-xl">
-              Lire plus
+              {t('blog.hero.read_more')}
               <i className="fas fa-arrow-circle-right ml-4 text-xl text-blue-700"></i>
             </button>
           </motion.div>
@@ -73,7 +75,7 @@ const BlogHero = ({ searchValue, setSearchValue }) => {
             <div className="relative w-full h-60 mt-7">
               <img
                 src={slides[currentSlide].image}
-                alt="Carrousel"
+                alt={t('blog.hero.carousel_alt')}
                 className="object-cover rounded-2xl w-full h-full transition duration-1000 ease-in-out"
               />
               {/* Boutons précédent/suivant */}

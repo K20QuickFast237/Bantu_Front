@@ -1,24 +1,14 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-
-import App from './App.jsx'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import App from './App.jsx';
+import { BrowserRouter } from 'react-router'; // Corrigé de 'react-router'
+import './i18n'; // Importer la config i18next
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </StrictMode>,
-)
-
-// import React from 'react';
-// import ReactDOM from 'react-dom/client';
-// import { BrowserRouter } from 'react-router';
-// import App from './App';
-// import './index.css'
-
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(
-//   <BrowserRouter>
-//     <App />
-//   </BrowserRouter>
-// );
+);

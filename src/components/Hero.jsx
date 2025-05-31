@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Button from './Button';
 import { Link } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
 const HeroSection = ({
   image,
@@ -17,6 +18,8 @@ const HeroSection = ({
   onButtonClick,
   className = '',
 }) => {
+  const { t } = useTranslation();
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -32,7 +35,7 @@ const HeroSection = ({
       >
         <img
           src={image}
-          alt="Hero background"
+          alt={t('hero.alt')}
           className="object-cover absolute inset-0 size-full"
         />
         <div className={`absolute inset-0 ${overlayColor} ${overlayOpacity}`}></div>
@@ -63,14 +66,14 @@ const HeroSection = ({
             className="w-full max-md:flex max-md:justify-center"
           >
             <Link to={buttonLink}>
-            <Button
-              variant="filled"
-              color={buttonColor}
-              onClick={onButtonClick}
-              className="px-5 py-2.5 mt-12 font-semibold rounded-lg max-md:mt-8 max-md:w-full max-md:max-w-[300px]"
-            >
-              {buttonText}
-            </Button>
+              <Button
+                variant="filled"
+                color={buttonColor}
+                onClick={onButtonClick}
+                className="px-5 py-2.5 mt-12 font-semibold rounded-lg max-md:mt-8 max-md:w-full max-md:max-w-[300px]"
+              >
+                {buttonText}
+              </Button>
             </Link>
           </motion.div>
         )}
