@@ -4,8 +4,11 @@ import { ChartBar, ChartPie, ChartLine } from 'lucide-react';
 import about2 from '../assets/images/about2.png';
 import about3 from '../assets/images/about3.png';
 import about4 from '../assets/images/about4.png';
+import { useTranslation } from 'react-i18next';
 
 function Valeurs() {
+  const { t } = useTranslation();
+
   const textVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
@@ -26,7 +29,7 @@ function Valeurs() {
           variants={textVariants}
           transition={{ delay: 0.2 }}
         >
-          Valeurs fondamentales
+          {t('valeurs.title')}
         </motion.h1>
         <motion.h1
           className="text-2xl sm:text-3xl mt-6 lg:mt-10 font-bold text-center text-green-600 max-md:text-xl"
@@ -35,7 +38,7 @@ function Valeurs() {
           variants={textVariants}
           transition={{ delay: 0.4 }}
         >
-          Nos principes pour un impact durable
+          {t('valeurs.subtitle')}
         </motion.h1>
 
         <div className="py-8 md:py-16 px-4">
@@ -54,19 +57,23 @@ function Valeurs() {
               </motion.div>
 
               {/* Cards */}
-              {[{
-                icon: <ChartBar className="w-8 md:w-10 h-8 md:h-10 text-white" />,
-                title: "Innovation",
-                text: "Trouver continuellement des solutions créatives et efficaces aux problèmes réels",
-              }, {
-                icon: <ChartPie className="w-8 md:w-10 h-8 md:h-10 text-white" />,
-                title: "Communauté",
-                text: "Mettre les personnes au centre de nos actions avec une approche inclusive et culturelle.",
-              }, {
-                icon: <ChartLine className="w-8 md:w-10 h-8 md:h-10 text-white" />,
-                title: "Excellence",
-                text: "S'engager à atteindre les plus hauts standards dans tous nos projets",
-              }].map((item, index) => (
+              {[
+                {
+                  icon: <ChartBar className="w-8 md:w-10 h-8 md:h-10 text-white" />,
+                  title: t('valeurs.cards.innovation.title'),
+                  text: t('valeurs.cards.innovation.text'),
+                },
+                {
+                  icon: <ChartPie className="w-8 md:w-10 h-8 md:h-10 text-white" />,
+                  title: t('valeurs.cards.community.title'),
+                  text: t('valeurs.cards.community.text'),
+                },
+                {
+                  icon: <ChartLine className="w-8 md:w-10 h-8 md:h-10 text-white" />,
+                  title: t('valeurs.cards.excellence.title'),
+                  text: t('valeurs.cards.excellence.text'),
+                },
+              ].map((item, index) => (
                 <motion.div
                   key={item.title}
                   className="bg-white p-6 md:p-8 text-center relative z-10"
@@ -95,27 +102,31 @@ function Valeurs() {
         variants={textVariants}
         transition={{ delay: 0.2 }}
       >
-        Notre impact
+        {t('valeurs.impact.title')}
       </motion.p>
 
       <div className="bg-white py-8 md:py-16 px-4">
         <div className="max-w-6xl mx-auto grid grid-cols-1 cursor-pointer md:grid-cols-3 gap-6">
-          {[{
-            img: about4,
-            alt: "Innovation",
-            title: "Innovation",
-            text: "Trouver continuellement des solutions créatives et efficaces aux problèmes réels"
-          }, {
-            img: about2,
-            alt: "Communauté",
-            title: "Communauté",
-            text: "Mettre les personnes au centre de nos actions avec une approche inclusive et culturelle."
-          }, {
-            img: about3,
-            alt: "Environnemental",
-            title: "Environnemental",
-            text: "Formation des jeunes et soutien à l'innovation locale par des incubateurs et des programmes de mentorat."
-          }].map((item, index) => (
+          {[
+            {
+              img: about4,
+              alt: t('valeurs.impact.cards.innovation.alt'),
+              title: t('valeurs.impact.cards.innovation.title'),
+              text: t('valeurs.impact.cards.innovation.text'),
+            },
+            {
+              img: about2,
+              alt: t('valeurs.impact.cards.community.alt'),
+              title: t('valeurs.impact.cards.community.title'),
+              text: t('valeurs.impact.cards.community.text'),
+            },
+            {
+              img: about3,
+              alt: t('valeurs.impact.cards.environmental.alt'),
+              title: t('valeurs.impact.cards.environmental.title'),
+              text: t('valeurs.impact.cards.environmental.text'),
+            },
+          ].map((item, index) => (
             <motion.div
               key={item.title}
               className="relative overflow-hidden rounded-lg h-64 md:h-80 group"

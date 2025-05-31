@@ -3,8 +3,10 @@ import { Phone, Mail, MapPin, ChevronDown, ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import contact1 from '../assets/images/contact1.jpg';
 import Button from './Button';
+import { useTranslation } from 'react-i18next'; // Importer useTranslation
 
 const ContactSection = () => {
+  const { t } = useTranslation(); // Initialiser le hook
   const [formData, setFormData] = useState({
     noms: '',
     email: '',
@@ -21,32 +23,32 @@ const ContactSection = () => {
     {
       id: 1,
       category: 'General',
-      question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ?',
-      answer: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+      question: t('faqData.general.question1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ?'), // Clé par défaut si non traduite
+      answer: t('faqData.general.answer1', 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')
     },
     {
       id: 2,
       category: 'General',
-      question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ?',
-      answer: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+      question: t('faqData.general.question2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ?'),
+      answer: t('faqData.general.answer2', 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')
     },
     {
       id: 3,
       category: 'Services',
-      question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ?',
-      answer: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+      question: t('faqData.services.question1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ?'),
+      answer: t('faqData.services.answer1', 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')
     },
     {
       id: 4,
       category: 'Fonctionnalités',
-      question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ?',
-      answer: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+      question: t('faqData.features.question1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ?'),
+      answer: t('faqData.features.answer1', 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')
     },
     {
       id: 5,
       category: 'Autres',
-      question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ?',
-      answer: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+      question: t('faqData.others.question1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ?'),
+      answer: t('faqData.others.answer1', 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')
     }
   ];
 
@@ -120,8 +122,8 @@ const ContactSection = () => {
             >
               <Phone className="w-6 h-6 text-green-600" />
             </motion.div>
-            <p className="text-gray-500 text-sm mb-3">Appeler à tout moment</p>
-            <p className="text-blue-600 font-semibold text-lg">+880 1234-456789</p>
+            <p className="text-gray-500 text-sm mb-3">{t('contact.call_anytime')}</p>
+            <p className="text-blue-600 font-semibold text-lg">{t('contact.phone')}</p>
           </motion.div>
 
           {/* Email Card */}
@@ -137,8 +139,8 @@ const ContactSection = () => {
             >
               <Mail className="w-6 h-6 text-green-600" />
             </motion.div>
-            <p className="text-gray-500 text-sm mb-3">Écrire un e-mail</p>
-            <p className="text-blue-600 font-semibold text-lg">adresse@gmail.com</p>
+            <p className="text-gray-500 text-sm mb-3">{t('contact.write_email')}</p>
+            <p className="text-blue-600 font-semibold text-lg">{t('contact.email')}</p>
           </motion.div>
 
           {/* Location Card */}
@@ -154,8 +156,8 @@ const ContactSection = () => {
             >
               <MapPin className="w-6 h-6 text-green-600" />
             </motion.div>
-            <p className="text-gray-500 text-sm mb-3">Visiter le bureau</p>
-            <p className="text-blue-600 font-semibold text-lg">Location, Streep</p>
+            <p className="text-gray-500 text-sm mb-3">{t('contact.visit_office')}</p>
+            <p className="text-blue-600 font-semibold text-lg">{t('contact.location')}</p>
           </motion.div>
         </div>
 
@@ -186,13 +188,13 @@ const ContactSection = () => {
                 variants={cardVariants}
                 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 md:mb-3"
               >
-                Réserver un appel rapide
+                {t('contact.book_call')}
               </motion.h2>
               <motion.p 
                 variants={cardVariants}
                 className="text-gray-600 mb-4 md:mb-8"
               >
-                obtenir 15 minute de consultation gratuite
+                {t('contact.book_call_desc')}
               </motion.p>
 
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -200,7 +202,7 @@ const ContactSection = () => {
                   <input
                     type="text"
                     name="noms"
-                    placeholder="Noms *"
+                    placeholder={t('contact.form.names')}
                     value={formData.noms}
                     onChange={handleInputChange}
                     className="w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
@@ -212,7 +214,7 @@ const ContactSection = () => {
                   <input
                     type="email"
                     name="email"
-                    placeholder="Email *"
+                    placeholder={t('contact.form.email')}
                     value={formData.email}
                     onChange={handleInputChange}
                     className="w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
@@ -224,7 +226,7 @@ const ContactSection = () => {
                   <input
                     type="text"
                     name="sujet"
-                    placeholder="Sujet *"
+                    placeholder={t('contact.form.subject')}
                     value={formData.sujet}
                     onChange={handleInputChange}
                     className="w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl  bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
@@ -235,7 +237,7 @@ const ContactSection = () => {
                 <motion.div variants={cardVariants}>
                   <textarea
                     name="message"
-                    placeholder="Message *"
+                    placeholder={t('contact.form.message')}
                     value={formData.message}
                     onChange={handleInputChange}
                     rows="4"
@@ -244,7 +246,7 @@ const ContactSection = () => {
                   ></textarea>
                 </motion.div>
                 <motion.div variants={cardVariants}>
-                  <Button color="blue" variant='filled' children='Souscrire' type='submit'/>
+                  <Button color="blue" variant='filled' children={t('contact.form.submit')} type='submit'/>
                 </motion.div>
               </form>
             </motion.div>
@@ -260,9 +262,9 @@ const ContactSection = () => {
             variants={cardVariants}
             className="mb-6 md:mb-8"
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4">FAQ</h2>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4">{t('faq.title')}</h2>
             <p className="text-gray-600 text-base sm:text-lg max-w-2xl">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              {t('faq.description')}
             </p>
           </motion.div>
 
@@ -284,7 +286,7 @@ const ContactSection = () => {
                     : 'bg-white text-gray-600 hover:bg-gray-50 hover:shadow-md'
                 }`}
               >
-                {category}
+                {t(`faq.category.${category}`, category)} {/* Traduction des catégories si nécessaire */}
               </motion.button>
             ))}
           </motion.div>

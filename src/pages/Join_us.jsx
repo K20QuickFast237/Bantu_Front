@@ -5,19 +5,15 @@ import JoinC from "../components/JoinC"
 import ServicesFooter from "../components/Footer";
 import PageLayout from "../components/PageLayout";
 
-function Join_us (){
+function Join_us() {
     return (
-        <>
         <PageLayout>
-
             <Header />
             <Join_usHero />
             <JoinV />
             <JoinC />
-            <ServicesFooter/>
-            
+            <ServicesFooter />
         </PageLayout>
-        </>
     )
 }
 

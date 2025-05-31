@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const ServiceCard = ({
   icon,
@@ -8,6 +9,7 @@ const ServiceCard = ({
   variant = 'default',
   className = ''
 }) => {
+  const { t } = useTranslation();
   const isgradient = variant === 'gradient';
 
   return (
@@ -41,7 +43,7 @@ const ServiceCard = ({
           isgradient ? 'text-white' : 'text-sky-600'
         }`}
       >
-        <span className="grow">En savoir plus</span>
+        <span className="grow">{t('services.card.learn_more')}</span>
         <img
           src={isgradient ? "https://cdn.builder.io/api/v1/image/assets/TEMP/6c4add3c62eec96966a6e88cb099a7dc7ae4ad0f?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab" : "https://cdn.builder.io/api/v1/image/assets/TEMP/2721cc9bce8f85e4129db62b89833e6aafd3d731?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"}
           alt="Arrow icon"
@@ -55,6 +57,8 @@ const ServiceCard = ({
 };
 
 const ServicesShowcase = () => {
+  const { t } = useTranslation();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -91,14 +95,14 @@ const ServicesShowcase = () => {
         >
           <div className="shrink-0 my-auto h-px bg-sky-600 border border-sky-600 border-solid w-[100px] sm:w-[170px]" />
           <h2 className="flex-auto text-sky-600 w-[200px] sm:w-[264px]">
-            Services que nous offrons
+            {t('blog.services')}
           </h2>
         </motion.div>
         <motion.h3 
           variants={itemVariants}
           className="self-center mt-8 sm:mt-14 text-3xl sm:text-4xl md:text-4xl font-bold text-center capitalize text-neutral-800 w-full sm:w-[854px]"
         >
-          explorez notre gamme complète de services conçus pour élever vos projets.
+          {t('blog.explore')}
         </motion.h3>
 
         <motion.div 
@@ -108,23 +112,23 @@ const ServicesShowcase = () => {
           <motion.div variants={itemVariants}>
             <ServiceCard
               icon="https://cdn.builder.io/api/v1/image/assets/TEMP/5e983adaf13233615cbc2737e0ea06a719d17a72?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"
-              title="Développement Tech"
-              description="Solutions numériques adaptées aux besoins locaux."
+              title={t('service.tech')}
+              description={t('service.tech.desc')}
               variant="gradient"
             />
           </motion.div>
           <motion.div variants={itemVariants}>
             <ServiceCard
               icon="https://cdn.builder.io/api/v1/image/assets/TEMP/0f1bcb7106489ec19f016c9c371758a571a316dd?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"
-              title="Incubation"
-              description="Accompagnement des startups et projets innovants."
+              title={t('service.incubation')}
+              description={t('service.incubation.desc')}
             />
           </motion.div>
           <motion.div variants={itemVariants}>
             <ServiceCard
               icon="https://cdn.builder.io/api/v1/image/assets/TEMP/0f453f1386e1cf6fd38ebed2a6e0db57c5859895?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"
-              title="Conseil"
-              description="Expertise stratégique pour réussir vos initiatives."
+              title={t('service.consulting')}
+              description={t('service.consulting.desc')}
             />
           </motion.div>
         </motion.div>
@@ -136,22 +140,22 @@ const ServicesShowcase = () => {
           <motion.div variants={itemVariants}>
             <ServiceCard
               icon="https://cdn.builder.io/api/v1/image/assets/TEMP/02ea8388d48d173c2b980bbeba5e4222761422db?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"
-              title="Autonomisation"
-              description="Nous créons des initiatives pour renforcer les capacités locales."
+              title={t('service.autonomisation')}
+              description={t('service.autonomisation.desc')}
             />
           </motion.div>
           <motion.div variants={itemVariants}>
             <ServiceCard
               icon="https://cdn.builder.io/api/v1/image/assets/TEMP/02ea8388d48d173c2b980bbeba5e4222761422db?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"
-              title="Autonomisation"
-              description="Nous créons des initiatives pour renforcer les capacités locales."
+              title={t('service.autonomisation')}
+              description={t('service.autonomisation.desc')}
             />
           </motion.div>
           <motion.div variants={itemVariants}>
             <ServiceCard
               icon="https://cdn.builder.io/api/v1/image/assets/TEMP/02ea8388d48d173c2b980bbeba5e4222761422db?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"
-              title="Autonomisation"
-              description="Nous créons des initiatives pour renforcer les capacités locales."
+              title={t('service.autonomisation')}
+              description={t('service.autonomisation.desc')}
             />
           </motion.div>
         </motion.div>

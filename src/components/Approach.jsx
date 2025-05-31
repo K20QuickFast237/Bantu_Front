@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import service2 from '../assets/images/service2.jpg'
+import service2 from '../assets/images/service2.jpg';
+import { useTranslation } from 'react-i18next';
 
 const ApproachStep = ({ number, title, description }) => (
   <motion.div 
@@ -28,6 +29,8 @@ const ApproachStep = ({ number, title, description }) => (
 );
 
 const ApproachSection = () => {
+  const { t } = useTranslation();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -78,7 +81,7 @@ const ApproachSection = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
             src={service2}
-            alt="Approach illustration"
+            alt={t('approach.image_alt')}
             className="h-[300px] md:h-[550px] w-full object-cover rounded-2xl md:rounded-3xl"
           />
         </motion.div>
@@ -89,14 +92,14 @@ const ApproachSection = () => {
               className="flex gap-4 md:gap-8 self-start text-sm md:text-base font-semibold text-sky-600 uppercase whitespace-nowrap"
             >
               <div className="shrink-0 my-auto h-px bg-sky-600 border border-sky-600 border-solid w-[100px] md:w-[170px]" />
-              <span className="text-sky-600">approches</span>
+              <span className="text-sky-600">{t('approach.title')}</span>
             </motion.div>
 
             <motion.h2 
               variants={itemVariants}
               className="mt-3.5 text-3xl md:text-5xl font-bold text-black"
             >
-              Découvrez Notre approche en 3 étapes clés
+              {t('approach.main_title')}
             </motion.h2>
 
             <motion.div 
@@ -106,22 +109,22 @@ const ApproachSection = () => {
               <motion.div variants={itemVariants}>
                 <ApproachStep
                   number="01"
-                  title="Diagnostic des besoins."
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+                  title={t('approach.step1.title')}
+                  description={t('approach.step1.desc')}
                 />
               </motion.div>
               <motion.div variants={itemVariants}>
                 <ApproachStep
                   number="02"
-                  title="Co-construction des solutions."
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+                  title={t('approach.step2.title')}
+                  description={t('approach.step2.desc')}
                 />
               </motion.div>
               <motion.div variants={itemVariants}>
                 <ApproachStep
                   number="03"
-                  title="Suivi et accompagnement."
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+                  title={t('approach.step3.title')}
+                  description={t('approach.step3.desc')}
                 />
               </motion.div>
             </motion.div>

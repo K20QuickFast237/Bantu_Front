@@ -7,28 +7,32 @@ import Teams from "../components/Teams"
 import CTA from "../components/CTA"
 import acceuilCTA from "../assets/images/acceuilCTA.jpg";
 import PageLayout from "../components/PageLayout";
-
 import ServicesFooter from "../components/Footer";
+import { useTranslation } from 'react-i18next';
 
+function About() {
+  const { t } = useTranslation();
 
-function About(){
-     return(
-        <>
-        <PageLayout>
-            <main className="flex overflow-hidden flex-col bg-white">  
-                <Header />
-                <AboutHero />
-                <Mission />
-                <Valeurs />
-                <Partenaires />
-                <Teams />
-                <CTA title="Rejoignez nous pour plus d'innovation" callToAction=" Abonnez-vous pour les dernières nouvelles,
- mises à jour et opportunités" image={acceuilCTA}/>
-                <ServicesFooter/>
-            </main>
-        </PageLayout>
-        </>
-     )
+  return (
+    <>
+      <PageLayout>
+        <main className="flex overflow-hidden flex-col bg-white">  
+          <Header />
+          <AboutHero />
+          <Mission />
+          <Valeurs />
+          <Partenaires />
+          <Teams />
+          <CTA 
+            title={t('cta.join_innovation')} 
+            callToAction={t('cta.subscribe')} 
+            image={acceuilCTA}
+          />
+          <ServicesFooter/>
+        </main>
+      </PageLayout>
+    </>
+  );
 }
 
-export default About
+export default About;

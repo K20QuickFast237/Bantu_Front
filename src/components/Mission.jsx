@@ -6,8 +6,11 @@ import about3 from '../assets/images/about3.png';
 import { Link, useLocation } from 'react-router';
 import about4 from '../assets/images/about4.png';
 import about5 from '../assets/images/about5.png';
+import { useTranslation } from 'react-i18next';
 
 function Mission() {
+  const { t } = useTranslation();
+
   const textVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -44,7 +47,7 @@ function Mission() {
         >
           <img
             src={about2}
-            alt="Header mobile"
+            alt={t('mission.image_alt')}
             className="object-cover rounded-xl absolute inset-0 w-full h-full"
           />
         </motion.div>
@@ -54,7 +57,7 @@ function Mission() {
           variants={textVariants}
           transition={{ delay: 0.2 }}
         >
-          Notre mission
+          {t('mission.title')}
         </motion.h1>
 
         <motion.p
@@ -62,10 +65,7 @@ function Mission() {
           variants={textVariants}
           transition={{ delay: 0.4 }}
         >
-         Développer et fournir des solutions numériques de pointe qui
- améliorent la vie, autonomisent les communautés et créent une valeur socio
-économique durable à travers l'Afrique via des plateformes inclusives, des
- partenariats et l'innovation.
+          {t('mission.description1')}
         </motion.p>
 
         <motion.p
@@ -73,9 +73,7 @@ function Mission() {
           variants={textVariants}
           transition={{ delay: 0.6 }}
         >
-          Devenir le principal hub d'innovation numérique en Afrique, intégrant
- sans effort emploi, commerce, services professionnels et développement
- communautaire dans un écosystème transformationnel unique.
+          {t('mission.description2')}
         </motion.p>
 
         <motion.div
@@ -83,15 +81,14 @@ function Mission() {
           transition={{ delay: 0.8 }}
         >
           <Link to="/projets">
-  <Button 
-    variant="filled" 
-    color="blue" 
-    className="font-semibold mt-6 lg:mt-10 rounded-lg w-full sm:w-auto"
-  >
-    Découvrir nos projets
-  </Button>
-</Link>
-          
+            <Button 
+              variant="filled" 
+              color="blue" 
+              className="font-semibold mt-6 lg:mt-10 rounded-lg w-full sm:w-auto"
+            >
+              {t('mission.button')}
+            </Button>
+          </Link>
         </motion.div>
       </motion.div>
 
@@ -110,7 +107,7 @@ function Mission() {
           >
             <img
               src={about2}
-              alt="Header background"
+              alt={t('mission.image_alt')}
               className="object-cover rounded-xl absolute inset-0 size-full"
             />
           </motion.div>
@@ -121,7 +118,7 @@ function Mission() {
           >
             <img
               src={about3}
-              alt="Header background"
+              alt={t('mission.image_alt')}
               className="object-cover rounded-xl inset-0 size-full"
             />
           </motion.div>
@@ -134,7 +131,7 @@ function Mission() {
           >
             <img
               src={about4}
-              alt="Header background"
+              alt={t('mission.image_alt')}
               className="object-cover rounded-xl inset-0 size-full"
             />
           </motion.div>
@@ -145,7 +142,7 @@ function Mission() {
           >
             <img
               src={about5}
-              alt="Header background"
+              alt={t('mission.image_alt')}
               className="object-cover rounded-xl inset-0 size-full"
             />
           </motion.div>

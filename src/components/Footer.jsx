@@ -1,13 +1,14 @@
 import React from 'react';
-import Logo from '../assets/images/logo.svg'
+import { useTranslation } from 'react-i18next';
+import Logo from '../assets/images/logo.svg';
 import { FaFacebookF, FaLinkedinIn, FaTwitter, FaWhatsapp } from 'react-icons/fa';
-import { ArrowUp } from 'lucide-react';
 import Button from './Button';
-import NewLetter from '../assets/images/NewLetter.png'
+import NewLetter from '../assets/images/NewLetter.png';
 import { motion } from 'framer-motion';
 
-
 const NewsletterSection = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="self-center mt-25 max-w-full rounded-[30px] px-20 max-md:px-5 max-md:mt-10">
       <motion.div 
@@ -19,17 +20,16 @@ const NewsletterSection = () => {
         <div className="w-[69%] max-md:w-full">
           <div className="flex flex-col px-20 py-16 w-full max-md:px-5 max-md:py-10 max-md:mt-10 max-md:max-w-full">
             <h2 className="text-4xl font-semibold text-white leading-tight max-md:text-2xl max-md:max-w-full">
-               Restez Connecté avec TNK Synergies
+              {t('footer.newsletter.title')}
             </h2>
-
             <form className="flex justify-between py-2 pr-3 pl-9 mt-12 w-full bg-white rounded-2xl max-md:flex-col max-md:gap-4 max-md:pl-5 max-md:mt-10 max-md:max-w-full">
               <input
                 type="email"
-                placeholder="Entrer votre adresse mail ici"
+                placeholder={t('footer.newsletter.placeholder')}
                 className="my-auto text-lg text-gray-600 bg-transparent outline-none w-[80%] max-md:w-full"
               />
               <Button variant="filled" color="green" type="submit" className="max-md:w-full">
-                Souscrire
+                {t('footer.newsletter.submit')}
               </Button>
             </form>
           </div>
@@ -37,7 +37,7 @@ const NewsletterSection = () => {
         <div className="ml-6 w-[27.5%] max-md:hidden">
           <img
             src={NewLetter}
-            alt="Newsletter illustration"
+            alt={t('footer.newsletter.alt')}
             className="mt-[-189px]"
           />
         </div>
@@ -47,6 +47,8 @@ const NewsletterSection = () => {
 };
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -61,11 +63,12 @@ const Footer = () => {
           <div className="w-[50%] h-full bg-white/20 backdrop-blur-lg rounded-lg px-16 py-8 space-y-6 max-md:w-full max-md:px-8">
             <img
               src={Logo}
-              alt="Company logo"
+              alt={t('footer.logo.alt')}
               className="w-[40%] cursor-pointer mix-blend-multiply max-md:w-[60%]"
+              onClick={scrollToTop}
             />
             <p className="text-sm text-white">
-              TNK Synergies Ltd est une entreprise axée sur l'innovation, dédiée au développement de projets technologiques et communautaires visant à autonomiser les communautés africaines.
+              {t('footer.description')}
             </p>
           </div>
           
@@ -74,7 +77,7 @@ const Footer = () => {
               <div className="w-[50%] max-md:w-full">
                 <div className="flex flex-col mt-1.5 text-sm text-white max-md:mt-10">
                   <h3 className="text-lg font-medium text-white max-md:mr-1.5">
-                    Informations
+                    {t('footer.info.title')}
                   </h3>
                   <motion.a 
                     whileHover={{ x: 5, color: "#33C12B" }}
@@ -82,7 +85,7 @@ const Footer = () => {
                     href="#" 
                     className="self-start mt-8 max-md:mt-4"
                   >
-                    FAQ
+                    {t('footer.info.faq')}
                   </motion.a>
                   <motion.a 
                     whileHover={{ x: 5, color: "#33C12B" }}
@@ -90,7 +93,7 @@ const Footer = () => {
                     href="/blog" 
                     className="mt-2.5"
                   >
-                    Blog et actualités
+                    {t('footer.info.blog')}
                   </motion.a>
                   <motion.a 
                     whileHover={{ x: 5, color: "#33C12B" }}
@@ -98,14 +101,14 @@ const Footer = () => {
                     href="#" 
                     className="self-start mt-2.5"
                   >
-                    Support
+                    {t('footer.info.support')}
                   </motion.a>
                 </div>
               </div>
               <div className="w-[50%] max-md:w-full">
                 <div className="flex flex-col mt-1.5 text-sm text-white max-md:mt-10">
                   <h3 className="text-lg font-medium text-white max-md:mr-1.5">
-                    Liens Utiles
+                    {t('footer.links.title')}
                   </h3>
                   <motion.a 
                     whileHover={{ x: 5, color: "#33C12B" }}
@@ -113,7 +116,7 @@ const Footer = () => {
                     href="/about" 
                     className="mt-3"
                   >
-                    A propos
+                    {t('footer.links.about')}
                   </motion.a>
                   <motion.a 
                     whileHover={{ x: 5, color: "#33C12B" }}
@@ -121,7 +124,7 @@ const Footer = () => {
                     href="/projets" 
                     className="mt-2.5"
                   >
-                    Nos Projets
+                    {t('footer.links.projects')}
                   </motion.a>
                   <motion.a 
                     whileHover={{ x: 5, color: "#33C12B" }}
@@ -129,7 +132,7 @@ const Footer = () => {
                     href="/services" 
                     className="mt-2.5"
                   >
-                    Services
+                    {t('footer.links.services')}
                   </motion.a>
                   <motion.a 
                     whileHover={{ x: 5, color: "#33C12B" }}
@@ -137,7 +140,7 @@ const Footer = () => {
                     href="/contact" 
                     className="mt-2.5"
                   >
-                    Contact
+                    {t('footer.links.contact')}
                   </motion.a>
                 </div>
               </div>
@@ -156,7 +159,7 @@ const Footer = () => {
             href="#" 
             className="text-white"
           >
-            Termes
+            {t('footer.footerLinks.terms')}
           </motion.a>
           <motion.a 
             whileHover={{ scale: 1.05, color: "#33C12B" }}
@@ -164,7 +167,7 @@ const Footer = () => {
             href="#" 
             className="text-white"
           >
-            confidentialité
+            {t('footer.footerLinks.privacy')}
           </motion.a>
           <motion.a 
             whileHover={{ scale: 1.05, color: "#33C12B" }}
@@ -172,7 +175,7 @@ const Footer = () => {
             href="#" 
             className="text-white"
           >
-            Cookies
+            {t('footer.footerLinks.cookies')}
           </motion.a>
         </div>
         <div className='flex gap-6 text-white'>
@@ -212,7 +215,7 @@ const Footer = () => {
         className='fixed bottom-32 right-8 flex items-center group z-40'
       >
         <div className='bg-white text-green-500 px-4 py-2 rounded-lg cursor-pointer shadow-lg mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap'>
-          Discutez avec nous
+          {t('footer.contact.chat')}
         </div>
         <div className='w-12 h-12 rounded-full bg-green-500 shadow-lg flex flex-col justify-center items-center cursor-pointer'>
           <FaWhatsapp className='text-white text-3xl' />
@@ -222,7 +225,6 @@ const Footer = () => {
   );
 };
 
-
 const ServicesFooter = () => {
   return(
     <>
@@ -231,4 +233,5 @@ const ServicesFooter = () => {
     </>
   );
 };
+
 export default ServicesFooter;

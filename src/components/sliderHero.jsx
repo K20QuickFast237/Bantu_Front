@@ -4,41 +4,46 @@ import slide1 from '../assets/images/slide1.jpeg';
 import slide2 from '../assets/images/slide2.jpg';
 import slide3 from '../assets/images/slide3.jpg';
 import { Link } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
 const slides = [
   {
     id: 0,
-    title: "Solutions Technologiques",
+    title: "hero.solutions",
     color: "text-blue-500",
     overlayColor: "bg-blue-950",
     overlayOpacity: "opacity-40",
-    subtitle: "Solution technologique",
-    description: "TNK Synergies conçoit des solutions numériques adaptées aux besoins des communautés africaines pour favoriser l'innovation locale.",
-    backgroundImage: `url(${slide1})`
+    subtitle: "hero.solutions",
+    description: "hero.description.solutions",
+    backgroundImage: `url(${slide1})`,
+    alt: "hero.slide1.alt"
   },
   {
     id: 1,
-    title: "Développement Durable", 
+    title: "hero.sustainable",
     color: "text-white",
     overlayColor: "",
     overlayOpacity: "opacity-40",
-    subtitle: "Développement durable",
-    description: "TNK Synergies développe des solutions écologiques et durables pour répondre aux défis environnementaux de l'Afrique.",
-    backgroundImage: `url(${slide2})`
+    subtitle: "hero.sustainable",
+    description: "hero.description.sustainable",
+    backgroundImage: `url(${slide2})`,
+    alt: "hero.slide2.alt"
   },
   {
     id: 2,
-    title: "Projets Communautaires",
+    title: "hero.community",
     color: "text-green-500",
     overlayColor: "bg-green-950",
     overlayOpacity: "opacity-40",
-    subtitle: "Projet communautaire", 
-    description: "TNK Synergies accompagne les communautés locales dans leurs projets de développement et d'innovation sociale.",
-    backgroundImage: `url(${slide3})`
+    subtitle: "hero.community",
+    description: "hero.description.community",
+    backgroundImage: `url(${slide3})`,
+    alt: "hero.slide3.alt"
   }
 ];
 
 export default function HeroCarousel() {
+  const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [progress, setProgress] = useState(0);
 
@@ -98,7 +103,6 @@ export default function HeroCarousel() {
         </div>
       </div>
       
-
       {/* Content */}
       <div className="relative z-30 h-full flex flex-col justify-center px-4 sm:px-8 md:px-12 lg:px-20">
         <div className="mb-2 md:mb-4">
@@ -110,7 +114,7 @@ export default function HeroCarousel() {
               {slides.map((slide) => (
                 <div key={slide.id} className="min-w-full">
                   <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 lg:mb-8">
-                    {slide.title.split('   ').map((word, index) => (
+                    {t(slide.title).split('   ').map((word, index) => (
                       <span key={index} className={`${slide.color}`}>{word}</span>
                     ))}
                   </h1>
@@ -127,7 +131,7 @@ export default function HeroCarousel() {
               {slides.map((slide) => (
                 <div key={slide.id} className="min-w-full">
                   <p className="text-white text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed">
-                    {slide.description}
+                    {t(slide.description)}
                   </p>
                 </div>
               ))}
@@ -138,12 +142,12 @@ export default function HeroCarousel() {
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
           <Link to="/projets">
             <Button variant="filled" color="blue" className="w-full sm:w-auto">
-              Découvrir nos projets
+              {t('hero.discover')}
             </Button>
           </Link>
           <Link to="/contact">
-          <Button variant="bordered" color="white" className="w-full sm:w-auto">
-                Nous contacter
+            <Button variant="bordered" color="white" className="w-full sm:w-auto">
+              {t('hero.contact')}
             </Button>
           </Link>
         </div>
@@ -176,7 +180,7 @@ export default function HeroCarousel() {
               
               <div className="relative z-10 text-center">
                 <h3 className="font-semibold text-lg mb-2">
-                  {slide.subtitle}
+                  {t(slide.subtitle)}
                 </h3>
               </div>
               
