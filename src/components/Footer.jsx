@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Logo from '../assets/images/logo.svg';
 import { FaFacebookF, FaLinkedinIn, FaTwitter, FaWhatsapp} from 'react-icons/fa';
@@ -12,59 +12,61 @@ const NewsletterSection = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="self-center mt-25 max-w-full rounded-[30px] px-20 max-md:px-5 max-md:mt-10">
+    <section className="w-full px-20 max-md:px-5">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex gap-5 max-md:flex-col bg-gradient-to-br from-[#33C12B] to-green-600 h-[300px] max-md:h-auto rounded-l-[30px] rounded-tr-[30px]"
+        className="flex gap-5 max-md:flex-col bg-gradient-to-br from-[#33C12B] to-green-600 h-full max-md:h-auto max-md:min-h-[400px] rounded-[30px]"
       >
-        <div className="w-[69%] max-md:w-full">
-          <div className="flex flex-col px-20 py-16 w-full max-md:px-5 max-md:py-10 max-md:mt-10 max-md:max-w-full">
+        <div className="w-[75%] max-md:w-full">
+          <div className="flex flex-col px-20 py-16 w-full max-md:px-6 max-md:py-8 max-md:mt-6 max-md:max-w-full">
             <h2 className="text-4xl font-semibold text-white leading-tight max-md:text-2xl max-md:max-w-full">
               {t('footer.newsletter.title')}
             </h2>
-            <form className="flex justify-between py-2 pr-3 pl-9 mt-12 w-full bg-white rounded-2xl max-md:flex-col max-md:gap-4 max-md:pl-5 max-md:mt-10 max-md:max-w-full">
+            <p className="text-xl mt-2 text-white max-md:text-lg">{t('cta.subscribe')}</p>
+            <form className="flex justify-between py-2 pr-3 pl-9 mt-12 w-full bg-white rounded-2xl max-md:flex-col max-md:gap-4 max-md:pl-4 max-md:mt-8 max-md:max-w-full">
               <input
                 type="email"
                 placeholder={t('footer.newsletter.placeholder')}
-                className="my-auto text-lg text-gray-600 bg-transparent outline-none w-[80%] max-md:w-full"
+                className="my-auto text-lg text-gray-600 bg-transparent outline-none w-[80%] max-md:w-full max-md:text-base"
               />
-              <Button variant="filled" color="green" type="submit" className="max-md:w-full">
+              <Button variant="filled" color="green" type="submit" className="max-md:w-full max-md:py-3">
                 {t('footer.newsletter.submit')}
               </Button>
             </form>
           </div>
         </div>
-        <div className="ml-6 w-[27.5%] max-md:hidden">
-          <img
-            src={NewLetter}
-            alt={t('footer.newsletter.alt')}
-            className="mt-[-189px]"
-          />
+        <div className="relative w-[25%] max-md:hidden">
+          <div className='absolute bottom-0 right-0'>
+            <img
+              src={NewLetter}
+              alt={t('footer.newsletter.alt')}
+              className="mt-[-189px] max-md:mt-0"
+            />
+          </div>
         </div>
       </motion.div>
     </section>
-    // <section className="bg-gray-100 py-8 px-4 rounded-xl">
-    //   <h2 className="text-2xl font-bold mb-2 text-center">Restez Connecté avec TNK Synergies</h2>
-    //   <p className="text-center mb-4 text-gray-600">Abonnez-vous pour les dernières nouvelles, mises à jour et opportunités.</p>
-    //   <form className="flex flex-col sm:flex-row justify-center gap-2 max-w-md mx-auto">
-    //     <input
-    //       type="email"
-    //       placeholder="Votre adresse e-mail"
-    //       className="px-4 py-2 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-blue-200"
-    //       required
-    //     />
-    //     <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
-    //       S'abonner
-    //     </button>
-    //   </form>
-    // </section>
   );
 };
 
+
+
 const Footer = () => {
   const { t } = useTranslation();
+  const [showMessage, setShowMessage] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowMessage(true);
+      setTimeout(() => {
+        setShowMessage(false);
+      }, 3000);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -196,34 +198,38 @@ const Footer = () => {
           </motion.a>
         </div>
         <div className='flex gap-6 text-white'>
-          <motion.div 
+          <motion.a 
             whileHover={{ scale: 1.1, backgroundColor: "white", color: "#3974EA" }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
             className='w-8 h-8 rounded-full border-1 border-white flex flex-col justify-center items-center cursor-pointer'
+             href="https://www.facebook.com/share/1AhPm1QpV7/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer"
           >
             <FaFacebookF />
-          </motion.div>
-          <motion.div 
-                  whileHover={{ scale: 1.1, backgroundColor: "white", color: "#3974EA" }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  className='w-7 h-7 lg:w-8 lg:h-8 rounded-full border-1 border-white flex flex-col justify-center items-center cursor-pointer'
-                >
-                  <FaInstagram className="text-sm lg:text-base" />
-                </motion.div>
-          <motion.div 
+          </motion.a>
+          <motion.a 
+            whileHover={{ scale: 1.1, backgroundColor: "white", color: "#3974EA" }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            className='w-7 h-7 lg:w-8 lg:h-8 rounded-full border-1 border-white flex flex-col justify-center items-center cursor-pointer'
+            href="https://www.instagram.com/tnk_synergies?igsh=dDkzd2t2NjdlN3Jt" target="_blank" rel="noopener noreferrer"
+          >
+            <FaInstagram className="text-sm lg:text-base" />
+          </motion.a>
+          <motion.a 
             whileHover={{ scale: 1.1, backgroundColor: "white", color: "#3974EA" }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
             className='w-8 h-8 rounded-full border-1 border-white flex flex-col justify-center items-center cursor-pointer'
+            href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
           >
             <FaLinkedinIn />
-          </motion.div>
-          <motion.div 
+          </motion.a>
+          <motion.a 
             whileHover={{ scale: 1.1, backgroundColor: "white", color: "#3974EA" }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
             className='w-8 h-8 rounded-full border-1 border-white flex flex-col justify-center items-center cursor-pointer'
+            href="https://twitter.com" target="_blank" rel="noopener noreferrer" 
           >
             <FaTwitter />
-          </motion.div>
+          </motion.a>
         </div>
       </nav>
 
@@ -241,6 +247,19 @@ const Footer = () => {
         <div className='bg-white text-green-500 px-4 py-2 rounded-lg cursor-pointer shadow-lg mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap'>
           {t('footer.contact.chat')}
         </div>
+        {showMessage && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            className='absolute bottom-16 right-0 bg-[#E7F3FF] text-gray-800 px-4 py-2 rounded-2xl shadow-lg max-w-[300px]'
+          >
+            <div className="relative">
+              <p className="text-sm leading-relaxed">Bonjour ! Comment pouvons-nous vous aider aujourd'hui ?</p>
+              <div className="absolute -bottom-2 right-4 w-4 h-4 bg-[#E7F3FF] transform rotate-45"></div>
+            </div>
+          </motion.div>
+        )}
         <div className='w-12 h-12 rounded-full bg-green-500 shadow-lg flex flex-col justify-center items-center cursor-pointer'>
           <FaWhatsapp className='text-white text-3xl' />
         </div>

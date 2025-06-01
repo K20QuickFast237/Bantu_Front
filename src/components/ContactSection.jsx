@@ -53,7 +53,12 @@ const ContactSection = () => {
     }
   ];
 
-  const typeDemande = ["Partenariat", "Carriere", "Support", "Autre"];
+  const typeDemande = [
+    t("contact.form.type.demande1"),
+    t("contact.form.type.demande2"),
+    t("contact.form.type.demande3"),
+    t("contact.form.type.demande4"),
+  ];
 
   const handleInputChange = (e) => {
     setFormData({
@@ -176,12 +181,12 @@ const ContactSection = () => {
             >
               <FaShareAlt className="w-6 h-6 text-green-600" />
             </motion.div>
-            <p className="text-gray-500 text-sm mb-3">Suivez-nous</p>
+            <p className="text-gray-500 text-sm mb-3">{t("contact.follow")}</p>
             <div className="flex space-x-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
+              <a href="https://www.facebook.com/share/1AhPm1QpV7/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
                 <FaFacebookF className="w-5 h-5" />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-800">
+              <a href="https://www.instagram.com/tnk_synergies?igsh=dDkzd2t2NjdlN3Jt" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-800">
                 <FaInstagram className="w-5 h-5" />
               </a>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-blue-900">
@@ -262,7 +267,7 @@ const ContactSection = () => {
                     value={formData.typeD}
                     onChange={handleInputChange}
                   >
-                    <option value="" disabled>Sélectionnez un type de demande</option>
+                    <option value="" disabled>{t('contact.form.select_type')}</option>
                     {typeDemande.map((type, index) => (
                       <option key={index} value={type}>
                         {type}

@@ -1,6 +1,11 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
+import devT from '../assets/images/devTech.svg';
+import aut from '../assets/images/aut.svg';
+import incu from '../assets/images/incub.svg';
+import cons from '../assets/images/cons.svg';
+import { ArrowRight } from 'lucide-react';
 
 const ServiceCard = ({
   icon,
@@ -43,11 +48,9 @@ const ServiceCard = ({
           isgradient ? 'text-white' : 'text-sky-600'
         }`}
       >
-        <span className="grow">{t('services.card.learn_more')}</span>
-        <img
-          src={isgradient ? "https://cdn.builder.io/api/v1/image/assets/TEMP/6c4add3c62eec96966a6e88cb099a7dc7ae4ad0f?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab" : "https://cdn.builder.io/api/v1/image/assets/TEMP/2721cc9bce8f85e4129db62b89833e6aafd3d731?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"}
-          alt="Arrow icon"
-          className={`object-contain shrink-0 my-auto aspect-[1/1] w-[15px] ${
+        <span className="grow">{t("services.card.learn_more")}</span>
+        <ArrowRight 
+          className={`object-contain shrink-0 my-auto aspect-[1/1] w-[25px] ${
             isgradient ? 'fill-white' : 'fill-sky-600'
           }`} 
         />
@@ -111,24 +114,24 @@ const ServicesShowcase = () => {
         >
           <motion.div variants={itemVariants}>
             <ServiceCard
-              icon="https://cdn.builder.io/api/v1/image/assets/TEMP/5e983adaf13233615cbc2737e0ea06a719d17a72?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"
-              title={t('service.tech')}
-              description={t('service.tech.desc')}
+              icon={devT}
+              title={t("service.developpement")}
+              description={t("service.developpement.desc")}
               variant="gradient"
             />
           </motion.div>
           <motion.div variants={itemVariants}>
             <ServiceCard
-              icon="https://cdn.builder.io/api/v1/image/assets/TEMP/0f1bcb7106489ec19f016c9c371758a571a316dd?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"
-              title={t('service.incubation')}
-              description={t('service.incubation.desc')}
+              icon={incu}
+              title={t("service.incubation")}
+              description={t("service.incubation.desc")}
             />
           </motion.div>
           <motion.div variants={itemVariants}>
             <ServiceCard
-              icon="https://cdn.builder.io/api/v1/image/assets/TEMP/0f453f1386e1cf6fd38ebed2a6e0db57c5859895?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"
-              title={t('service.consulting')}
-              description={t('service.consulting.desc')}
+              icon={cons}
+              title={t("service.conseil")}
+              description={t("service.conseil.desc")}
             />
           </motion.div>
         </motion.div>
@@ -139,23 +142,36 @@ const ServicesShowcase = () => {
         >
           <motion.div variants={itemVariants}>
             <ServiceCard
-              icon="https://cdn.builder.io/api/v1/image/assets/TEMP/02ea8388d48d173c2b980bbeba5e4222761422db?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"
-              title={t('service.autonomisation')}
-              description={t('service.autonomisation.desc')}
+              icon={aut}
+              title={t("service.autonomisation")}
+              description={t("service.autonomisation.desc")}
             />
           </motion.div>
           <motion.div variants={itemVariants}>
             <ServiceCard
-              icon="https://cdn.builder.io/api/v1/image/assets/TEMP/02ea8388d48d173c2b980bbeba5e4222761422db?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"
-              title={t('service.autonomisation')}
-              description={t('service.autonomisation.desc')}
+              icon=""
+              title={t("service.bantuhire")}
+              description={t("service.bantuhire.desc")}
             />
           </motion.div>
           <motion.div variants={itemVariants}>
             <ServiceCard
-              icon="https://cdn.builder.io/api/v1/image/assets/TEMP/02ea8388d48d173c2b980bbeba5e4222761422db?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"
-              title={t('service.autonomisation')}
-              description={t('service.autonomisation.desc')}
+              icon=""
+              title={t("service.bantumarket")}
+              description={t("service.bantumarket.desc")}
+            />
+          </motion.div>
+        </motion.div>
+
+        <motion.div 
+          variants={containerVariants}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-4 sm:mt-6"
+        >
+          <motion.div variants={itemVariants}>
+            <ServiceCard
+              icon=""
+              title={t("service.bantulink")}
+              description={t("service.bantulink.desc")}
             />
           </motion.div>
         </motion.div>

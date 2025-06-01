@@ -100,30 +100,26 @@ const SerStatPro = () => {
     {
       title: t('project.bantulink'),
       description: t('project.bantulink.desc'),
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
-      gradient: "from-blue-500 to-blue-10",
-      alt: t('project.bantulink.alt')
+      image: pro1,
+      gradient: "from-blue-500 to-blue-10"
     },
     {
       title: t('project.bantuhire'),
       description: t('project.bantuhire.desc'),
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
-      gradient: "from-blue-500 to-blue-10",
-      alt: t('project.bantuhire.alt')
+      image: pro2,
+      gradient: "from-blue-500 to-blue-10"
     },
     {
       title: t('project.bantumarket'),
       description: t('project.bantumarket.desc'),
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
-      gradient: "from-blue-500 to-blue-10",
-      alt: t('project.bantumarket.alt')
+      image: pro3,
+      gradient: "from-blue-500 to-blue-10"
     },
     {
-      title: t('project.mectn'),
+      title: t('project.mech'),
       description: t('project.mectn.desc'),
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
-      gradient: "from-blue-500 to-blue-10",
-      alt: t('project.mectn.alt')
+      image: pro4,
+      gradient: "from-blue-500 to-blue-10"
     }
   ];
 
@@ -220,20 +216,20 @@ const SerStatPro = () => {
           transition={{ duration: 0.6 }}
         >
           <motion.h2 
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6"
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.5 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6"
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.5 }}
           >
-            {t('services.title')}
+              {t('services.title')}
           </motion.h2>
           <motion.p 
-            className="text-green-500 max-w-xl mx-auto leading-relaxed text-sm md:text-base px-4"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+              className="text-green-500 max-w-xl mx-auto leading-relaxed text-sm md:text-base px-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.6 }}
           >
             {t('services.description')}
           </motion.p>

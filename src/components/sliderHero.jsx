@@ -6,46 +6,43 @@ import slide3 from '../assets/images/slide3.jpeg';
 import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
 
-const slides = [
-  {
-    id: 0,
-    title: "hero.solutions",
-    color: "text-blue-500",
-    overlayColor: "bg-blue-950",
-    overlayOpacity: "opacity-40",
-    subtitle: "hero.solutions",
-    description: "hero.description.solutions",
-    backgroundImage: `url(${slide1})`,
-    alt: "hero.slide1.alt"
-  },
-  {
-    id: 1,
-    title: "hero.sustainable",
-    color: "text-white",
-    overlayColor: "",
-    overlayOpacity: "opacity-40",
-    subtitle: "hero.sustainable",
-    description: "hero.description.sustainable",
-    backgroundImage: `url(${slide2})`,
-    alt: "hero.slide2.alt"
-  },
-  {
-    id: 2,
-    title: "hero.community",
-    color: "text-green-500",
-    overlayColor: "bg-green-950",
-    overlayOpacity: "opacity-40",
-    subtitle: "hero.community",
-    description: "hero.description.community",
-    backgroundImage: `url(${slide3})`,
-    alt: "hero.slide3.alt"
-  }
-];
-
-export default function HeroCarousel() {
+const HeroCarousel = () => {
   const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [progress, setProgress] = useState(0);
+
+  const slides = [
+    {
+      id: 0,
+      title: t('hero.title1'),
+      color: "text-blue-500",
+      overlayColor: "bg-blue-950",
+      overlayOpacity: "opacity-40",
+      subtitle: t('hero.subtitle1'),
+      description: t('hero.description.solutions'),
+      backgroundImage: `url(${slide1})`
+    },
+    {
+      id: 1,
+      title: t('hero.title2'),
+      color: "text-white",
+      overlayColor: "",
+      overlayOpacity: "opacity-40",
+      subtitle: t('hero.subtitle2'),
+      description: t('hero.description.sustainable'),
+      backgroundImage: `url(${slide2})`
+    },
+    {
+      id: 2,
+      title: t('hero.title3'),
+      color: "text-green-500",
+      overlayColor: "bg-green-950",
+      overlayOpacity: "opacity-40",
+      subtitle: t('hero.subtitle3'),
+      description: t('hero.description.community'),
+      backgroundImage: `url(${slide3})`
+    }
+  ];
 
   useEffect(() => {
     let startTime = Date.now();
@@ -113,8 +110,8 @@ export default function HeroCarousel() {
             >
               {slides.map((slide) => (
                 <div key={slide.id} className="min-w-full">
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 lg:mb-8">
-                    {t(slide.title).split('   ').map((word, index) => (
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl max-w-[80%] font-bold mb-4 md:mb-6 lg:mb-8">
+                    {slide.title.split('   ').map((word, index) => (
                       <span key={index} className={`${slide.color}`}>{word}</span>
                     ))}
                   </h1>
@@ -130,8 +127,8 @@ export default function HeroCarousel() {
             >
               {slides.map((slide) => (
                 <div key={slide.id} className="min-w-full">
-                  <p className="text-white text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed">
-                    {t(slide.description)}
+                  <p className="text-white text-base sm:text-lg md:text-xl max-w-3xl leading-relaxed">
+                    {slide.description}
                   </p>
                 </div>
               ))}
@@ -195,3 +192,5 @@ export default function HeroCarousel() {
     </div>
   );
 }
+
+export default HeroCarousel;
