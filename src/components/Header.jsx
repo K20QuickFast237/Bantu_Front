@@ -9,6 +9,77 @@ import Button from './Button';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
+const LanguageSelector = ({ scrolled, isMobile = false }) => {
+  const { i18n } = useTranslation();
+  const [isOpen, setIsOpen] = useState(false);
+  
+  const languages = [
+    { 
+      code: 'fr', 
+      name: 'Français', 
+      flag: 'https://flagcdn.com/w40/fr.png',
+      flagAlt: 'Drapeau français'
+    },
+    { 
+      code: 'en', 
+      name: 'English', 
+      flag: 'https://flagcdn.com/w40/gb.png',
+      flagAlt: 'Drapeau britannique'
+    }
+  ];
+
+  const handleLanguageChange = (langCode) => {
+    i18n.changeLanguage(langCode);
+    setIsOpen(false);
+  };
+
+  return (
+    <div className={`relative language-selector ${isMobile ? 'w-full' : 'group'}`}>
+      <button
+        onClick={() => isMobile && setIsOpen(!isOpen)}
+        className={`flex items-center gap-2 px-3 py-1.5 rounded-md transition-all ${
+          scrolled ? 'text-gray-800' : 'text-white'
+        } ${isMobile ? 'w-full justify-between' : ''}`}
+      >
+        <span className="flex items-center gap-2">
+          <img 
+            src={languages.find(lang => lang.code === i18n.language)?.flag}
+            alt={languages.find(lang => lang.code === i18n.language)?.flagAlt}
+            className="w-5 h-3 object-cover rounded-sm"
+          />
+          <span className={`text-sm lg:text-base ${scrolled ? 'text-gray-800' : 'text-white'}`}>
+            {languages.find(lang => lang.code === i18n.language)?.name}
+          </span>
+        </span>
+      </button>
+      <div className={`absolute ${isMobile ? 'relative' : 'right-0'} mt-1 w-full bg-white rounded-lg shadow-lg ${
+        isMobile 
+          ? isOpen 
+            ? 'opacity-100 visible' 
+            : 'opacity-0 invisible'
+          : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible'
+      } transition-all duration-200 z-50`}>
+        {languages.map((lang) => (
+          <button
+            key={lang.code}
+            onClick={() => handleLanguageChange(lang.code)}
+            className={`w-full flex items-center gap-2 px-4 py-2 hover:bg-gray-100 transition-colors ${
+              i18n.language === lang.code ? 'bg-blue-50' : ''
+            }`}
+          >
+            <img 
+              src={lang.flag}
+              alt={lang.flagAlt}
+              className="w-5 h-3 object-cover rounded-sm"
+            />
+            <span className="text-sm text-gray-800">{lang.name}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,7 +122,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (isMenuOpen && !event.target.closest('.menu-container') && !event.target.closest('.mobile-search-container')) {
+      if (isMenuOpen && !event.target.closest('.menu-container') && !event.target.closest('.mobile-search-container') && !event.target.closest('.language-selector')) {
         setIsMenuOpen(false);
       }
     };
@@ -121,34 +192,38 @@ const Header = () => {
           <>
             <div className="hidden md:flex justify-between items-center font-semibold text-white">
               <div className='flex gap-4 lg:gap-6 text-white'>
-                <motion.div 
+                <motion.a 
                   whileHover={{ scale: 1.1, backgroundColor: "white", color: "#3974EA" }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   className='w-7 h-7 lg:w-8 lg:h-8 rounded-full border-1 border-white flex flex-col justify-center items-center cursor-pointer'
+                  href="https://www.facebook.com/share/1AhPm1QpV7/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer"
                 >
                   <FaFacebookF className="text-sm lg:text-base" />
-                </motion.div>
-                <motion.div 
+                </motion.a>
+                <motion.a 
                   whileHover={{ scale: 1.1, backgroundColor: "white", color: "#3974EA" }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   className='w-7 h-7 lg:w-8 lg:h-8 rounded-full border-1 border-white flex flex-col justify-center items-center cursor-pointer'
+                  href="https://www.instagram.com/tnk_synergies?igsh=dDkzd2t2NjdlN3Jt" target="_blank" rel="noopener noreferrer"
                 >
                   <FaInstagram className="text-sm lg:text-base" />
-                </motion.div>
-                <motion.div 
+                </motion.a>
+                <motion.a 
                   whileHover={{ scale: 1.1, backgroundColor: "white", color: "#3974EA" }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   className='w-7 h-7 lg:w-8 lg:h-8 rounded-full border-1 border-white flex flex-col justify-center items-center cursor-pointer'
+                  href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
                 >
                   <FaLinkedinIn className="text-sm lg:text-base" />
-                </motion.div>
-                <motion.div 
+                </motion.a>
+                <motion.a 
                   whileHover={{ scale: 1.1, backgroundColor: "white", color: "#3974EA" }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   className='w-7 h-7 lg:w-8 lg:h-8 rounded-full border-1 border-white flex flex-col justify-center items-center cursor-pointer'
+                  href="https://twitter.com" target="_blank" rel="noopener noreferrer" 
                 >
                   <FaTwitter className="text-sm lg:text-base" />
-                </motion.div>
+                </motion.a>
               </div>
               <div className='flex gap-4 lg:gap-6 items-center'>
                 <a href="tel:+321234456386" className="flex gap-2 lg:gap-3.5 items-center">
@@ -181,13 +256,13 @@ const Header = () => {
           </div>
           
           <button 
-            className={`lg:hidden hover:opacity-80 transition-opacity ${scrolled ? 'text-gray-800' : 'text-white'}`}
+            className={`xl:hidden hover:opacity-80 transition-opacity ${scrolled ? 'text-gray-800' : 'text-white'}`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
 
-          <nav className={`hidden lg:flex flex-wrap gap-4 lg:gap-6 items-center self-stretch my-auto ${
+          <nav className={`hidden xl:flex flex-wrap gap-4 lg:gap-6 items-center self-stretch my-auto ${
             scrolled ? 'text-gray-800' : 'text-white'
           }`}>
             <div className={`cursor-pointer hover:opacity-80 transition-opacity px-3 py-1.5 rounded-md ${
@@ -220,20 +295,10 @@ const Header = () => {
             }`}>
               <Link to="/contact" className="text-sm lg:text-base">{t('contact')}</Link>
             </div>
-            <select
-              value={i18n.language}
-              onChange={(e) => changeLanguage(e.target.value)}
-              className={`bg-transparent border border-gray-300 rounded-md px-2 py-1 text-sm lg:text-base focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                scrolled ? 'text-gray-800' : 'text-white'
-              }`}
-              aria-label="Sélecteur de langue"
-            >
-              <option value="fr">Français</option>
-              <option value="en">English</option>
-            </select>
+            <LanguageSelector scrolled={scrolled} />
           </nav>
 
-          <div className={`lg:hidden fixed top-[72px] left-0 right-0 bg-white shadow-lg transform transition-transform duration-300 ${
+          <div className={`xl:hidden fixed top-[72px] left-0 right-0 bg-white shadow-lg transform transition-transform duration-300 ${
             isMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}>
             <nav className="flex flex-col p-5">
@@ -306,6 +371,10 @@ const Header = () => {
                 <Link to="/contact">Contact</Link>
               </div>
 
+              <div className="mt-4 border-t pt-4">
+                <LanguageSelector scrolled={true} isMobile={true} />
+              </div>
+
               <div className="mt-4">
                 <Link to="/join_us">
                   <Button 
@@ -320,7 +389,7 @@ const Header = () => {
             </nav>
           </div>
 
-          <div className='hidden lg:flex gap-4 lg:gap-6 items-center'>
+          <div className='hidden xl:flex gap-4 lg:gap-6 items-center'>
             <div className="search-container relative">
               <Search 
                 className={`w-8 lg:w-10 cursor-pointer hover:opacity-80 transition-opacity ${scrolled ? 'text-gray-800' : 'text-white'}`}

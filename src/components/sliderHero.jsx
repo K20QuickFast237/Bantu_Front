@@ -6,43 +6,43 @@ import slide3 from '../assets/images/slide3.jpeg';
 import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
 
-const slides = [
-  {
-    id: 0,
-    title: "Stimuler l’Afrique par l’Innovation Intelligente",
-    color: "text-blue-500",
-    overlayColor: "bg-blue-950",
-    overlayOpacity: "opacity-40",
-    subtitle: "Vision & Impact",
-    description: "Nous impulsons une nouvelle ère de croissance grâce à des solutions technologiques pensées pour le continent africain.",
-    backgroundImage: `url(${slide1})`
-  },
-  {
-    id: 1,
-    title: "BantuLink : Emploi, Commerce & Connexions en Un Seul Lieu", 
-    color: "text-white",
-    overlayColor: "",
-    overlayOpacity: "opacity-40",
-    subtitle: "La Solution — BantuLink",
-    description: "Avec BantuLink, TNK Synergies connecte talents, entreprises et communautés dans un écosystème numérique inclusif et durable.",
-    backgroundImage: `url(${slide2})`
-  },
-  {
-    id: 2,
-    title: "Des Services et Opportunités pour Tous",
-    color: "text-green-500",
-    overlayColor: "bg-green-950",
-    overlayOpacity: "opacity-40",
-    subtitle: "Opportunités & Inclusion", 
-    description: "Notre mission : rendre l’innovation accessible à chacun en créant des opportunités économiques, sociales et professionnelles pour tous les Africains.",
-    backgroundImage: `url(${slide3})`
-  }
-];
-
-export default function HeroCarousel() {
+const HeroCarousel = () => {
   const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [progress, setProgress] = useState(0);
+
+  const slides = [
+    {
+      id: 0,
+      title: t('hero.title1'),
+      color: "text-blue-500",
+      overlayColor: "bg-blue-950",
+      overlayOpacity: "opacity-40",
+      subtitle: t('hero.subtitle1'),
+      description: t('hero.description.solutions'),
+      backgroundImage: `url(${slide1})`
+    },
+    {
+      id: 1,
+      title: t('hero.title2'),
+      color: "text-white",
+      overlayColor: "",
+      overlayOpacity: "opacity-40",
+      subtitle: t('hero.subtitle2'),
+      description: t('hero.description.sustainable'),
+      backgroundImage: `url(${slide2})`
+    },
+    {
+      id: 2,
+      title: t('hero.title3'),
+      color: "text-green-500",
+      overlayColor: "bg-green-950",
+      overlayOpacity: "opacity-40",
+      subtitle: t('hero.subtitle3'),
+      description: t('hero.description.community'),
+      backgroundImage: `url(${slide3})`
+    }
+  ];
 
   useEffect(() => {
     let startTime = Date.now();
@@ -192,3 +192,5 @@ export default function HeroCarousel() {
     </div>
   );
 }
+
+export default HeroCarousel;

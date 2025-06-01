@@ -1,97 +1,109 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ChevronDown, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import projectImg from "../assets/images/projectImg.jpg";
+import { useTranslation } from "react-i18next";
 
 const ProjectsSection = () => {
-  const [selectedCategory, setSelectedCategory] = useState("Toutes");
-  const [sortBy, setSortBy] = useState("Récent");
+  const { t } = useTranslation();
+  const [selectedCategory, setSelectedCategory] = useState(t("project.proj.keyAll"));
+  const [sortBy, setSortBy] = useState(t("project.proj.sort1"));
   const [currentPage, setCurrentPage] = useState(1);
   const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
   const [showSortDropdown, setShowSortDropdown] = useState(false);
 
+  useEffect(() => {
+    setSelectedCategory(t("project.proj.keyAll"));
+    setSortBy(t("project.proj.sort1"));
+  }, [t]);
+
   const categories = [
-    "Toutes",
-    "Réseautage",
-    "Emploi",
-    "Commerce",
-    "Mobilité",
-    "Tech",
-    "Finance",
+    t("project.proj.keyAll"),
+    t("project.proj.key1"),
+    t("project.proj.key2"),
+    t("project.proj.key3"),
+    t("project.proj.key4"),
+    t("project.proj.key5"),
+    t("project.proj.key6"),
   ];
-  const sortOptions = ["Récent", "Plus ancien", "Nom A-Z", "Nom Z-A"];
+  const sortOptions = [
+    t("project.proj.sort1"),
+    t("project.proj.sort2"),
+    t("project.proj.sort3"),
+    t("project.proj.sort4"),
+  ];
 
   const projects = [
     {
       id: 1,
-      title: "BantuLink",
-      category: "Réseautage",
+      title: t("project.proj.title1"),
+      category: t("project.proj.key1"),
       description:
-        "Plateforme professionnelle connectant talents, entreprises et opportunités à travers l'Afrique.",
+        t("project.proj.description1"),
       completionRate: 99,
       satisfactionRate: 98,
       image: projectImg,
-      tag: "Réseautage",
+      tag: t("project.proj.key1"),
       tagColor: "bg-blue-100 text-blue-600",
     },
     {
       id: 2,
-      title: "BantuHire",
-      category: "Emploi",
+      title: t("project.proj.title2"),
+      category: t("project.proj.key2"),
       description:
-        "Solution de recrutement intelligente adaptée aux besoins des entreprises et talents africains.",
+        t("project.proj.description2"),
       completionRate: 95,
       satisfactionRate: 97,
       image: projectImg,
-      tag: "Emploi",
+      tag: t("project.proj.key2"),
       tagColor: "bg-green-100 text-green-600",
     },
     {
       id: 3,
-      title: "BantuMarket",
-      category: "Commerce",
+      title: t("project.proj.title3"),
+      category: t("project.proj.key3"),
       description:
-        "Plateforme e-commerce facilitant les échanges entre entrepreneurs et consommateurs africains.",
+        t("project.proj.description3"),
       completionRate: 92,
       satisfactionRate: 94,
       image: projectImg,
-      tag: "Commerce",
+      tag: t("project.proj.key3"),
       tagColor: "bg-gray-100 text-gray-600",
     },
     {
       id: 4,
-      title: "Mech",
-      category: "Mobilité",
+      title: t("project.proj.title4"),
+      category: t("project.proj.key4"),
       description:
-        "Solution de transport intelligent optimisant la logistique urbaine et l'expérience utilisateur.",
+        t("project.proj.description4"),
       completionRate: 88,
       satisfactionRate: 91,
       image: projectImg,
-      tag: "Mobilité",
+      tag: t("project.proj.key4"),
       tagColor: "bg-orange-100 text-orange-600",
     },
     {
       id: 5,
-      title: "BantuPay",
-      category: "Finance",
+      title: t("project.proj.title5"),
+      category: t("project.proj.key5"),
       description:
-        "Solution de paiement mobile sécurisée pour l'écosystème financier africain.",
+        t("project.proj.description5"),
       completionRate: 96,
       satisfactionRate: 99,
       image: projectImg,
-      tag: "Finance",
+      tag: t("project.proj.key5"),
       tagColor: "bg-purple-100 text-purple-600",
     },
     {
       id: 6,
-      title: "TechHub Africa",
-      category: "Tech",
+      title: t("project.proj.title6"),
+      category: t("project.proj.key6"),
       description:
-        "Plateforme d'innovation technologique pour les startups africaines émergentes.",
+        t("project.proj.description6"),
       completionRate: 89,
       satisfactionRate: 93,
       image: projectImg,
-      tag: "Tech",
+      tag: t("project.proj.key6"),
       tagColor: "bg-indigo-100 text-indigo-600",
     },
   ];
@@ -100,11 +112,19 @@ const ProjectsSection = () => {
   const totalProjects = projects.length;
 
   const filteredProjects =
-    selectedCategory === "Toutes"
+    selectedCategory === t("project.proj.keyAll")
       ? projects
       : projects.filter((project) => project.category === selectedCategory);
 
   const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
+  
+  // Réinitialiser la page courante si elle est supérieure au nombre total de pages
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      setCurrentPage(1);
+    }
+  }, [filteredProjects, currentPage, totalPages]);
+
   const startIndex = (currentPage - 1) * itemsPerPage;
   const paginatedProjects = filteredProjects.slice(
     startIndex,
@@ -177,11 +197,11 @@ const ProjectsSection = () => {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-0 mb-6">
             <div>
               <p className="text-sm sm:text-base text-gray-600 mb-2">
-                Nous avons trouvé{" "}
+                {t("project.proj.filterResult1")}{" "}
                 <span className="font-semibold text-gray-900">
-                  {filteredProjects.length} projets
+                  {filteredProjects.length} {t("project.proj.filterResult2")}
                 </span>{" "}
-                disponibles pour vous
+                {t("project.proj.filterResult3")}
               </p>
             </div>
 
@@ -239,7 +259,7 @@ const ProjectsSection = () => {
                   onClick={() => setShowSortDropdown(!showSortDropdown)}
                   className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg bg-white hover:bg-gray-50 transition-colors"
                 >
-                  <span className="text-gray-700">Trier par : {sortBy}</span>
+                  <span className="text-gray-700">{t("project.proj.sort")} : {sortBy}</span>
                   <ChevronDown className="h-4 w-4 text-gray-500" />
                 </motion.button>
 
@@ -319,7 +339,7 @@ const ProjectsSection = () => {
                     <div>
                       <div className="flex justify-between items-center mb-1">
                         <span className="text-sm text-gray-600">
-                          Projets complets
+                          {t("project.proj.complete")}
                         </span>
                         <span className="text-sm font-semibold text-gray-900">
                           {project.completionRate}%
@@ -341,7 +361,7 @@ const ProjectsSection = () => {
                     <div>
                       <div className="flex justify-between items-center mb-1">
                         <span className="text-sm text-gray-600">
-                          Clients satisfaits
+                          {t("project.proj.satisfy")}
                         </span>
                         <span className="text-sm font-semibold text-gray-900">
                           {project.satisfactionRate}%
@@ -365,7 +385,7 @@ const ProjectsSection = () => {
                     whileHover={{ x: 5 }}
                     className="text-blue-600 hover:text-blue-700 font-medium flex items-center space-x-2 transition-colors"
                   >
-                    <span>Découvrir</span>
+                    <span>{t("project.proj.discover")}</span>
                     <ArrowRight className="h-4 w-4" />
                   </motion.button>
                 </div>
@@ -377,8 +397,10 @@ const ProjectsSection = () => {
         {/* Pagination */}
         {totalPages > 1 && (
           <motion.div 
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
             variants={itemVariants}
-            className="flex justify-center items-center space-x-2"
+            className="flex justify-center items-center space-x-2 mt-8"
           >
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -391,7 +413,7 @@ const ProjectsSection = () => {
                   : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-300"
               }`}
             >
-              Précédent
+              {t("project.proj.previous")}
             </motion.button>
 
             {[...Array(totalPages)].map((_, index) => (
@@ -421,7 +443,7 @@ const ProjectsSection = () => {
                   : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-300"
               }`}
             >
-              Suivant
+              {t("project.proj.next")}
             </motion.button>
           </motion.div>
         )}
@@ -448,19 +470,18 @@ const ProjectsSection = () => {
           >
             <div className="flex gap-4 sm:gap-8 self-start text-sm sm:text-base font-semibold uppercase whitespace-nowrap">
               <div className="shrink-0 my-auto h-px bg-green-500 border border-green-500 border-solid w-[100px] sm:w-[170px]" />
-              <span className="text-green-500">VITRINE DU PROJET</span>
+              <span className="text-green-500">{t("project.proj.hero.badge")}</span>
             </div>
 
             <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
-              Embarquez pour un voyage visuel à travers notre vitrine de
-              projets
+              {t("project.proj.hero.title")}
             </h1>
 
             <div className="space-y-4 mb-8">
               <div>
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-gray-700 font-medium">
-                    Projets complets
+                    {t("project.proj.complete")}
                   </span>
                   <span className="text-gray-900 font-bold">99%</span>
                 </div>
@@ -480,7 +501,7 @@ const ProjectsSection = () => {
               <div>
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-gray-700 font-medium">
-                    Clients satisfaits
+                    {t("project.proj.satisfy")}
                   </span>
                   <span className="text-gray-900 font-bold">98%</span>
                 </div>
@@ -503,7 +524,7 @@ const ProjectsSection = () => {
               whileTap={{ scale: 0.95 }}
               className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-medium flex items-center space-x-2 transition-colors"
             >
-              <span>Découvrir</span>
+              <span>{t("project.proj.discover")}</span>
               <ArrowRight className="h-4 w-4" />
             </motion.button>
           </motion.div>

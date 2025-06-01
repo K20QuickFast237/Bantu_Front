@@ -48,7 +48,7 @@ const ServiceCard = ({
           isgradient ? 'text-white' : 'text-sky-600'
         }`}
       >
-        <span className="grow">En savoir plus</span>
+        <span className="grow">{t("services.card.learn_more")}</span>
         <ArrowRight 
           className={`object-contain shrink-0 my-auto aspect-[1/1] w-[25px] ${
             isgradient ? 'fill-white' : 'fill-sky-600'
@@ -115,23 +115,23 @@ const ServicesShowcase = () => {
           <motion.div variants={itemVariants}>
             <ServiceCard
               icon={devT}
-              title="Développement Tech"
-              description="Solutions numériques adaptées aux besoins locaux."
+              title={t("service.developpement")}
+              description={t("service.developpement.desc")}
               variant="gradient"
             />
           </motion.div>
           <motion.div variants={itemVariants}>
             <ServiceCard
               icon={incu}
-              title="Incubation"
-              description="Accompagnement des startups et projets innovants."
+              title={t("service.incubation")}
+              description={t("service.incubation.desc")}
             />
           </motion.div>
           <motion.div variants={itemVariants}>
             <ServiceCard
               icon={cons}
-              title="Conseil & Assistance "
-              description="Développement commercial, transformation digitale et stratégie de recrutement."
+              title={t("service.conseil")}
+              description={t("service.conseil.desc")}
             />
           </motion.div>
         </motion.div>
@@ -143,22 +143,22 @@ const ServicesShowcase = () => {
           <motion.div variants={itemVariants}>
             <ServiceCard
               icon={aut}
-              title="Autonomisation"
-              description="Nous créons des initiatives pour renforcer les capacités locales."
+              title={t("service.autonomisation")}
+              description={t("service.autonomisation.desc")}
             />
           </motion.div>
           <motion.div variants={itemVariants}>
             <ServiceCard
               icon=""
-              title="BantuHire"
-              description="Mise en relation des demandeurs d'emploi avec les employeurs et création de réseaux professionnels structurés."
+              title={t("service.bantuhire")}
+              description={t("service.bantuhire.desc")}
             />
           </motion.div>
           <motion.div variants={itemVariants}>
             <ServiceCard
               icon=""
-              title="BantuMarket"
-              description="Plateforme e-commerce permettant les transactions B2B, B2C, C2C et C2B."
+              title={t("service.bantumarket")}
+              description={t("service.bantumarket.desc")}
             />
           </motion.div>
         </motion.div>
@@ -170,8 +170,8 @@ const ServicesShowcase = () => {
           <motion.div variants={itemVariants}>
             <ServiceCard
               icon=""
-              title="BantuLink SuperApp"
-              description="Écosystème numérique central intégrant plusieurs services multisectoriels."
+              title={t("service.bantulink")}
+              description={t("service.bantulink.desc")}
             />
           </motion.div>
         </motion.div>

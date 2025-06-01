@@ -98,26 +98,26 @@ const SerStatPro = () => {
 
   const projects = [
     {
-      title: "BantuLink",
-      description: "Plateforme professionnelle connectant talents, entreprises et opportunités à travers l'Afrique.",
+      title: t('project.bantulink'),
+      description: t('project.bantulink.desc'),
       image: pro1,
       gradient: "from-blue-500 to-blue-10"
     },
     {
-      title: "BantuHire",
-      description: "BantuHire est une plateforme de mise en relation entre recruteur et chercheur d'emploi + ressourçage + certification.",
+      title: t('project.bantuhire'),
+      description: t('project.bantuhire.desc'),
       image: pro2,
       gradient: "from-blue-500 to-blue-10"
     },
     {
-      title: "BantuMarket",
-      description: "BantuMarket est une marketplace destinée aux clients et prestataires de service pour vendre/acheter des produits et services.",
+      title: t('project.bantumarket'),
+      description: t('project.bantumarket.desc'),
       image: pro3,
       gradient: "from-blue-500 to-blue-10"
     },
     {
-      title: "Mech",
-      description: "Solution de transport intelligent optimisant la logistique urbaine et l'expérience utilisateur.",
+      title: t('project.mech'),
+      description: t('project.mectn.desc'),
       image: pro4,
       gradient: "from-blue-500 to-blue-10"
     }
@@ -222,7 +222,7 @@ const SerStatPro = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.5 }}
           >
-              Nos Services
+              {t('services.title')}
           </motion.h2>
           <motion.p 
               className="text-green-500 max-w-xl mx-auto leading-relaxed text-sm md:text-base px-4"
@@ -231,7 +231,7 @@ const SerStatPro = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Des solutions numériques sur mesure pour booster l’innovation, la connectivité et l’inclusion en Afrique.
+            {t('services.description')}
           </motion.p>
         </motion.div>
 
