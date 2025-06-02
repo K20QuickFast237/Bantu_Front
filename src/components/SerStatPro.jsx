@@ -24,8 +24,8 @@ const SerStatPro = () => {
     },
     {
       icon: <Rocket className="w-12 h-12 text-green-500" />,
-      title: t('service.incubation'),
-      description: t('service.incubation.desc')
+      title: t('service.incubationa'),
+      description: t('service.incubationa.desc')
     },
     {
       icon: <Users className="w-12 h-12 text-green-500" />,

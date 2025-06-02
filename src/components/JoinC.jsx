@@ -1,52 +1,54 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-
+import { useTranslation } from "react-i18next";
 const JoinC = () => {
   const [activeTab, setActiveTab] = useState('internal');
+  const { t } = useTranslation();
+
 
   const internalJobs = [
     {
-      title: "Gestionnaire de communauté",
-      subtitle: "À temps plein",
-      location: "Yaoundé, Cameroun"
+      title: t("join_us.jobs.internal.job1.title"),
+      subtitle: t("join_us.jobs.internal.job1.subtitle"),
+      location: t("join_us.jobs.internal.job1.location")
     },
     {
-      title: "Scrum master",
-      subtitle: "À temps plein",
-      location: "Lagos, Nigeria"
+      title: t("join_us.jobs.internal.job2.title"),
+      subtitle: t("join_us.jobs.internal.job2.subtitle"),
+      location: t("join_us.jobs.internal.job2.location")
     },
     {
-      title: "Responsable des bases de données",
-      subtitle: "Contrôle",
-      location: "New York, USA"
+      title: t("join_us.jobs.internal.job3.title"),
+      subtitle: t("join_us.jobs.internal.job3.subtitle"),
+      location: t("join_us.jobs.internal.job3.location")
     },
     {
-      title: "Spécialiste en image de marque en marketing",
-      subtitle: "À temps partiel",
-      location: "Kribi, Cameroun"
+      title: t("join_us.jobs.internal.job4.title"),
+      subtitle: t("join_us.jobs.internal.job4.subtitle"),
+      location: t("join_us.jobs.internal.job4.location")
     },
     {
-      title: "Gestionnaire de communauté",
-      subtitle: "À temps plein",
-      location: "Paris, France"
+      title: t("join_us.jobs.internal.job5.title"),
+      subtitle: t("join_us.jobs.internal.job5.subtitle"),
+      location: t("join_us.jobs.internal.job5.location")
     }
   ];
 
   const externalJobs = [
     {
-      title: "Développeur Frontend",
-      subtitle: "Freelance",
-      location: "Remote"
+      title: t("join_us.jobs.external.job1.title"),
+      subtitle:  t("join_us.jobs.external.job1.subtitle"),
+      location: t("join_us.jobs.external.job1.location")
     },
     {
-      title: "Designer UI/UX",
-      subtitle: "Temps partiel",
-      location: "Douala, Cameroun"
+      title: t("join_us.jobs.external.job2.title"),
+      subtitle:  t("join_us.jobs.external.job2.subtitle"),
+      location: t("join_us.jobs.external.job2.location")
     },
     {
-      title: "Chef de projet",
-      subtitle: "Mission",
-      location: "Lyon, France"
+      title: t("join_us.jobs.external.job3.title"),
+      subtitle: t("join_us.jobs.external.job3.subtitle"),
+      location: t("join_us.jobs.external.job3.location")
     }
   ];
 
@@ -61,8 +63,8 @@ const JoinC = () => {
     >
       {/* postes */}
       <div className="mb-6">
-        <h3 className="text-blue-600 text-xl md:text-2xl font-medium mb-2">Rejoignez notre équipe</h3>
-        <h2 className="text-black text-2xl md:text-4xl mt-5 font-bold mb-7">Postes de vacances actuels</h2>
+        <h3 className="text-blue-600 text-xl md:text-2xl font-medium mb-2">{t("join_us.jobs.subtitle")}</h3>
+        <h2 className="text-black text-2xl md:text-4xl mt-5 font-bold mb-7">{t("join_us.jobs.title")}</h2>
 
         {/* Tabs */}
         <div className="flex flex-wrap gap-2">
@@ -74,7 +76,7 @@ const JoinC = () => {
                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
             }`}
           >
-            Postes internes
+           {t("join_us.jobs.tabs.internal")}
           </button>
           <button
             onClick={() => setActiveTab('external')}
@@ -84,7 +86,7 @@ const JoinC = () => {
                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
             }`}
           >
-            Postes externes
+           {t("join_us.jobs.tabs.external")}
           </button>
         </div>
       </div>
@@ -109,9 +111,9 @@ const JoinC = () => {
 
       {/* en bas */}
       <div className="mt-8">
-        <h3 className="text-green-600 text-xl md:text-2xl font-medium mb-2">Rejoignez notre vivier talent</h3>
+        <h3 className="text-green-600 text-xl md:text-2xl font-medium mb-2">{t("join_us.jobs.talent_pool.title")}</h3>
         <p className="text-gray-600 text-base md:text-lg">
-          Vous ne trouvez pas de postes correspondant à votre profil, envoyez votre CV <b className='text-green-500'>ici</b>
+          {t("join_us.jobs.talent_pool.description")}{" "}<span className='text-blue-500 cursor-pointer'>{t("join_us.jobs.talent_pool.link")}</span>
         </p>
       </div>
     </motion.div>

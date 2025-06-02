@@ -35,8 +35,8 @@ const resources = {
       "services.description": "Des solutions numériques sur mesure pour booster l’innovation, la connectivité et l’inclusion en Afrique.",
       "service.tech": "Développement Tech",
       "service.tech.desc": "Nous concevons des solutions numériques sur mesure pour répondre aux défis des communautés africaines, en alliant innovation et accessibilité.",
-      "service.incubation": "Incubation",
-      "service.incubation.desc": "Nous accompagnons les porteurs de projets innovants à travers des programmes d'incubation favorisant la croissance et la création d'impact durable.",
+      "service.incubationa": "Incubation",
+      "service.incubationa.desc": "Nous accompagnons les porteurs de projets innovants à travers des programmes d'incubation favorisant la croissance et la création d'impact durable.",
       "service.consulting": "Conseil",
       "service.consulting.desc": "Nos experts vous guident dans la définition et la mise en œuvre de stratégies technologiques adaptées à vos besoins et à votre environnement local.",
       "stats.projects": "Projets technologiques réalisés",
@@ -147,7 +147,7 @@ const resources = {
       "contact.write_email": "Écrire un e-mail",
       "contact.email": "info@tnksynergies.com",
       "contact.visit_office": "Visiter le bureau",
-      "contact.location": "Localisation",
+      "contact.location": " Logpom, Douala, Cameroun",
       "contact.follow": "Suivez-nous",
       "contact.book_call": "Réserver un appel rapide",
       "contact.book_call_desc": "Obtenir 15 minutes de consultation gratuite",
@@ -265,11 +265,12 @@ const resources = {
       "team.coo.name": "Ayimele Tsopfack Rea",
       "team.tech.name": "Sublime Prod",
       "team.marketing.name": "Patience Gheghe Kisob",
+      "footer.hello.chat": "Bonjour ! Comment pouvons-nous vous aider aujourd'hui ?",
 
 
       // Nouvelles clés pour Join_us
       "join_us.hero.alt": "Image de fond de la section Rejoignez-nous",
-      "join_us.hero.title": "Faites un travail <br /> qui compte",
+      "join_us.hero.title": "Faites un travail qui compte",
       "join_us.hero.description": "Chez TNK synergie, nous cherchons constamment à exploiter la technologie pour améliorer la vie de millions de personnes. Rejoignez-nous et faites un travail qui compte.",
       "join_us.hero.subtitle": "Rejoignez-nous et travaillez chez TNK _SYNERGIES_LTD",
       "join_us.values.card1.title": "Croissance",
@@ -455,7 +456,7 @@ const resources = {
       "testimonials.testimonial5.content": "Une vraie mine d'or pour suivre les tendances web.\n\nExcellent travail éditorial !",
           },
   },
-  en: {
+  gb: {
     translation: {
       // Header
       home: "Home",
@@ -491,8 +492,8 @@ const resources = {
       "project.bantumarket.alt": "Image of the BantuMarket project",
       "project.mectn.alt": "Image of the Mectn project",
 
-       "join_us.hero.alt": "Background image for the Join Us section",
-      "join_us.hero.title": "Do Work <br /> That Matters",
+      "join_us.hero.alt": "Background image for the Join Us section",
+      "join_us.hero.title": "Do Work That Matters",
       "join_us.hero.description": "At TNK Synergie, we are constantly seeking to harness technology to improve the lives of millions. Join us and do work that matters.",
       "join_us.hero.subtitle": "Join Us and Work at TNK _SYNERGIES_LTD",
       "join_us.values.card1.title": "Growth",
@@ -594,8 +595,8 @@ const resources = {
     "services.description": "Tailor-made digital solutions to boost innovation, connectivity, and inclusion in Africa.",
     "service.tech": "Tech Development",
     "service.tech.desc": "We design custom digital solutions to address the challenges of African communities, combining innovation with accessibility.",
-    "service.incubation": "Incubation",
-    "service.incubation.desc": "We support innovative project leaders through incubation programs that foster growth and long-term impact.",
+    "service.incubationa": "Incubation",
+    "service.incubationa.desc": "We support innovative project leaders through incubation programs that foster growth and long-term impact.",
     "service.consulting": "Consulting",
     "service.consulting.desc": "Our experts guide you in defining and implementing tech strategies tailored to your needs and local environment.",
     "stats.projects": "Tech projects completed",
@@ -706,7 +707,7 @@ const resources = {
       "contact.write_email": "Write an Email",
       "contact.email": "info@tnksynergies.com",
       "contact.visit_office": "Visit the Office",
-      "contact.location": "Location",
+      "contact.location": " Logpom, Douala, Cameroun",
       "contact.follow": "Follow Us",
       "contact.book_call": "Book a Quick Call",
       "contact.book_call_desc": "Get 15 minutes of free consultation",
@@ -824,6 +825,7 @@ const resources = {
       "team.coo.name": "Ayimele Tsopfack Rea",
       "team.tech.name": "Sublime Prod",
       "team.marketing.name": "Patience Gheghe Kisob",
+      "footer.hello.chat": "Hi there! How can we assist you today?",
 
 
       "blog.all_blogs": "All Blogs",

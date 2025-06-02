@@ -192,7 +192,7 @@ const ContactSection = () => {
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-blue-900">
                 <FaLinkedinIn className="w-5 h-5" />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-600">
+              <a href="https://x.com/TNK_SYNERGIES" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-600">
                 <FaTwitter className="w-5 h-5" />
               </a>
             </div>
