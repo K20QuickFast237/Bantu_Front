@@ -226,7 +226,7 @@ const Footer = () => {
             whileHover={{ scale: 1.1, backgroundColor: "white", color: "#3974EA" }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
             className='w-8 h-8 rounded-full border-1 border-white flex flex-col justify-center items-center cursor-pointer'
-            href="https://twitter.com" target="_blank" rel="noopener noreferrer" 
+            href="https://x.com/TNK_SYNERGIES" target="_blank" rel="noopener noreferrer" 
           >
             <FaTwitter />
           </motion.a>
@@ -255,8 +255,8 @@ const Footer = () => {
             className='absolute bottom-16 right-0 bg-[#E7F3FF] text-gray-800 px-4 py-2 rounded-2xl shadow-lg max-w-[300px]'
           >
             <div className="relative">
-              <p className="text-sm leading-relaxed">Bonjour ! Comment pouvons-nous vous aider aujourd'hui ?</p>
-              <div className="absolute -bottom-2 right-4 w-4 h-4 bg-[#E7F3FF] transform rotate-45"></div>
+              <p className="text-sm leading-relaxed">{t("footer.hello.chat")}</p>
+              <div className="absolute -bottom-4 right-4 w-4 h-4 bg-[#E7F3FF] transform rotate-45"></div>
             </div>
           </motion.div>
         )}

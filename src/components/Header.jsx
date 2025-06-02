@@ -8,6 +8,7 @@ import { FaFacebookF, FaLinkedinIn, FaTwitter, FaInstagram } from 'react-icons/f
 import Button from './Button';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import Flag from 'react-world-flags';
 
 const LanguageSelector = ({ scrolled, isMobile = false }) => {
   const { i18n } = useTranslation();
@@ -17,13 +18,11 @@ const LanguageSelector = ({ scrolled, isMobile = false }) => {
     { 
       code: 'fr', 
       name: 'Français', 
-      flag: 'https://flagcdn.com/w40/fr.png',
       flagAlt: 'Drapeau français'
     },
     { 
-      code: 'en', 
+      code: 'gb', 
       name: 'English', 
-      flag: 'https://flagcdn.com/w40/gb.png',
       flagAlt: 'Drapeau britannique'
     }
   ];
@@ -42,8 +41,8 @@ const LanguageSelector = ({ scrolled, isMobile = false }) => {
         } ${isMobile ? 'w-full justify-between' : ''}`}
       >
         <span className="flex items-center gap-2">
-          <img 
-            src={languages.find(lang => lang.code === i18n.language)?.flag}
+          <Flag 
+            code={languages.find(lang => lang.code === i18n.language)?.code} 
             alt={languages.find(lang => lang.code === i18n.language)?.flagAlt}
             className="w-5 h-3 object-cover rounded-sm"
           />
@@ -63,15 +62,11 @@ const LanguageSelector = ({ scrolled, isMobile = false }) => {
           <button
             key={lang.code}
             onClick={() => handleLanguageChange(lang.code)}
-            className={`w-full flex items-center gap-2 px-4 py-2 hover:bg-gray-100 transition-colors ${
+            className={`w-full flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded-sm transition-colors ${
               i18n.language === lang.code ? 'bg-blue-50' : ''
             }`}
           >
-            <img 
-              src={lang.flag}
-              alt={lang.flagAlt}
-              className="w-5 h-3 object-cover rounded-sm"
-            />
+           <Flag code={lang.code} alt={lang.flagAlt} className='w-5 h-3 object-cover' />
             <span className="text-sm text-gray-800">{lang.name}</span>
           </button>
         ))}
@@ -220,7 +215,7 @@ const Header = () => {
                   whileHover={{ scale: 1.1, backgroundColor: "white", color: "#3974EA" }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   className='w-7 h-7 lg:w-8 lg:h-8 rounded-full border-1 border-white flex flex-col justify-center items-center cursor-pointer'
-                  href="https://twitter.com" target="_blank" rel="noopener noreferrer" 
+                  href="https://x.com/TNK_SYNERGIES" target="_blank" rel="noopener noreferrer" 
                 >
                   <FaTwitter className="text-sm lg:text-base" />
                 </motion.a>
@@ -236,7 +231,7 @@ const Header = () => {
                 </a>
                 <a href="tel:+321234456386" className="flex gap-2 lg:gap-3.5 items-center">
                   <MapPin className="w-4 lg:w-5 aspect-[1/1]" />
-                  <span className="text-sm lg:text-base">Location, Streep</span>
+                  <span className="text-sm lg:text-base"> Logpom, Douala, Cameroun</span>
                 </a>
               </div>
             </div>
