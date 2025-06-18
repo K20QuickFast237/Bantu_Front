@@ -9,11 +9,12 @@ import Button from './Button';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import Flag from 'react-world-flags';
-import OptimizedImage from './OptimizedImage';
 
 const LanguageSelector = ({ scrolled, isMobile = false }) => {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+
+  // console.log('Current i18n language:', i18n.language); // Vous pouvez le commenter ou le supprimer maintenant
   
   const languages = [
     { 
@@ -27,6 +28,9 @@ const LanguageSelector = ({ scrolled, isMobile = false }) => {
       flagAlt: 'Drapeau britannique'
     }
   ];
+
+  const currentLanguageCode = i18n.language.split('-')[0];
+  const selectedLanguage = languages.find(lang => lang.code === currentLanguageCode);
 
   const handleLanguageChange = (langCode) => {
     i18n.changeLanguage(langCode);
@@ -42,13 +46,13 @@ const LanguageSelector = ({ scrolled, isMobile = false }) => {
         } ${isMobile ? 'w-full justify-between' : ''}`}
       >
         <span className="flex items-center gap-2">
-          <Flag 
-            code={languages.find(lang => lang.code === i18n.language)?.code} 
-            alt={languages.find(lang => lang.code === i18n.language)?.flagAlt}
+          <Flag
+            code={selectedLanguage?.code}
+            alt={selectedLanguage?.flagAlt}
             className="w-5 h-3 object-cover rounded-sm"
           />
           <span className={`text-sm lg:text-base ${scrolled ? 'text-gray-800' : 'text-white'}`}>
-            {languages.find(lang => lang.code === i18n.language)?.name}
+            {selectedLanguage?.name}
           </span>
         </span>
       </button>
@@ -64,10 +68,10 @@ const LanguageSelector = ({ scrolled, isMobile = false }) => {
             key={lang.code}
             onClick={() => handleLanguageChange(lang.code)}
             className={`w-full flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded-sm transition-colors ${
-              i18n.language === lang.code ? 'bg-blue-50' : ''
+              currentLanguageCode === lang.code ? 'bg-blue-50' : ''
             }`}
           >
-           <Flag code={lang.code} alt={lang.flagAlt} className='w-5 h-3 object-cover' />
+            <Flag code={lang.code} alt={lang.flagAlt} className='w-5 h-3 object-cover' />
             <span className="text-sm text-gray-800">{lang.name}</span>
           </button>
         ))}
