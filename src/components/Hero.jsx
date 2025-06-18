@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Button from './Button';
 import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import OptimizedImage from './OptimizedImage';
 
 const HeroSection = ({
   image,

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from 'react-i18next';
+import OptimizedImage from './OptimizedImage';
 
 const Testimonials = () => {
   const { t } = useTranslation();

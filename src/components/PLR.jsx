@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import blog22 from "../assets/images/blog22.png";
 import blog23 from "../assets/images/blog23.png";
 import { useTranslation } from 'react-i18next';
+import OptimizedImage from './OptimizedImage';
 
 const PLR = () => {
   const { t } = useTranslation();

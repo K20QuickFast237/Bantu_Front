@@ -4,6 +4,7 @@ import Button from './Button';
 import sectionHero from '../assets/images/join1.jpg';
 import Join_us from '../pages/Join_us';
 import { useTranslation } from 'react-i18next';
+import OptimizedImage from './OptimizedImage';
 
 const Join_usHero = () => {
   const { t } = useTranslation();
@@ -12,7 +13,7 @@ const Join_usHero = () => {
    <>
     <section className="flex relative flex-col items-center pt-32 pb-32 w-full text-base min-h-[681px] max-md:px-5 max-md:pb-24 max-md:max-w-full">
       <div className="absolute inset-0 w-full h-full">
-        <img
+        <OptimizedImage
           src={sectionHero}
           alt={t('join_us.hero.alt')}
           className="object-cover absolute inset-0 size-full"

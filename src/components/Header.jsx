@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router'; // Corrigé de 'react-router'
+import { Link, useLocation } from 'react-router'; 
 import Logo from '../assets/images/logoNoir.svg';
 import Logo2 from '../assets/images/logo.svg';
 import { Search, Mail, Phone, MapPin, Menu, X } from 'lucide-react';
@@ -9,6 +9,7 @@ import Button from './Button';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import Flag from 'react-world-flags';
+import OptimizedImage from './OptimizedImage';
 
 const LanguageSelector = ({ scrolled, isMobile = false }) => {
   const { i18n } = useTranslation();
@@ -242,7 +243,7 @@ const Header = () => {
         <div className="flex justify-between items-center w-full">
           <div className='cursor-pointer m-2'>
             <Link to="/">
-              <img 
+              <img
                 src={scrolled ? Logo2 : Logo} 
                 alt={scrolled ? "Logo2" : "Logo"}
                 className="w-20 sm:w-24 md:w-28 lg:w-32"
@@ -338,32 +339,32 @@ const Header = () => {
               <div className={`cursor-pointer py-2 px-3 rounded-md transition-all ${
                 location.pathname === '/' ? 'bg-blue-100 text-blue-600' : 'text-gray-800 hover:bg-gray-100'
               }`}>
-                <Link to="/">Accueil</Link>
+                <Link to="/">{t('home')}</Link>
               </div>
               <div className={`cursor-pointer py-2 px-3 rounded-md transition-all ${
                 location.pathname === '/about' ? 'bg-blue-100 text-blue-600' : 'text-gray-800 hover:bg-gray-100'
               }`}>
-                <Link to="/about">À propos</Link>
+                <Link to="/about">{t('about')}</Link>
               </div>
               <div className={`cursor-pointer py-2 px-3 rounded-md transition-all ${
                 location.pathname === '/projets' ? 'bg-blue-100 text-blue-600' : 'text-gray-800 hover:bg-gray-100'
               }`}>
-                <Link to="/projets">Nos Projets</Link>
+                <Link to="/projets">{t('projects')}</Link>
               </div>
               <div className={`cursor-pointer py-2 px-3 rounded-md transition-all ${
                 location.pathname === '/services' ? 'bg-blue-100 text-blue-600' : 'text-gray-800 hover:bg-gray-100'
               }`}>
-                <Link to="/services">Services</Link>
+                <Link to="/services">{t('services')}</Link>
               </div>
               <div className={`cursor-pointer py-2 px-3 rounded-md transition-all ${
                 location.pathname === '/blog' ? 'bg-blue-100 text-blue-600' : 'text-gray-800 hover:bg-gray-100'
               }`}>
-                <Link to="/blog">Blog / Actualités</Link>
+                <Link to="/blog">{t('blog')}</Link>
               </div>
               <div className={`cursor-pointer py-2 px-3 rounded-md transition-all ${
                 location.pathname === '/contact' ? 'bg-blue-100 text-blue-600' : 'text-gray-800 hover:bg-gray-100'
               }`}>
-                <Link to="/contact">Contact</Link>
+                <Link to="/contact">{t('contact')}</Link>
               </div>
 
               <div className="mt-4 border-t pt-4">
