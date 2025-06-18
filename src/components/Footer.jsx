@@ -7,6 +7,7 @@ import { FaInstagram } from 'react-icons/fa';
 import Button from './Button';
 import NewLetter from '../assets/images/NewLetter.png';
 import { motion } from 'framer-motion';
+import OptimizedImage from './OptimizedImage';
 
 const NewsletterSection = () => {
   const { t } = useTranslation();
@@ -39,7 +40,7 @@ const NewsletterSection = () => {
         </div>
         <div className="relative w-[25%] max-md:hidden">
           <div className='absolute bottom-0 right-0'>
-            <img
+            <OptimizedImage
               src={NewLetter}
               alt={t('footer.newsletter.alt')}
               className="mt-[-189px] max-md:mt-0"
@@ -80,7 +81,7 @@ const Footer = () => {
       <div className="z-10 mt-0 w-full py-20 max-md:py-10">
         <div className="flex gap-20 max-md:flex-col max-md:gap-10">
           <div className="w-[50%] h-full bg-white/20 backdrop-blur-lg rounded-lg px-16 py-8 space-y-6 max-md:w-full max-md:px-8">
-            <img
+            <OptimizedImage
               src={Logo}
               alt={t('footer.logo.alt')}
               className="w-[40%] cursor-pointer mix-blend-multiply max-md:w-[60%]"
@@ -235,14 +236,15 @@ const Footer = () => {
 
       <motion.div 
         onClick={() => window.open('https://wa.me/+237686135038', '_blank')}
-        whileHover={{ scale: 1.1, backgroundColor: "#33C12B" }}
+        whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         transition={{ 
           type: "spring",
           stiffness: 400,
-          damping: 10
+          damping: 10,
+          duration: 0.2
         }}
-        className='fixed bottom-32 right-8 flex items-center group z-40'
+        className='fixed bottom-18 right-4 flex items-center group z-40'
       >
         <div className='bg-white text-green-500 px-4 py-2 rounded-lg cursor-pointer shadow-lg mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap'>
           {t('footer.contact.chat')}

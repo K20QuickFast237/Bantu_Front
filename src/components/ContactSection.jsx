@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import contact1 from '../assets/images/contact1.jpg';
 import Button from './Button';
 import { useTranslation } from 'react-i18next'; // Importer useTranslation
+import OptimizedImage from './OptimizedImage';
 
 const ContactSection = () => {
   const { t } = useTranslation(); // Initialiser le hook
@@ -213,7 +214,7 @@ const ContactSection = () => {
             >
               <div className="bg-gradient-to-br from-green-400 to-green-600 rounded-2xl overflow-hidden">
                 <div className="aspect-square bg-green-500 flex items-center justify-center relative">
-                    <img src={contact1} alt="" className='object-cover h-full'/>
+                    <img src={contact1} alt="" className='object-cover h-full' />
                 </div>
               </div>
             </motion.div>

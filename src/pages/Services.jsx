@@ -8,6 +8,7 @@ import WhyChooseUs from '../components/WhyChooseUs';
 import ServicesFooter from '../components/Footer';
 import CTA from '../components/CTA';
 import sectionHero from '../assets/images/service_Hero.jpg';
+import servicesCTA from '../assets/images/servicesCTA.jpg';
 import PageLayout from '../components/PageLayout';
 import { useTranslation } from 'react-i18next';
 
@@ -35,7 +36,7 @@ const Services = () => {
         <CTA 
           title={t('cta.collaborate_africa')} 
           callToAction={t('cta.discuss')} 
-          image="https://cdn.builder.io/api/v1/image/assets/TEMP/fd4d16ff4f8b8e9adb87a787b040fb855d13134b?placeholderIfAbsent=true&apiKey=fc2b18f8aa35478bb94d2d55f863feab"
+          image={servicesCTA}
         />
         <ServicesFooter />
       </main>

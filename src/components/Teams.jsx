@@ -6,6 +6,7 @@ import personne2 from "../assets/images/personne2.png";
 import personne3 from "../assets/images/personne3.png";
 import personne4 from "../assets/images/personne4.png";
 import { useTranslation } from 'react-i18next';
+import OptimizedImage from './OptimizedImage';
 
 const Teams = () => {
   const { t } = useTranslation();
@@ -185,6 +186,7 @@ const Teams = () => {
                     src={member.avatar}
                     alt={member.name}
                     className="w-40 h-40 object-cover rounded-full mb-3"
+                    height={360}
                   />
                   <h1 className="text-2xl font-bold text-white text-center mb-2">
                     {member.name}

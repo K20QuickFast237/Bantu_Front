@@ -2,6 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import sectionHero from '../assets/images/about.jpg';
+import OptimizedImage from './OptimizedImage';
 
 const AboutHero = () => {
   const { t } = useTranslation();

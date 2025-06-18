@@ -4,6 +4,7 @@ import Button from './Button';
 import sectionHero from '../assets/images/join1.jpg';
 import Join_us from '../pages/Join_us';
 import { useTranslation } from 'react-i18next';
+import OptimizedImage from './OptimizedImage';
 
 const Join_usHero = () => {
   const { t } = useTranslation();
