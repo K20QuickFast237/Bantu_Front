@@ -4,7 +4,6 @@ import sectionHero from '../assets/images/blog1.png';
 import blogb from '../assets/images/service_Hero.jpg';
 import about5 from '../assets/images/about5.png';
 import blog23 from '../assets/images/blog23.png';
-import OptimizedImage from './OptimizedImage';
 import { useTranslation } from 'react-i18next';
 
 const BlogHero = ({ searchValue, setSearchValue }) => {

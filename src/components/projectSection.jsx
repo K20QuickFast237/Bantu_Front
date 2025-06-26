@@ -3,7 +3,6 @@ import { ChevronDown, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import projectImg from "../assets/images/projectImg.jpg";
 import { useTranslation } from "react-i18next";
-import OptimizedImage from './OptimizedImage';
 
 const ProjectsSection = () => {
   const { t } = useTranslation();

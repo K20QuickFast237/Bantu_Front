@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import Button from './Button';
 import about2 from '../assets/images/about2.png';
 import about3 from '../assets/images/about3.png';
-import { Link, useLocation } from 'react-router';
+import { Link } from 'react-router';
 import about4 from '../assets/images/about4.png';
 import about5 from '../assets/images/about5.png';
 import { useTranslation } from 'react-i18next';

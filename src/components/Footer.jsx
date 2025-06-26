@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import Logo from '../assets/images/logo.svg';
 import { FaFacebookF, FaLinkedinIn, FaTwitter, FaWhatsapp} from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
-
 import Button from './Button';
 import NewLetter from '../assets/images/NewLetter.png';
 import { motion } from 'framer-motion';
@@ -43,6 +42,8 @@ const NewsletterSection = () => {
             <OptimizedImage
               src={NewLetter}
               alt={t('footer.newsletter.alt')}
+              width={250} // Remplacez par la largeur réelle de NewLetter.png
+              height={400} // Remplacez par la hauteur réelle de NewLetter.png
               className="mt-[-189px] max-md:mt-0"
             />
           </div>
@@ -81,7 +82,7 @@ const Footer = () => {
       <div className="z-10 mt-0 w-full py-20 max-md:py-10">
         <div className="flex gap-20 max-md:flex-col max-md:gap-10">
           <div className="w-[50%] h-full bg-white/20 backdrop-blur-lg rounded-lg px-16 py-8 space-y-6 max-md:w-full max-md:px-8">
-            <OptimizedImage
+            <img
               src={Logo}
               alt={t('footer.logo.alt')}
               className="w-[40%] cursor-pointer mix-blend-multiply max-md:w-[60%]"

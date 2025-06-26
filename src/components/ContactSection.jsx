@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import contact1 from '../assets/images/contact1.jpg';
 import Button from './Button';
 import { useTranslation } from 'react-i18next'; // Importer useTranslation
-import OptimizedImage from './OptimizedImage';
 
 const ContactSection = () => {
   const { t } = useTranslation(); // Initialiser le hook

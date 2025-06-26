@@ -2,11 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import personne1 from "../assets/images/personne1.png";
-import personne2 from "../assets/images/personne2.png";
 import personne3 from "../assets/images/personne3.png";
-import personne4 from "../assets/images/personne4.png";
 import { useTranslation } from 'react-i18next';
-import OptimizedImage from './OptimizedImage';
 
 const Teams = () => {
   const { t } = useTranslation();

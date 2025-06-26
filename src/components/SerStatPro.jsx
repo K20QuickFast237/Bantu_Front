@@ -9,7 +9,6 @@ import pro3 from '../assets/images/aproject3.jpeg';
 import pro4 from '../assets/images/aproject4.jpeg';
 import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import OptimizedImage from './OptimizedImage';
 
 const SerStatPro = () => {
   const { t } = useTranslation();
