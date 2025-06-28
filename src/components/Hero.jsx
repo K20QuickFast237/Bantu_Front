@@ -2,8 +2,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Button from './Button';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import OptimizedImage from './OptimizedImage';
 
 const HeroSection = ({
   image,
@@ -33,7 +34,7 @@ const HeroSection = ({
         transition={{ duration: 1.2 }}
         className="absolute inset-0 w-full h-full"
       >
-        <img
+        <OptimizedImage
           src={image}
           alt={t('hero.alt')}
           className="object-cover absolute inset-0 size-full"

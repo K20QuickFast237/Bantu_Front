@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ChevronDown, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import projectImg from "../assets/images/projectImg.jpg";
+import OptimizedImage from './OptimizedImage';
 import { useTranslation } from "react-i18next";
 
 const ProjectsSection = () => {
@@ -310,7 +311,7 @@ const ProjectsSection = () => {
                   whileHover={{ scale: 1.05 }}
                   className="sm:w-1/3"
                 >
-                  <img
+                  <OptimizedImage
                     src={project.image}
                     alt={project.title}
                     className="w-full h-40 sm:h-48 lg:h-full object-cover"
@@ -458,7 +459,7 @@ const ProjectsSection = () => {
             whileHover={{ scale: 1.05 }}
             className="lg:w-1/3"
           >
-            <img
+            <OptimizedImage
               src={projectImg}
               alt="Business meeting"
               className="w-full h-48 sm:h-64 lg:h-full object-cover rounded-xl sm:rounded-2xl"

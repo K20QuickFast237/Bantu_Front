@@ -7,8 +7,9 @@ import pro1 from '../assets/images/aproject1.jpg';
 import pro2 from '../assets/images/aproject2.jpeg';
 import pro3 from '../assets/images/aproject3.jpeg';
 import pro4 from '../assets/images/aproject4.jpeg';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import OptimizedImage from './OptimizedImage';
 
 const SerStatPro = () => {
   const { t } = useTranslation();
@@ -101,24 +102,28 @@ const SerStatPro = () => {
       title: t('project.bantulink'),
       description: t('project.bantulink.desc'),
       image: pro1,
+      alt: t('project.bantulink.alt'),
       gradient: "from-blue-500 to-blue-10"
     },
     {
       title: t('project.bantuhire'),
       description: t('project.bantuhire.desc'),
       image: pro2,
+      alt: t('project.bantuhire.alt'),
       gradient: "from-blue-500 to-blue-10"
     },
     {
       title: t('project.bantumarket'),
       description: t('project.bantumarket.desc'),
       image: pro3,
+      alt: t('project.bantumarket.alt'),
       gradient: "from-blue-500 to-blue-10"
     },
     {
       title: t('project.mech'),
       description: t('project.mectn.desc'),
       image: pro4,
+      alt: t('project.mech.alt'),
       gradient: "from-blue-500 to-blue-10"
     }
   ];
@@ -326,7 +331,7 @@ const SerStatPro = () => {
 
       {/* Stats Section */}
       <div ref={statsRef} className="relative bg-gray-800 overflow-hidden mb-12 md:mb-20">
-        <img src={statsImage} alt={t('stats.image_alt')} className="absolute inset-0 object-cover"/>
+        <OptimizedImage src={statsImage} alt={t('stats.image_alt')} className="absolute inset-0 object-cover"/>
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-gray-700 opacity-80"></div>
         <div className="relative px-4 md:px-8 py-6 md:py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
@@ -401,7 +406,7 @@ const SerStatPro = () => {
                 }}
               >
                 <motion.div className="aspect-video overflow-hidden">
-                  <motion.img 
+                  <OptimizedImage 
                     src={project.image} 
                     alt={project.alt}
                     className="w-full h-full object-cover"

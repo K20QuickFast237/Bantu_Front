@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import blog22 from "../assets/images/blog22.png";
 import blog23 from "../assets/images/blog23.png";
+import OptimizedImage from './OptimizedImage';
 import { useTranslation } from 'react-i18next';
 
 const PLR = () => {
@@ -122,7 +123,7 @@ const PLR = () => {
                 isVisible ? 'animate-scaleIn delay-600' : 'initial-hidden'
               }`}
             >
-              <img
+              <OptimizedImage
                 src={blog23}
                 alt={t('blog.post2.alt')}
                 className="w-full h-40 md:h-48 lg:h-48 object-cover"
@@ -153,7 +154,7 @@ const PLR = () => {
                 isVisible ? 'animate-scaleIn delay-800' : 'initial-hidden'
               }`}
             >
-              <img
+              <OptimizedImage
                 src={blog22}
                 alt={t('blog.post3.alt')}
                 className="w-full h-40 md:h-48 lg:h-48 object-cover"

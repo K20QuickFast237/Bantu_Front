@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import service3 from '../assets/images/service3.jpg';
 import { useTranslation } from 'react-i18next';
+import OptimizedImage from './OptimizedImage';
 
 const BenefitCard = ({ icon, title, description, className = '', variant = 'default' }) => {
   const isgradient = variant === 'gradient';
@@ -17,7 +18,7 @@ const BenefitCard = ({ icon, title, description, className = '', variant = 'defa
         whileHover={{ rotate: 360 }}
         transition={{ duration: 0.5 }}
       >
-        <img
+        <OptimizedImage
           src={icon}
           alt={`${title} icon`}
           className="object-contain w-16 sm:w-20 aspect-square"
@@ -87,7 +88,7 @@ const WhyChooseUs = () => {
             variants={imageVariants}
             className="w-full lg:w-[36%] order-first lg:order-last"
           >
-            <img
+            <OptimizedImage
               src={service3}
               alt={t('why_choose_us.image_alt')}
               className="h-[300px] sm:h-[400px] lg:h-full w-full object-cover rounded-2xl"

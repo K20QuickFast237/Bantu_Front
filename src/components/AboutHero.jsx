@@ -2,6 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import sectionHero from '../assets/images/about.jpg';
+import OptimizedImage from './OptimizedImage';
 
 const AboutHero = () => {
   const { t } = useTranslation();
@@ -9,7 +10,7 @@ const AboutHero = () => {
   return (
     <section className="flex relative flex-col items-center pt-32 pb-32 w-full text-base max-md:px-5 max-md:pb-24 max-md:max-w-full">
       <div className="absolute inset-0 w-full h-full">
-        <img
+        <OptimizedImage
           src={sectionHero}
           alt={t('about.hero.alt')}
           className="object-cover absolute inset-0 size-full"
