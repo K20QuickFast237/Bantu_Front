@@ -1,6 +1,6 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router'; 
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom'; 
 import Logo from '../assets/images/logoNoir.svg';
 import Logo2 from '../assets/images/logo.svg';
 import { Search, Mail, Phone, MapPin, Menu, X } from 'lucide-react';
@@ -9,6 +9,7 @@ import Button from './Button';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import Flag from 'react-world-flags';
+import OptimizedImage from './OptimizedImage';
 
 const LanguageSelector = ({ scrolled, isMobile = false }) => {
   const { i18n } = useTranslation();
@@ -20,11 +21,13 @@ const LanguageSelector = ({ scrolled, isMobile = false }) => {
     { 
       code: 'fr', 
       name: 'Français', 
+      flagcode: 'fr',
       flagAlt: 'Drapeau français'
     },
     { 
-      code: 'gb', 
+      code: 'en', 
       name: 'English', 
+      flagcode: 'gb',
       flagAlt: 'Drapeau britannique'
     }
   ];
@@ -47,7 +50,7 @@ const LanguageSelector = ({ scrolled, isMobile = false }) => {
       >
         <span className="flex items-center gap-2">
           <Flag
-            code={selectedLanguage?.code}
+            code={selectedLanguage?.flagcode}
             alt={selectedLanguage?.flagAlt}
             className="w-5 h-3 object-cover rounded-sm"
           />
@@ -71,7 +74,7 @@ const LanguageSelector = ({ scrolled, isMobile = false }) => {
               currentLanguageCode === lang.code ? 'bg-blue-50' : ''
             }`}
           >
-            <Flag code={lang.code} alt={lang.flagAlt} className='w-5 h-3 object-cover' />
+            <Flag code={lang.flagcode} alt={lang.flagAlt} className='w-5 h-3 object-cover' />
             <span className="text-sm text-gray-800">{lang.name}</span>
           </button>
         ))}
@@ -236,7 +239,7 @@ const Header = () => {
                 </a>
                 <a href="tel:+321234456386" className="flex gap-2 lg:gap-3.5 items-center">
                   <MapPin className="w-4 lg:w-5 aspect-[1/1]" />
-                  <span className="text-sm lg:text-base"> Logpom, Douala, Cameroun</span>
+                  <span className="text-sm lg:text-base"> Logpom, Douala, Cameroun</span>
                 </a>
               </div>
             </div>
@@ -247,7 +250,7 @@ const Header = () => {
         <div className="flex justify-between items-center w-full">
           <div className='cursor-pointer m-2'>
             <Link to="/">
-              <img
+              <OptimizedImage
                 src={scrolled ? Logo2 : Logo} 
                 alt={scrolled ? "Logo2" : "Logo"}
                 className="w-20 sm:w-24 md:w-28 lg:w-32"

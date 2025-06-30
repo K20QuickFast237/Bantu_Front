@@ -3,10 +3,11 @@ import { motion } from 'framer-motion';
 import Button from './Button';
 import about2 from '../assets/images/about2.png';
 import about3 from '../assets/images/about3.png';
-import { Link, useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
 import about4 from '../assets/images/about4.png';
 import about5 from '../assets/images/about5.png';
 import { useTranslation } from 'react-i18next';
+import OptimizedImage from './OptimizedImage';
 
 function Mission() {
   const { t } = useTranslation();
@@ -45,7 +46,7 @@ function Mission() {
           variants={imageVariants}
           transition={{ delay: 0.2 }}
         >
-          <img
+          <OptimizedImage
             src={about2}
             alt={t('mission.image_alt')}
             className="object-cover rounded-xl absolute inset-0 w-full h-full"
@@ -105,7 +106,7 @@ function Mission() {
             variants={imageVariants}
             transition={{ delay: 1.0 }}
           >
-            <img
+            <OptimizedImage
               src={about2}
               alt={t('mission.image_alt')}
               className="object-cover rounded-xl absolute inset-0 size-full"
@@ -116,7 +117,7 @@ function Mission() {
             variants={imageVariants}
             transition={{ delay: 1.2 }}
           >
-            <img
+            <OptimizedImage
               src={about3}
               alt={t('mission.image_alt')}
               className="object-cover rounded-xl inset-0 size-full"
@@ -129,7 +130,7 @@ function Mission() {
             variants={imageVariants}
             transition={{ delay: 1.4 }}
           >
-            <img
+            <OptimizedImage
               src={about4}
               alt={t('mission.image_alt')}
               className="object-cover rounded-xl inset-0 size-full"
@@ -140,7 +141,7 @@ function Mission() {
             variants={imageVariants}
             transition={{ delay: 1.6 }}
           >
-            <img
+            <OptimizedImage
               src={about5}
               alt={t('mission.image_alt')}
               className="object-cover rounded-xl inset-0 size-full"

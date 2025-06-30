@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import Logo from '../assets/images/logo.svg';
 import { FaFacebookF, FaLinkedinIn, FaTwitter, FaWhatsapp} from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
-
 import Button from './Button';
 import NewLetter from '../assets/images/NewLetter.png';
 import { motion } from 'framer-motion';
@@ -43,7 +42,7 @@ const NewsletterSection = () => {
             <OptimizedImage
               src={NewLetter}
               alt={t('footer.newsletter.alt')}
-              className="mt-[-189px] max-md:mt-0"
+              className="w-full h-auto mt-[-189px] max-md:mt-0"
             />
           </div>
         </div>

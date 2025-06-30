@@ -5,6 +5,7 @@ import about2 from '../assets/images/about2.png';
 import about3 from '../assets/images/about3.png';
 import about4 from '../assets/images/about4.png';
 import { useTranslation } from 'react-i18next';
+import OptimizedImage from './OptimizedImage';
 
 function Valeurs() {
   const { t } = useTranslation();
@@ -135,7 +136,7 @@ function Valeurs() {
               variants={cardVariants}
               transition={{ delay: 0.4 + index * 0.2 }}
             >
-              <img
+              <OptimizedImage
                 src={item.img}
                 alt={item.alt}
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"

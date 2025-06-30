@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from 'react-i18next';
 import OptimizedImage from './OptimizedImage';
 
+
 const Testimonials = () => {
   const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -78,7 +79,7 @@ const Testimonials = () => {
           </p>
         </div>
 
-        <img
+        <OptimizedImage
           src={testimonials[currentIndex].image}
           alt={testimonials[currentIndex].name}
           className="w-50 h-50 object-cover rounded-md"

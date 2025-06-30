@@ -4,8 +4,8 @@ import sectionHero from '../assets/images/blog1.png';
 import blogb from '../assets/images/service_Hero.jpg';
 import about5 from '../assets/images/about5.png';
 import blog23 from '../assets/images/blog23.png';
-import OptimizedImage from './OptimizedImage';
 import { useTranslation } from 'react-i18next';
+import OptimizedImage from './OptimizedImage';
 
 const BlogHero = ({ searchValue, setSearchValue }) => {
   const { t } = useTranslation();
@@ -39,7 +39,7 @@ const BlogHero = ({ searchValue, setSearchValue }) => {
     <section className="relative w-full text-base px-20 pt-32 pb-20 md:pt-36 md:pb-32">
       {/* Image de fond */}
       <div className="absolute inset-0 -z-10 h-full w-full">
-        <img
+        <OptimizedImage
           src={sectionHero}
           alt={t('blog.hero.bg_alt')}
           className="object-cover w-full h-full"
@@ -74,7 +74,7 @@ const BlogHero = ({ searchValue, setSearchValue }) => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="relative w-full h-60 mt-7">
-              <img
+              <OptimizedImage
                 src={slides[currentSlide].image}
                 alt={t('blog.hero.carousel_alt')}
                 className="object-cover rounded-2xl w-full h-full transition duration-1000 ease-in-out"

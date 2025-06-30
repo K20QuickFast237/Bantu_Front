@@ -214,7 +214,7 @@ const ContactSection = () => {
             >
               <div className="bg-gradient-to-br from-green-400 to-green-600 rounded-2xl overflow-hidden">
                 <div className="aspect-square bg-green-500 flex items-center justify-center relative">
-                    <img src={contact1} alt="" className='object-cover h-full' />
+                    <OptimizedImage src={contact1} alt="" className='object-cover h-full' />
                 </div>
               </div>
             </motion.div>

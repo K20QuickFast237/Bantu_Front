@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Button from './Button';
 import slide1 from '../assets/images/slide1.jpg';
 import slide2 from '../assets/images/slide21.jpeg';
 import slide3 from '../assets/images/slide3.jpeg';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const HeroCarousel = () => {
@@ -59,7 +59,7 @@ const HeroCarousel = () => {
       } else {
         setProgress((elapsed / totalDuration) * 100);
       }
-    }, 16); // ~60fps
+    }, 16);
 
     return () => {
       clearInterval(interval);
@@ -168,7 +168,7 @@ const HeroCarousel = () => {
               {/* Progressive fill background */}
               {currentSlide === index && (
                 <div 
-                  className="absolute inset-0 bg-gradient-to-r from-green-500 to-blue-500 transition-all duration-100 ease-linear"
+                  className="absolute inset-0 bg-gradient-to-r from-green-500 to-blue-500"
                   style={{ 
                     clipPath: `inset(0 ${100 - progress}% 0 0)`,
                   }}

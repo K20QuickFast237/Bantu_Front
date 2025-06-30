@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import personne1 from "../assets/images/personne1.png";
-import personne2 from "../assets/images/personne2.png";
-import personne3 from "../assets/images/personne3.png";
-import personne4 from "../assets/images/personne4.png";
-import { useTranslation } from 'react-i18next';
 import OptimizedImage from './OptimizedImage';
+import personne3 from "../assets/images/personne3.png";
+import { useTranslation } from 'react-i18next';
 
 const Teams = () => {
   const { t } = useTranslation();
@@ -26,7 +24,7 @@ const Teams = () => {
       name: t('team.coo.name', { defaultValue: 'Ayimele Tsopfack Rea' }),
       position: t('team.coo'),
       description: t('team.coo.desc'),
-      avatar: "    ",
+      avatar: null,
       miniDescription: t('team.coo.mini')
     },
     {
@@ -34,7 +32,7 @@ const Teams = () => {
       name: t('team.tech.name', { defaultValue: 'Sublime Prod' }),
       position: t('team.tech'),
       description: t('team.tech.desc'),
-      avatar: " ",
+      avatar: null,
       miniDescription: t('team.tech.mini')
     },
     {
@@ -148,7 +146,7 @@ const Teams = () => {
                   variants={imageVariants}
                   transition={{ delay: 1.4 }}
                 >
-                  <img
+                  <OptimizedImage
                     src={currentMember.avatar}
                     alt={currentMember.name}
                     className="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 object-cover transition-all duration-300"
@@ -182,7 +180,7 @@ const Teams = () => {
                   key={member.id}
                   className="snap-center flex-shrink-0 w-[85%] flex flex-col items-center bg-blue-600 rounded-lg p-4"
                 >
-                  <img
+                  <OptimizedImage
                     src={member.avatar}
                     alt={member.name}
                     className="w-40 h-40 object-cover rounded-full mb-3"
@@ -217,7 +215,7 @@ const Teams = () => {
                 onClick={() => handleMemberSelect(member)}
                 className="w-20 h-20 cursor-pointer sm:w-25 sm:h-25 rounded-full overflow-hidden hover:border-opacity-100 transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
               >
-                <img
+                <OptimizedImage
                   src={member.avatar}
                   alt={member.name}
                   className="w-full h-full object-cover"

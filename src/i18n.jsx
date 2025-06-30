@@ -456,7 +456,7 @@ const resources = {
       "testimonials.testimonial5.content": "Une vraie mine d'or pour suivre les tendances web.\n\nExcellent travail éditorial !",
           },
   },
-  gb: {
+  en: {
     translation: {
       // Header
       home: "Home",

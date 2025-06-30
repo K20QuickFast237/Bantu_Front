@@ -1,100 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
-const OptimizedImage = ({
-  src,
-  alt,
-  width,
-  height,
-  className,
-  placeholder = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlZWUiLz48L3N2Zz4=',
-  loading = 'lazy',
-  sizes = '100vw',
-  ...props
-}) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [error, setError] = useState(false);
+/**
+ * Affiche une image en utilisant le format WebP si le navigateur le supporte,
+ * avec une image de fallback (PNG, JPG, etc.). Ce composant est conçu pour
+ * être flexible et fonctionner avec Tailwind CSS.
+ *
+ * Il ne force pas les attributs `width` et `height`, vous permettant de
+ * contrôler les dimensions via `className` pour un design responsive.
+ *
+ * @param {object} props - Les props du composant.
+ * @param {string} props.src - Le chemin vers l'image originale (ex: /assets/image.png).
+ * @param {string} props.alt - Le texte alternatif pour l'image.
+ * @param {string} [props.className] - Les classes CSS (ex: Tailwind) à appliquer à l'image.
+ */
+const OptimizedImage = ({ src, alt, ...props }) => {
+  // Si la source est vide, invalide, ou juste des espaces, ne rien afficher pour éviter les erreurs.
+  if (!src || typeof src !== 'string' || src.trim() === '') {
+    // Optionnel : retourner un placeholder ou null
+    // Pour l'instant, on ne retourne rien pour éviter une image cassée.
+    return null;
+  }
 
-  // Générer les différentes tailles d'images pour srcset
-  const generateSrcSet = (imageSrc) => {
-    const sizes = [320, 640, 960, 1280];
-    return sizes
-      .map(size => `${imageSrc}?width=${size} ${size}w`)
-      .join(', ');
-  };
+  // Gérer les URLs externes (http, https) et les data URIs
+  const isExternal = src.startsWith('http') || src.startsWith('data:');
 
-  // Convertir l'URL en WebP si possible
-  const getWebPSrc = (imageSrc) => {
-    if (imageSrc.includes('?')) {
-      return `${imageSrc}&format=webp`;
-    }
-    return `${imageSrc}?format=webp`;
-  };
+  // En mode DEV, ou pour les SVG, ou pour les URLs externes, on affiche une <img> simple.
+  if (import.meta.env.DEV || src.endsWith('.svg') || isExternal) {
+    return <img src={src} alt={alt} {...props} loading="lazy" />;
+  }
 
-  const handleLoad = () => {
-    setIsLoaded(true);
-  };
-
-  const handleError = () => {
-    setError(true);
-    setIsLoaded(true);
-  };
+  // En production, on suppose que les versions .avif et .webp ont été générées par le plugin.
+  const avifSrc = src.replace(/\.(png|jpe?g)$/i, '.avif');
+  const webpSrc = src.replace(/\.(png|jpe?g)$/i, '.webp');
 
   return (
-    <div 
-      className={`relative overflow-hidden ${className}`}
-      style={{ 
-        width: width ? `${width}px` : '100%',
-        height: height ? `${height}px` : 'auto',
-        // backgroundColor: '#f5f5f5'
-      }}
-    >
-      <picture>
-        {/* Version WebP */}
-        <source
-          type="image/webp"
-          srcSet={generateSrcSet(getWebPSrc(src))}
-          sizes={sizes}
-        />
-        {/* Version originale comme fallback */}
-        <img
-          src={src}
-          srcSet={generateSrcSet(src)}
-          sizes={sizes}
-          alt={alt}
-          width={width}
-          height={height}
-          loading={loading}
-          onLoad={handleLoad}
-          onError={handleError}
-          className={`
-            transition-opacity duration-300
-            ${isLoaded ? 'opacity-100' : 'opacity-0'}
-          `}
-          {...props}
-        />
-      </picture>
-      
-      {/* Placeholder pendant le chargement */}
-      {!isLoaded && (
-        <div 
-          className="absolute inset-0 bg-gray-200 animate-pulse"
-          style={{ backgroundImage: `url(${placeholder})`, backgroundSize: 'cover' }}
-        />
-      )}
-    </div>
+    <picture>
+      <source srcSet={avifSrc} type="image/avif" />
+      <source srcSet={webpSrc} type="image/webp" />
+      <img src={src} alt={alt} {...props} loading="lazy" />
+    </picture>
   );
 };
 
-OptimizedImage.propTypes = {
-  src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
-  width: PropTypes.number,
-  height: PropTypes.number,
-  className: PropTypes.string,
-  placeholder: PropTypes.string,
-  loading: PropTypes.oneOf(['lazy', 'eager']),
-  sizes: PropTypes.string,
-};
-
-export default OptimizedImage; 
+export default OptimizedImage;
