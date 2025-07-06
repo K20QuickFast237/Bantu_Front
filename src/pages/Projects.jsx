@@ -7,7 +7,7 @@ import HeroSection from '../components/Hero';
 import sectionHero from '../assets/images/projet_Hero.jpg';
 import ProjectsSection from '../components/projectSection';
 import PageLayout from '../components/PageLayout';
-import servicesCTA from '../assets/images/servicesCTA.jpg';
+import projetCTA from '../assets/images/projetCTA.jpg';
 import { useTranslation } from 'react-i18next';
 
 const Projects = () => {
@@ -47,7 +47,7 @@ const Projects = () => {
           </section>
         </section>
         <ProjectsSection />
-        <CTA title={t('cta.collaborate')} callToAction={t('cta.contact')} image={servicesCTA} />
+        <CTA title={t('cta.collaborate')} callToAction={t('cta.contact')} image={projetCTA} />
         <ServicesFooter />
       </main>
     </PageLayout>

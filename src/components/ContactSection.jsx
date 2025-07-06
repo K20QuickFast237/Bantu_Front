@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Phone, Mail, MapPin, ChevronDown } from 'lucide-react';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter, FaShareAlt } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-import contact1 from '../assets/images/contact1.jpg';
+import contact1 from '../assets/images/contact2.jpg';
 import Button from './Button';
 import { useTranslation } from 'react-i18next'; // Importer useTranslation
 import OptimizedImage from './OptimizedImage';
@@ -213,8 +213,8 @@ const ContactSection = () => {
               className="relative"
             >
               <div className="bg-gradient-to-br from-green-400 to-green-600 rounded-2xl overflow-hidden">
-                <div className="aspect-square bg-green-500 flex items-center justify-center relative">
-                    <OptimizedImage src={contact1} alt="" className='object-cover h-full' />
+                <div className="aspect-square relative">
+                    <OptimizedImage src={contact1} alt="" className="absolute inset-0 w-full h-full object-cover" />
                 </div>
               </div>
             </motion.div>

@@ -229,15 +229,15 @@ const Header = () => {
                 </motion.a>
               </div>
               <div className='flex gap-4 lg:gap-6 items-center'>
-                <a href="tel:+321234456386" className="flex gap-2 lg:gap-3.5 items-center">
+                <a href="tel:+237683179451" className="flex gap-2 lg:gap-3.5 items-center">
                   <Phone className="w-4 lg:w-5 aspect-[1/1]" />
-                  <span className="text-sm lg:text-base">+237 6831-79451</span>
+                  <span className="text-sm lg:text-base">+237 6831-79451 / +237 6861-35038</span>
                 </a>
-                <a href="tel:+321234456386" className="flex gap-2 lg:gap-3.5 items-center">
+                <a href="mailto:info@tnksynergies.com" className="flex gap-2 lg:gap-3.5 items-center">
                   <Mail className="w-4 lg:w-5 aspect-[1/1]" />
                   <span className="text-sm lg:text-base">info@tnksynergies.com</span>
                 </a>
-                <a href="tel:+321234456386" className="flex gap-2 lg:gap-3.5 items-center">
+                <a href="https://www.google.com/maps/search/?api=1&query=Logpom%2C+Douala%2C+Cameroun" target="_blank" rel="noopener noreferrer" className="flex gap-2 lg:gap-3.5 items-center">
                   <MapPin className="w-4 lg:w-5 aspect-[1/1]" />
                   <span className="text-sm lg:text-base"> Logpom, Douala, Cameroun</span>
                 </a>

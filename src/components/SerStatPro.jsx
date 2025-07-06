@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Code, Rocket, Users, ArrowRight } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
-import statsImage from '../assets/images/stats.jpg';
+import statsImage from '../assets/images/projectImg.jpg';
 import pro1 from '../assets/images/aproject1.jpg';
 import pro2 from '../assets/images/aproject2.jpeg';
 import pro3 from '../assets/images/aproject3.jpeg';
