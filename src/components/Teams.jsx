@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import personne1 from "../assets/images/personne1.png";
+import personne1 from "../assets/images/equipe1.jpg";
+import personne2 from "../assets/images/equipe2.jpg";
+import personne3 from "../assets/images/equipe3.jpg";
+import personne4 from "../assets/images/equipe4.jpg";
 import OptimizedImage from './OptimizedImage';
-import personne3 from "../assets/images/personne3.png";
 import { useTranslation } from 'react-i18next';
 
 const Teams = () => {
@@ -24,7 +26,7 @@ const Teams = () => {
       name: t('team.coo.name', { defaultValue: 'Ayimele Tsopfack Rea' }),
       position: t('team.coo'),
       description: t('team.coo.desc'),
-      avatar: null,
+      avatar: personne3,
       miniDescription: t('team.coo.mini')
     },
     {
@@ -32,7 +34,7 @@ const Teams = () => {
       name: t('team.tech.name', { defaultValue: 'Sublime Prod' }),
       position: t('team.tech'),
       description: t('team.tech.desc'),
-      avatar: null,
+      avatar: personne2,
       miniDescription: t('team.tech.mini')
     },
     {
@@ -40,7 +42,7 @@ const Teams = () => {
       name: t('team.marketing.name', { defaultValue: 'Patience Gheghe Kisob' }),
       position: t('team.marketing'),
       description: t('team.marketing.desc'),
-      avatar: personne3,
+      avatar: personne4,
       miniDescription: t('team.marketing.mini')
     },
   ];
@@ -149,7 +151,7 @@ const Teams = () => {
                   <OptimizedImage
                     src={currentMember.avatar}
                     alt={currentMember.name}
-                    className="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 object-cover transition-all duration-300"
+                    className="w-48 sm:w-64 md:w-96 aspect-[4/3] object-cover rounded-3xl border-4 border-white/50 shadow-lg transition-all duration-300"
                   />
                 </motion.div>
               </motion.div>
@@ -183,8 +185,7 @@ const Teams = () => {
                   <OptimizedImage
                     src={member.avatar}
                     alt={member.name}
-                    className="w-40 h-40 object-cover rounded-full mb-3"
-                    height={360}
+                    className="w-56 aspect-[4/3] object-cover rounded-2xl mb-4 border-4 border-white/20 shadow-lg"
                   />
                   <h1 className="text-2xl font-bold text-white text-center mb-2">
                     {member.name}
@@ -203,17 +204,17 @@ const Teams = () => {
 
         {/* Masquée sur mobile */}
         <motion.div
-          className="hidden md:flex bg-green-600 justify-center py-7 space-x-4 sm:space-x-6 md:space-x-8 lg:space-x-30"
+          className="hidden md:flex bg-green-600 gap-12 justify-center py-7  sm:space-x-6 md:space-x-8 lg:space-x-12"
           initial="hidden"
           animate="visible"
           variants={imageVariants}
           transition={{ delay: 1.6 }}
         >
           {otherMembers.map((member) => (
-            <div key={member.id} className="flex flex-col items-center">
+            <div key={member.id} className="flex flex-col items-center w-32 sm:w-40">
               <button
                 onClick={() => handleMemberSelect(member)}
-                className="w-20 h-20 cursor-pointer sm:w-25 sm:h-25 rounded-full overflow-hidden hover:border-opacity-100 transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+                className="w-full aspect-[4/3] cursor-pointer rounded-2xl overflow-hidden border-2 border-transparent hover:border-white transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75"
               >
                 <OptimizedImage
                   src={member.avatar}
@@ -221,7 +222,7 @@ const Teams = () => {
                   className="w-full h-full object-cover"
                 />
               </button>
-              <div className="text-center mt-2 sm:mt-3">
+              <div className="text-center mt-2 sm:mt-3 w-full">
                 <p className="font-semibold text-base sm:text-lg">{member.name}</p>
                 <p className="text-sm sm:text-sm opacity-90">{member.miniDescription}</p>
               </div>
