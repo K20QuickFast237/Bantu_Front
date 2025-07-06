@@ -37,14 +37,14 @@ const Teams = () => {
     //   avatar: null,
     //   miniDescription: t('team.tech.mini')
     // },
-    {
-      id: 4,
-      name: t('team.marketing.name', { defaultValue: 'Patience Gheghe Kisob' }),
-      position: t('team.marketing'),
-      description: t('team.marketing.desc'),
-      avatar: null,
-      miniDescription: t('team.marketing.mini')
-    },
+    // {
+    //   id: 4,
+    //   name: t('team.marketing.name', { defaultValue: 'Patience Gheghe Kisob' }),
+    //   position: t('team.marketing'),
+    //   description: t('team.marketing.desc'),
+    //   avatar: null,
+    //   miniDescription: t('team.marketing.mini')
+    // },
   ];
 
   const [currentMember, setCurrentMember] = useState(teamMembers[0]);
