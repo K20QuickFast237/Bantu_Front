@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import personne1 from "../assets/images/equipe1.jpg";
-import personne2 from "../assets/images/equipe2.jpg";
+// import personne2 from "../assets/images/equipe2.jpg";
 import personne3 from "../assets/images/equipe3.jpg";
-import personne4 from "../assets/images/equipe4.jpg";
+// import personne4 from "../assets/images/equipe4.jpg";
 import OptimizedImage from './OptimizedImage';
 import { useTranslation } from 'react-i18next';
 
@@ -34,7 +34,7 @@ const Teams = () => {
       name: t('team.tech.name', { defaultValue: 'Sublime Prod' }),
       position: t('team.tech'),
       description: t('team.tech.desc'),
-      avatar: personne2,
+      avatar: null,
       miniDescription: t('team.tech.mini')
     },
     {
@@ -42,7 +42,7 @@ const Teams = () => {
       name: t('team.marketing.name', { defaultValue: 'Patience Gheghe Kisob' }),
       position: t('team.marketing'),
       description: t('team.marketing.desc'),
-      avatar: personne4,
+      avatar: null,
       miniDescription: t('team.marketing.mini')
     },
   ];

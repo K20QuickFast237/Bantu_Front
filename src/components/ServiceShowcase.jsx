@@ -1,11 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import devT from '../assets/images/devTech.svg';
 import aut from '../assets/images/aut.svg';
 import incu from '../assets/images/incub.svg';
 import cons from '../assets/images/cons.svg';
-import { ArrowRight } from 'lucide-react';
+import { FaUserTie, FaShoppingCart, FaLink } from 'react-icons/fa'; // Importe les icônes
 
 const ServiceCard = ({
   icon,
@@ -25,13 +26,22 @@ const ServiceCard = ({
         isgradient ? 'text-white bg-gradient-to-br from-sky-600 to-blue-100' : 'bg-white'
       } ${className}`}
     >
-      <motion.img
-        whileHover={{ rotate: 360 }}
-        transition={{ duration: 0.5 }}
-        src={icon}
-        alt={`${title} icon`}
-        className="object-contain w-20 aspect-square"
-      />
+      {/* Utilise l'icône SVG si c'est une chaîne, sinon utilise l'icône React */}
+      {typeof icon === 'string' ? (
+        <motion.img
+          whileHover={{ rotate: 360 }}
+          transition={{ duration: 0.5 }}
+          src={icon}
+          alt={`${title} icon`}
+          className="object-contain w-20 aspect-square"
+        />
+      ) : (
+        <motion.div
+          whileHover={{ rotate: 360 }}
+          transition={{ duration: 0.5 }}
+          className="w-20 h-20"
+        >{icon}</motion.div>
+      )}
       <h3 className={`mt-2.5 text-2xl line-clamp-2 ${
         isgradient ? 'text-white' : 'text-neutral-800'
       }`}>
@@ -149,27 +159,27 @@ const ServicesShowcase = () => {
           </motion.div>
           <motion.div variants={itemVariants}>
             <ServiceCard
-              icon=""
+              icon={<FaUserTie size={80} color="#0077B6" />} // Icône pour Bantuhire
               title={t("service.bantuhire")}
               description={t("service.bantuhire.desc")}
             />
           </motion.div>
           <motion.div variants={itemVariants}>
             <ServiceCard
-              icon=""
+              icon={<FaShoppingCart size={80} color="#0077B6" />} // Icône pour Bantumarket
               title={t("service.bantumarket")}
               description={t("service.bantumarket.desc")}
             />
           </motion.div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-4 sm:mt-6"
         >
           <motion.div variants={itemVariants}>
             <ServiceCard
-              icon=""
+              icon={<FaLink size={80} color="#0077B6" />} // Icône pour Bantulink
               title={t("service.bantulink")}
               description={t("service.bantulink.desc")}
             />

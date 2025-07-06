@@ -288,7 +288,7 @@ const Header = () => {
             }`}>
               <Link to="/services" className="text-sm lg:text-base">{t('services')}</Link>
             </div>
-            <div className={`cursor-pointer hover:opacity-80 transition-opacity px-3 py-1.5 rounded-md ${
+            <div className={` hidden cursor-pointer hover:opacity-80 transition-opacity px-3 py-1.5 rounded-md ${
               location.pathname === '/blog' ? 'bg-blue-100 text-blue-600' : ''
             }`}>
               <Link to="/blog" className="text-sm lg:text-base">{t('blog')}</Link>
@@ -363,7 +363,7 @@ const Header = () => {
               }`}>
                 <Link to="/services">{t('services')}</Link>
               </div>
-              <div className={`cursor-pointer py-2 px-3 rounded-md transition-all ${
+              <div className={` hidden cursor-pointer py-2 px-3 rounded-md transition-all ${
                 location.pathname === '/blog' ? 'bg-blue-100 text-blue-600' : 'text-gray-800 hover:bg-gray-100'
               }`}>
                 <Link to="/blog">{t('blog')}</Link>
