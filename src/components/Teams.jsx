@@ -29,14 +29,14 @@ const Teams = () => {
       avatar: personne3,
       miniDescription: t('team.coo.mini')
     },
-    {
-      id: 3,
-      name: t('team.tech.name', { defaultValue: 'Sublime Prod' }),
-      position: t('team.tech'),
-      description: t('team.tech.desc'),
-      avatar: null,
-      miniDescription: t('team.tech.mini')
-    },
+    // {
+    //   id: 3,
+    //   name: t('team.tech.name', { defaultValue: 'Sublime Prod' }),
+    //   position: t('team.tech'),
+    //   description: t('team.tech.desc'),
+    //   avatar: null,
+    //   miniDescription: t('team.tech.mini')
+    // },
     {
       id: 4,
       name: t('team.marketing.name', { defaultValue: 'Patience Gheghe Kisob' }),
