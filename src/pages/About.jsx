@@ -5,7 +5,7 @@ import Valeurs from "../components/Valeurs"
 import Partenaires from "../components/Partenaires"
 import Teams from "../components/Teams"
 import CTA from "../components/CTA"
-import acceuilCTA from "../assets/images/acceuilCTA.jpg";
+import aboutCTA from "../assets/images/aboutCTA.jpg";
 import PageLayout from "../components/PageLayout";
 import ServicesFooter from "../components/Footer";
 import { useTranslation } from 'react-i18next';
@@ -26,7 +26,7 @@ function About() {
           <CTA 
             title={t('cta.join_innovation')} 
             callToAction={t('cta.subscribe')} 
-            image={acceuilCTA}
+            image={aboutCTA}
           />
           <ServicesFooter/>
         </main>

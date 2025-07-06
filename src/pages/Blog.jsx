@@ -4,7 +4,7 @@ import PLR from '../components/PLR';
 import Header from '../components/Header';
 import BlogListing from '../components/Allblog';
 import CTA from "../components/CTA";
-import acceuilCTA from "../assets/images/acceuilCTA.jpg";
+import blogCTA from "../assets/images/blogCTA.jpg";
 import Testimonials from '../components/Testimonials';
 import PageLayout from "../components/PageLayout";
 import ServicesFooter from "../components/Footer";
@@ -25,7 +25,7 @@ function Blog() {
           title={t('cta.collaborate_africa')} 
           color="white" 
           callToAction={t('cta.contact')} 
-          image={acceuilCTA} 
+          image={blogCTA} 
         />
         <Testimonials />
         <ServicesFooter />   
