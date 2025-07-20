@@ -7,9 +7,49 @@ import Button from './Button';
 import NewLetter from '../assets/images/NewLetter.png';
 import { motion } from 'framer-motion';
 import OptimizedImage from './OptimizedImage';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
+import { Toaster, toast } from 'react-hot-toast';
 
 const NewsletterSection = () => {
   const { t } = useTranslation();
+
+  const validationSchema = Yup.object({
+    email: Yup.string()
+      .email(t('validation.email_invalid'))
+      .required(t('validation.email_required')),
+  });
+
+  const handleSubmit = async (values, { setSubmitting, resetForm, setFieldError }) => {
+    const loadingToast = toast.loading(t('toast.subscribing'));
+    try {
+      const response = await axios.post('http://localhost:8000/api/newsletter', values);
+
+      toast.dismiss(loadingToast);
+      toast.success(response.data.message || t('toast.subscribe_success'));
+      resetForm();
+    } catch (error) {
+      toast.dismiss(loadingToast);
+      if (error.response && error.response.status === 422) {
+        // Gère les erreurs de validation de Laravel (ex: email déjà pris)
+        const validationErrors = error.response.data.errors;
+        if (validationErrors.email) {
+          const errorMessage = validationErrors.email[0];
+          setFieldError('email', errorMessage); // Affiche l'erreur sous le champ
+          toast.error(errorMessage); // Affiche aussi un toast pour la visibilité
+        } else {
+          toast.error(t('toast.subscribe_error'));
+        }
+      } else {
+        // Autres erreurs (serveur, réseau...)
+        toast.error(t('toast.generic_error'));
+      }
+      console.error("Erreur lors de l'inscription à la newsletter:", error);
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <section className="w-full px-20 max-md:px-5">
@@ -25,16 +65,28 @@ const NewsletterSection = () => {
               {t('footer.newsletter.title')}
             </h2>
             <p className="text-xl mt-2 text-white max-md:text-lg">{t('cta.subscribe')}</p>
-            <form className="flex justify-between py-2 pr-3 pl-9 mt-12 w-full bg-white rounded-2xl max-md:flex-col max-md:gap-4 max-md:pl-4 max-md:mt-8 max-md:max-w-full">
-              <input
-                type="email"
-                placeholder={t('footer.newsletter.placeholder')}
-                className="my-auto text-lg text-gray-600 bg-transparent outline-none w-[80%] max-md:w-full max-md:text-base"
-              />
-              <Button variant="filled" color="green" type="submit" className="max-md:w-full max-md:py-3">
-                {t('footer.newsletter.submit')}
-              </Button>
-            </form>
+            <Formik
+              initialValues={{ email: '' }}
+              validationSchema={validationSchema}
+              onSubmit={handleSubmit}
+            >
+              {({ isSubmitting }) => (
+                <div className="mt-12 w-full max-md:mt-8 max-md:max-w-full">
+                  <Form className="flex justify-between py-2 pr-3 pl-9 bg-white rounded-2xl max-md:flex-col max-md:gap-4 max-md:pl-4">
+                    <Field
+                      type="email"
+                      name="email"
+                      placeholder={t('footer.newsletter.placeholder')}
+                      className="my-auto text-lg text-gray-600 bg-transparent outline-none w-[80%] max-md:w-full max-md:text-base"
+                    />
+                    <Button variant="filled" color="green" type="submit" disabled={isSubmitting} className="max-md:w-full max-md:py-3">
+                      {isSubmitting ? t('footer.newsletter.submitting') : t('footer.newsletter.submit')}
+                    </Button>
+                  </Form>
+                  <ErrorMessage name="email" component="span" className="text-yellow-300 font-semibold text-md mt-2" />
+                </div>
+              )}
+            </Formik>
           </div>
         </div>
         <div className="relative w-[25%] max-md:hidden">
@@ -272,6 +324,7 @@ const Footer = () => {
 const ServicesFooter = () => {
   return(
     <>
+      <Toaster position="top-center" reverseOrder={false} />
       <NewsletterSection/>
       <Footer/>
     </>

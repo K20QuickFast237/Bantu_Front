@@ -17,6 +17,18 @@ const resources = {
       "search.placeholder": "Rechercher...",
       "search.no_results": "Aucun résultat trouvé",
 
+      //newsletter
+      "validation.email_invalid": "Adresse e-mail invalide",
+      "validation.email_required": "Adresse e-mail requise",
+      "toast.subscribing": "Inscription en cours...",
+      "toast.subscribe_success":"Félicitations! Vous êtes maintenant inscrit à notre newsletter.",
+      "toast.subscribe_error": "Désolé, une erreur s'est produite lors de l'inscription. Veuillez réessayer plus tard.",
+      "toast.generic_error": "Désolé, une erreur s'est produite. Veuillez réessayer plus tard.",
+      "footer.newsletter.submitting": "Envoi en cours...",
+      "footer.newsletter.submit": "S'abonner",
+
+      // Footer
+
       // HeroCarousel (Accueil)
       "hero.title1": "Stimuler l’Afrique par l’Innovation Intelligente",
       "hero.title2": "BantuLink : Emploi, Commerce & Connexions en Un Seul Lieu",
@@ -162,6 +174,19 @@ const resources = {
       "contact.form.type.demande2": "Carriere",
       "contact.form.type.demande3": "Support",
       "contact.form.type.demande4": "Autre",
+      // --------------------------------------------------------------------------------------------------------
+      "validation.name_required": "Le nom est requis",
+      "validation.email_required": "L'adresse e-mail est requise",
+      "validation.email_invalid": "Adresse e-mail invalide",
+      "validation.type_required": "Le type de demande est requis",
+      "validation.message_required": "Le message est requis",
+      "toast.sending": "Envoi en cours...",
+      "toast.success": "Message envoyé avec succès !",
+      "toast.validation_error": "Erreur de validation",
+      "toast.generic_error": "Une erreur s'est produite. Veuillez réessayer plus tard.",
+      "contact.form.submitting":"Envoi en cours...",
+      
+
 
       // FAQ (pour ContactSection)
       "faq.title": "FAQ",
@@ -468,6 +493,16 @@ const resources = {
       contact: "Contact",
       "search.placeholder": "Search...",
       "search.no_results": "No results found",
+
+      //newsletter
+      "validation.email_invalid": "Invalid email address",
+      "validation.email_required": "Email address required",
+      "toast.subscribing": "Subscribing...",
+      "toast.subscribe_success":"Thank you for subscribing to our newsletter.",
+      "toast.subscribe_error": "An error occurred. Please try again later.",
+      "toast.generic_error": "An error occurred. Please try again later.",
+      "footer.newsletter.submitting": "Submitting...",
+      "footer.newsletter.submit": "Subscribe",
 
       // HeroCarousel (Accueil)
       "hero.title1": "Empowering Africa through Smart Innovation",

@@ -2,18 +2,24 @@ import React, { useState } from 'react';
 import { Phone, Mail, MapPin, ChevronDown } from 'lucide-react';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter, FaShareAlt } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
+import { Toaster, toast } from 'react-hot-toast';
 import contact1 from '../assets/images/contact2.jpg';
 import Button from './Button';
-import { useTranslation } from 'react-i18next'; // Importer useTranslation
+import { useTranslation } from 'react-i18next';
 import OptimizedImage from './OptimizedImage';
 
 const ContactSection = () => {
-  const { t } = useTranslation(); // Initialiser le hook
-  const [formData, setFormData] = useState({
-    noms: '',
-    email: '',
-    typeD: '',
-    message: ''
+  const { t } = useTranslation();
+
+  // Schéma de validation avec Yup
+  const validationSchema = Yup.object({
+    name: Yup.string().required(t('validation.name_required')),
+    email: Yup.string().email(t('validation.email_invalid')).required(t('validation.email_required')),
+    type: Yup.string().required(t('validation.type_required')),
+    message: Yup.string().required(t('validation.message_required')),
   });
 
   const [activeCategory, setActiveCategory] = useState('General');
@@ -25,7 +31,7 @@ const ContactSection = () => {
     {
       id: 1,
       category: 'General',
-      question: t('faqData.general.question1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ?'), // Clé par défaut si non traduite
+      question: t('faqData.general.question1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ?'),
       answer: t('faqData.general.answer1', 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')
     },
     {
@@ -61,16 +67,28 @@ const ContactSection = () => {
     t("contact.form.type.demande4"),
   ];
 
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
+  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+    const loadingToast = toast.loading(t('toast.sending'));
+    try {
+      // L'URL de votre API Laravel. Assurez-vous que le backend est en cours d'exécution.
+      const response = await axios.post('http://localhost:8000/api/contact', values);
+      
+      toast.dismiss(loadingToast);
+      toast.success(response.data.message || t('toast.success'));
+      resetForm();
+    } catch (error) {
+      toast.dismiss(loadingToast);
+      if (error.response && error.response.status === 422) {
+        // Erreurs de validation de Laravel
+        toast.error(t('toast.validation_error'));
+      } else {
+        // Autres erreurs (serveur, réseau, etc.)
+        toast.error(t('toast.generic_error'));
+      }
+      console.error('Erreur lors de la soumission du formulaire:', error);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const toggleFaq = (id) => {
@@ -115,6 +133,7 @@ const ContactSection = () => {
       variants={containerVariants}
       className="min-h-screen bg-gray-50"
     >
+      <Toaster position="top-center" reverseOrder={false} />
       {/* Contact Cards Section */}
       <div className="mx-4 sm:mx-8 md:mx-12 lg:mx-20 py-8 md:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-16">
@@ -236,62 +255,67 @@ const ContactSection = () => {
                 {t('contact.book_call_desc')}
               </motion.p>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <motion.div variants={cardVariants}>
-                  <input
-                    type="text"
-                    name="noms"
-                    placeholder={t('contact.form.names')}
-                    value={formData.noms}
-                    onChange={handleInputChange}
-                    className="w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
-                    required
-                  />
-                </motion.div>
+              <Formik
+                initialValues={{ name: '', email: '', type: '', message: '' }}
+                validationSchema={validationSchema}
+                onSubmit={handleSubmit}
+              >
+                {({ isSubmitting }) => (
+                  <Form className="space-y-6">
+                    <motion.div variants={cardVariants}>
+                      <Field
+                        type="text"
+                        name="name"
+                        placeholder={t('contact.form.names')}
+                        className="w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+                      />
+                      <ErrorMessage name="name" component="div" className="text-red-500 text-sm mt-1" />
+                    </motion.div>
 
-                <motion.div variants={cardVariants}>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder={t('contact.form.email')}
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
-                    required
-                  />
-                </motion.div>
+                    <motion.div variants={cardVariants}>
+                      <Field
+                        type="email"
+                        name="email"
+                        placeholder={t('contact.form.email')}
+                        className="w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+                      />
+                      <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
+                    </motion.div>
 
-                <motion.div variants={cardVariants}>
-                  <select
-                    className='w-full px-3 sm:px-4 py-3 sm:py-4 text-gray-700 rounded-xl bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all'
-                    name="typeD"
-                    value={formData.typeD}
-                    onChange={handleInputChange}
-                  >
-                    <option value="" disabled>{t('contact.form.select_type')}</option>
-                    {typeDemande.map((type, index) => (
-                      <option key={index} value={type}>
-                        {type}
-                      </option>
-                    ))}
-                  </select>
-                </motion.div>
+                    <motion.div variants={cardVariants}>
+                      <Field
+                        as="select"
+                        name="type"
+                        className='w-full px-3 sm:px-4 py-3 sm:py-4 text-gray-700 rounded-xl bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all'
+                      >
+                        <option value="" disabled>{t('contact.form.select_type')}</option>
+                        {typeDemande.map((type, index) => (
+                          <option key={index} value={type}>
+                            {type}
+                          </option>
+                        ))}
+                      </Field>
+                      <ErrorMessage name="type" component="div" className="text-red-500 text-sm mt-1" />
+                    </motion.div>
 
-                <motion.div variants={cardVariants}>
-                  <textarea
-                    name="message"
-                    placeholder={t('contact.form.message')}
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    rows="4"
-                    className="w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl  bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all resize-none"
-                    required
-                  ></textarea>
-                </motion.div>
-                <motion.div variants={cardVariants}>
-                  <Button color="blue" variant='filled' children={t('contact.form.submit')} type='submit'/>
-                </motion.div>
-              </form>
+                    <motion.div variants={cardVariants}>
+                      <Field
+                        as="textarea"
+                        name="message"
+                        placeholder={t('contact.form.message')}
+                        rows="4"
+                        className="w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl  bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all resize-none"
+                      />
+                      <ErrorMessage name="message" component="div" className="text-red-500 text-sm mt-1" />
+                    </motion.div>
+                    <motion.div variants={cardVariants}>
+                      <Button color="blue" variant='filled' disabled={isSubmitting} type='submit'>
+                        {isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}
+                      </Button>
+                    </motion.div>
+                  </Form>
+                )}
+              </Formik>
             </motion.div>
           </div>
         </motion.div>
